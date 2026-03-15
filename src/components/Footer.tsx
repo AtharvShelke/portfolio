@@ -52,10 +52,10 @@ export default function Footer() {
               <MagneticLink href="#">
                 <Twitter className="w-5 h-5" />
               </MagneticLink>
-              <MagneticLink href="#">
+              <MagneticLink href="https://www.linkedin.com/in/atharv-shelke">
                 <Linkedin className="w-5 h-5" />
               </MagneticLink>
-              <MagneticLink href="#">
+              <MagneticLink href="https://github.com/AtharvShelke">
                 <Github className="w-5 h-5" />
               </MagneticLink>
             </div>
