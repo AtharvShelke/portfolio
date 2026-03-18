@@ -47,39 +47,39 @@ export const EDUCATION = [
 
 export const PROJECTS = [
     {
-  id: 1,
-  title: "PC System Builder & ERP Platform",
-  description: "A comprehensive full-stack e-commerce and ERP platform for PC components, featuring an intelligent PC builder with hardware compatibility checking and advanced inventory management.",
-  fullDescription: "This PC System Builder Platform is a robust full-stack application catered towards PC hardware retailers and enthusiasts. It offers an advanced product catalog capable of handling category-specific attributes (CPUs, GPUs, Motherboards, etc.) and features an intelligent PC building engine that actively verifies hardware compatibility. Beyond the storefront, it includes a powerful administrative ERP dashboard to manage complex multi-warehouse inventory, stock movements, supplier purchase orders, and detailed invoice generation. The frontend is a highly responsive, modern interface powered by Next.js 16, React 19, and styled with the latest Tailwind CSS v4 and Radix UI. The backend utilizes Next.js server capabilities and Prisma ORM to interface securely with a structured PostgreSQL database, featuring custom JWT authentication, Razorpay payments, and WhatsApp integrations.",
-  tech: [
-    "Next.js",
-    "React",
-    "Tailwind CSS",
-    "PostgreSQL",
-    "Prisma",
-    "Framer Motion"
-  ],
-  granularTech: [
-    "Next.js 16",
-    "React 19",
-    "TypeScript",
-    "Tailwind CSS v4",
-    "Framer Motion",
-    "Radix UI",
-    "shadcn/ui",
-    "Prisma ORM",
-    "PostgreSQL (pg)",
-    "React Hook Form",
-    "Zod Validation",
-    "Recharts",
-    "Uploadthing",
-    "Nodemailer",
-    "JWT (jose)",
-    "Bcryptjs"
-  ],
-  image: "/proj1.png",
-  link: "https://pc-ecommerce-demo.vercel.app",
-},
+        id: 1,
+        title: "PC System Builder & ERP Platform",
+        description: "A comprehensive full-stack e-commerce and ERP platform for PC components, featuring an intelligent PC builder with hardware compatibility checking and advanced inventory management.",
+        fullDescription: "This PC System Builder Platform is a robust full-stack application catered towards PC hardware retailers and enthusiasts. It offers an advanced product catalog capable of handling category-specific attributes (CPUs, GPUs, Motherboards, etc.) and features an intelligent PC building engine that actively verifies hardware compatibility. Beyond the storefront, it includes a powerful administrative ERP dashboard to manage complex multi-warehouse inventory, stock movements, supplier purchase orders, and detailed invoice generation. The frontend is a highly responsive, modern interface powered by Next.js 16, React 19, and styled with the latest Tailwind CSS v4 and Radix UI. The backend utilizes Next.js server capabilities and Prisma ORM to interface securely with a structured PostgreSQL database, featuring custom JWT authentication, Razorpay payments, and WhatsApp integrations.",
+        tech: [
+            "Next.js",
+            "React",
+            "Tailwind CSS",
+            "PostgreSQL",
+            "Prisma",
+            "Framer Motion"
+        ],
+        granularTech: [
+            "Next.js 16",
+            "React 19",
+            "TypeScript",
+            "Tailwind CSS v4",
+            "Framer Motion",
+            "Radix UI",
+            "shadcn/ui",
+            "Prisma ORM",
+            "PostgreSQL (pg)",
+            "React Hook Form",
+            "Zod Validation",
+            "Recharts",
+            "Uploadthing",
+            "Nodemailer",
+            "JWT (jose)",
+            "Bcryptjs"
+        ],
+        image: "/proj1.png",
+        link: "https://pc-ecommerce-demo.vercel.app",
+    },
     {
         id: 2,
         title: 'Enrich Kitchen Studio',
@@ -113,83 +113,75 @@ export const PROJECTS = [
         link: 'https://enrichfurniture.com/ ',
         // github: '#',
     },
+
     {
         id: 3,
-        title: "AI Story Generator",
-        description: "An AI-powered application that generates creative stories, featuring user profiles and a competitive leaderboard.",
-        fullDescription: "AI Story Generator is a modern full-stack application that leverages Large Language Models (LLMs) via LangChain to generate creative, personalized stories from user prompts. It includes a secure JWT-based authentication system, allowing users to build a personal history of generated stories on their profiles and earn points to rank on a dynamic leaderboard. The frontend is a responsive, highly polished React application utilizing Framer Motion for sleek micro-animations. The backend is powered by a high-performance FastAPI server with a PostgreSQL database managed via SQLAlchemy.",
+        title: "OBSIDIAN — Elite Performance System",
+        description: "An elite AI-powered fitness and nutrition protocol generator.",
+        fullDescription: "OBSIDIAN is a high-performance Next.js application that leverages the Google Gemini AI to construct hyper-personalized fitness and dietary regimens. By ingesting user biometrics (height, weight, age, sex), goals, and lifestyle preferences, it calculates key metabolic metrics (such as TDEE and BMR). This data is processed through Generative AI to deliver highly structured weekly training schedules, macro-nutrient breakdowns, and detailed meal plans. It features an executive, modern aesthetic using custom styling with Tailwind CSS v4, sleek typography, and dynamic micro-animations for an elevated user experience.",
         tech: [
+            "Next.js",
             "React",
             "Tailwind CSS",
-            "Framer Motion",
-            "FastAPI",
-            "Python",
-            "PostgreSQL"
+            "Gemini AI"
         ],
         granularTech: [
+            "Next.js (App Router)",
             "React 19",
-            "Vite",
-            "Zustand",
-            "Framer Motion",
+            "Tailwind CSS v4",
+            "@google/generative-ai",
             "Axios",
-            "Tailwind CSS",
-            "FastAPI",
-            "Python 3",
-            "SQLAlchemy",
-            "PostgreSQL (psycopg2)",
-            "LangChain",
-            "PyJWT",
-            "Passlib (bcrypt)",
-            "Uvicorn"
+            "Zod",
+            "Lucide React"
         ],
-        image: '/proj3.png',
-        link: 'ai-story-generator-theta.vercel.app ',
-        github: 'https://github.com/AtharvShelke/ai-story-generator',
+        image: "/obsidian.png",
+        link: "https://obsidian-fitness.vercel.app/",
+        github: "https://github.com/AtharvShelke/ai-fitness-nextjs"
     },
     {
-    id: 4,
-    title: "Training & Placement Portal",
-    description: "A comprehensive Training & Placement management system for universities featuring multi-college management, role-based access control, and automated placement drives.",
-    fullDescription: "Training & Placement Portal is a robust, full-stack application designed to streamline the management of university placement drives, students, and departmental activities. It features a highly granular role-based access control (RBAC) system accommodating University Admins, College Admins, Coordinators, Recruiters, and Students. The platform integrates AI-powered functionalities via OpenAI and Google Generative AI SDKs, handles secure file uploads with UploadThing, and automates email notifications workflows via Nodemailer. The frontend is built on the Next.js 15 App Router, delivering a responsive, polished UI with Tailwind CSS, shadcn/ui, and dynamic data fetching with TanStack Query. The backend is powered by MongoDB mapped via Prisma ORM, utilizing NextAuth.js for secure, credential-based authentication.",
-    tech: [
-        "Next.js",
-        "React",
-        "Tailwind CSS",
-        "MongoDB",
-        "Prisma",
-        "shadcn/ui"
-    ],
-    granularTech: [
-        "Next.js 15 (App Router)",
-        "React 18",
-        "Tailwind CSS",
-        "shadcn/ui",
-        "Framer Motion",
-        "MongoDB",
-        "Prisma ORM",
-        "NextAuth.js",
-        "UploadThing",
-        "Nodemailer",
-        "TanStack Query",
-        "React Hook Form",
-        "Zod",
-        "Recharts",
-        "jsPDF",
-        "OpenAI SDK",
-        "Google Generative AI SDK"
-    ],
-    image: "/proj4.png",
-    link: "https://tnp-pi.vercel.app/",
-   
-}
+        id: 4,
+        title: "Training & Placement Portal",
+        description: "A comprehensive Training & Placement management system for universities featuring multi-college management, role-based access control, and automated placement drives.",
+        fullDescription: "Training & Placement Portal is a robust, full-stack application designed to streamline the management of university placement drives, students, and departmental activities. It features a highly granular role-based access control (RBAC) system accommodating University Admins, College Admins, Coordinators, Recruiters, and Students. The platform integrates AI-powered functionalities via OpenAI and Google Generative AI SDKs, handles secure file uploads with UploadThing, and automates email notifications workflows via Nodemailer. The frontend is built on the Next.js 15 App Router, delivering a responsive, polished UI with Tailwind CSS, shadcn/ui, and dynamic data fetching with TanStack Query. The backend is powered by MongoDB mapped via Prisma ORM, utilizing NextAuth.js for secure, credential-based authentication.",
+        tech: [
+            "Next.js",
+            "React",
+            "Tailwind CSS",
+            "MongoDB",
+            "Prisma",
+            "shadcn/ui"
+        ],
+        granularTech: [
+            "Next.js 15 (App Router)",
+            "React 18",
+            "Tailwind CSS",
+            "shadcn/ui",
+            "Framer Motion",
+            "MongoDB",
+            "Prisma ORM",
+            "NextAuth.js",
+            "UploadThing",
+            "Nodemailer",
+            "TanStack Query",
+            "React Hook Form",
+            "Zod",
+            "Recharts",
+            "jsPDF",
+            "OpenAI SDK",
+            "Google Generative AI SDK"
+        ],
+        image: "/proj4.png",
+        link: "https://tnp-pi.vercel.app/",
+
+    }
 
 
 ];
 
 export const SKILLS = [
-  { category: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'] },
-  { category: 'Backend', items: ['Node.js', 'Express', 'PostgreSQL', 'MongoDB', 'Python', 'Prisma'] },
-  { category: 'Design', items: ['Figma', 'UI/UX Design', 'Prototyping', 'Design Systems', 'Wireframing', 'Stitch'] },
-  { category: 'Tools', items: ['Git','Github','Vercel'] },
+    { category: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'] },
+    { category: 'Backend', items: ['Node.js', 'Express', 'PostgreSQL', 'MongoDB', 'Python', 'Prisma'] },
+    { category: 'Design', items: ['Figma', 'UI/UX Design', 'Prototyping', 'Design Systems', 'Wireframing', 'Stitch'] },
+    { category: 'Tools', items: ['Git', 'Github', 'Vercel'] },
 ];
 
