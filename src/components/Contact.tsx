@@ -15,7 +15,7 @@ export default function Contact() {
             className="space-y-12"
           >
             <div>
-              <h2 className="text-6xl md:text-8xl font-display font-bold uppercase tracking-tighter mb-8">
+              <h2 className="text-4xl md:text-6xl lg:text-8xl font-display font-bold uppercase tracking-tighter mb-8">
                 Let's <br />
                 <span className="text-stroke">Talk</span>
               </h2>
@@ -38,7 +38,7 @@ export default function Contact() {
                   </p>
                   <a
                     href="mailto:atharvshelke964@gmail.com"
-                    className="text-2xl font-display font-medium hover:text-accent transition-colors"
+                    className="text-lg md:text-2xl font-display font-medium hover:text-accent transition-colors break-all"
                   >
                     atharvshelke964@gmail.com
                   </a>
@@ -55,7 +55,7 @@ export default function Contact() {
                   </p>
                   <a
                     href="tel:+1234567890"
-                    className="text-2xl font-display font-medium hover:text-accent transition-colors"
+                    className="text-lg md:text-2xl font-display font-medium hover:text-accent transition-colors"
                   >
                     +91 7517616955
                   </a>
@@ -70,7 +70,7 @@ export default function Contact() {
                   <p className="text-sm uppercase tracking-widest text-text-muted mb-1">
                     Location
                   </p>
-                  <p className="text-2xl font-display font-medium">
+                  <p className="text-lg md:text-2xl font-display font-medium break-words">
                     Chhatrapati Sambhajinagar, Maharashtra, India
                   </p>
                 </div>

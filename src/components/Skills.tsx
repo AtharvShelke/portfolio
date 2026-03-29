@@ -39,7 +39,7 @@ export default function Skills() {
     <section id="skills" className="py-32 bg-surface relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <div className="mb-24 text-center">
-          <h2 className="text-6xl md:text-8xl font-display font-bold uppercase tracking-tighter">
+          <h2 className="text-4xl md:text-6xl lg:text-8xl font-display font-bold uppercase tracking-tighter">
             Technical <span className="text-stroke">Arsenal</span>
           </h2>
           <div className="w-24 h-1 bg-accent mx-auto mt-8" />

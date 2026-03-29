@@ -24,7 +24,7 @@ export default function About() {
             className="lg:col-span-7"
             style={{ y: y1 }}
           >
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-tight mb-8">
+            <h2 className="text-3xl md:text-5xl lg:text-7xl font-display font-bold leading-tight mb-8">
               I blend <span className="text-accent italic">design</span> and{' '}
               <span className="text-stroke">engineering</span> to create
               unforgettable digital experiences.

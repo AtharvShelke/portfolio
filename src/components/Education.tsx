@@ -8,13 +8,13 @@ export default function Education() {
     <section id="education" className="py-32 bg-bg relative">
       <div className="container mx-auto px-6">
         <div className="mb-24">
-          <h2 className="text-6xl md:text-8xl font-display font-bold uppercase tracking-tighter">
+          <h2 className="text-4xl md:text-6xl lg:text-8xl font-display font-bold uppercase tracking-tighter">
             Academic <span className="text-stroke">Journey</span>
           </h2>
           <div className="w-24 h-1 bg-accent mt-8" />
         </div>
 
-        <div className="max-w-4xl mx-auto relative">
+        <div className="max-w-4xl mx-auto relative overflow-hidden">
           {/* Vertical Line */}
           <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-[1px] bg-border -translate-x-1/2" />
 

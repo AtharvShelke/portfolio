@@ -53,7 +53,7 @@ const ProjectCard = ({ project, index, onClick }: { project: typeof PROJECTS[0],
             </span>
           ))}
         </div>
-        <h3 className="text-4xl md:text-5xl font-display font-bold group-hover:text-accent transition-colors duration-300">
+        <h3 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold group-hover:text-accent transition-colors duration-300">
           {project.title}
         </h3>
         <p className="text-text-muted text-lg font-light leading-relaxed">
@@ -88,7 +88,7 @@ export default function Projects() {
     <section id="work" className="py-32 bg-bg relative">
       <div className="container mx-auto px-6">
         <div className="mb-24">
-          <h2 className="text-6xl md:text-8xl font-display font-bold uppercase tracking-tighter">
+          <h2 className="text-4xl md:text-6xl lg:text-8xl font-display font-bold uppercase tracking-tighter">
             Selected <span className="text-stroke">Work</span>
           </h2>
           <div className="w-24 h-1 bg-accent mt-8" />

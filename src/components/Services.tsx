@@ -10,7 +10,7 @@ export default function Services() {
       <div className="container mx-auto px-6">
         <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div>
-            <h2 className="text-6xl md:text-8xl font-display font-bold uppercase tracking-tighter">
+            <h2 className="text-4xl md:text-6xl lg:text-8xl font-display font-bold uppercase tracking-tighter">
               What I <span className="text-stroke">Do</span>
             </h2>
             <div className="w-24 h-1 bg-accent mt-8" />
@@ -35,7 +35,7 @@ export default function Services() {
                 <span className="text-4xl font-mono text-text-muted group-hover:text-accent transition-colors duration-300">
                   {service.id}
                 </span>
-                <h3 className="text-3xl md:text-5xl font-display font-bold group-hover:translate-x-4 transition-transform duration-500">
+                <h3 className="text-2xl md:text-3xl lg:text-5xl font-display font-bold group-hover:translate-x-4 transition-transform duration-500">
                   {service.title}
                 </h3>
               </div>

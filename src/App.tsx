@@ -10,41 +10,42 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 export default function App() {
- useEffect(() => {
-  const anchors = document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]');
+  useEffect(() => {
+    const anchors = document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]');
 
-  anchors.forEach((anchor) => {
-    anchor.addEventListener('click', (e) => {
-      e.preventDefault();
+    anchors.forEach((anchor) => {
+      anchor.addEventListener('click', (e) => {
+        e.preventDefault();
 
-      const targetId = anchor.getAttribute('href');
+        const targetId = anchor.getAttribute('href');
 
-      if (targetId) {
-        const targetElement = document.querySelector(targetId);
+        if (targetId) {
+          const targetElement = document.querySelector(targetId);
 
-        if (targetElement) {
-          targetElement.scrollIntoView({
-            behavior: 'smooth',
-          });
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: 'smooth',
+            });
+          }
         }
-      }
+      });
     });
-  });
-}, []);
+  }, []);
 
 
   return (
     <div className="min-h-screen bg-bg text-text font-sans selection:bg-accent selection:text-bg">
       <div className="noise-bg" />
       <CustomCursor />
-      
+
       <main>
         <Hero />
         <About />
         <Projects />
         <Skills />
-        <Education />
         <Services />
+        <Education />
+
         <Contact />
       </main>
 

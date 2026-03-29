@@ -43,17 +43,29 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-sans);
+  overflow-x: hidden;
 }
 
 /* Custom Cursor Styles */
 * {
   cursor: none !important;
+}
+
+/* Restore default cursor on touch devices (no custom cursor needed) */
+@media (pointer: coarse) {
+  * {
+    cursor: auto !important;
+  }
+  .custom-cursor {
+    display: none !important;
+  }
 }
 
 .custom-cursor {

@@ -25,7 +25,7 @@ export default function Hero() {
   };
 
   return (
-   <section className="relative min-h-[100svh] flex flex-col overflow-visible pt-24">
+   <section className="relative min-h-[100svh] flex flex-col overflow-hidden pt-24">
 
   {/* Background — z-0, pointer-events-none */}
   <div className="absolute inset-0 z-0 pointer-events-none">
@@ -55,7 +55,7 @@ export default function Hero() {
 
       <motion.h1
         variants={itemVariants}
-        className="text-[clamp(52px,9vw,120px)] font-display font-bold tracking-[-0.03em] leading-[0.88] mb-7"
+        className="text-[clamp(38px,9vw,120px)] font-display font-bold tracking-[-0.03em] leading-[0.88] mb-7"
       >
         CRAFTING <br />
         <span className="text-stroke">DIGITAL</span> <br />

@@ -42,7 +42,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2 space-y-8">
             <h2 className="text-4xl font-display font-bold tracking-tighter">
-              Premium <span className="text-accent">Portfolio</span>
+              Atharv <span className="text-accent">Shelke</span>
             </h2>
             <p className="text-text-muted max-w-sm text-lg font-light leading-relaxed">
               Crafting digital experiences that blend design and engineering for
@@ -133,17 +133,17 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Premium Portfolio. All rights
             reserved.
           </p>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-text-muted text-sm font-light flex items-center gap-2"
           >
-            Designed & Built with 
-            <motion.span 
-              whileInView={{ scale: [1, 1.3, 1] }} 
-              transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }} 
+            Designed & Built with
+            <motion.span
+              whileInView={{ scale: [1, 1.3, 1] }}
+              transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
               className="text-accent inline-block"
             >
               ♥
