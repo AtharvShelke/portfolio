@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import CustomCursor from './components/CustomCursor';
+import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
@@ -37,6 +38,7 @@ export default function App() {
     <div className="min-h-screen bg-bg text-text font-sans selection:bg-accent selection:text-bg">
       <div className="noise-bg" />
       <CustomCursor />
+      <Navbar />
 
       <main>
         <Hero />

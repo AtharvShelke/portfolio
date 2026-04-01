@@ -11,20 +11,20 @@ const ProjectCard = ({ project, index, onClick }: { project: typeof PROJECTS[0],
     target: ref,
     offset: ["start end", "end start"]
   });
-  
+
   const y = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
 
   return (
     <motion.div
+      id='projects'
       ref={ref}
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-100px' }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       whileHover={{ scale: 1.03, boxShadow: '0 30px 60px -15px rgba(0,0,0,0.8)' }}
-      className={`flex flex-col ${
-        index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-      } gap-12 items-center group cursor-pointer p-4 md:p-8 rounded-3xl transition-colors hover:bg-surface/50`}
+      className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
+        } gap-12 items-center group cursor-pointer p-4 md:p-8 rounded-3xl transition-colors hover:bg-surface/50`}
       onClick={() => onClick(project)}
     >
       {/* Image Container */}
@@ -85,7 +85,7 @@ export default function Projects() {
   }, [selectedProject]);
 
   return (
-    <section id="work" className="py-32 bg-bg relative">
+    <section id="work" className="py-18 md:py-24 bg-bg relative">
       <div className="container mx-auto px-6">
         <div className="mb-24">
           <h2 className="text-4xl md:text-6xl lg:text-8xl font-display font-bold uppercase tracking-tighter">
@@ -114,7 +114,7 @@ export default function Projects() {
               className="fixed inset-0 z-[90] bg-bg/90 backdrop-blur-xl"
               onClick={() => setSelectedProject(null)}
             />
-            
+
             <motion.div
               key="modal"
               initial={{ opacity: 0, y: '100vh' }}
@@ -189,13 +189,13 @@ export default function Projects() {
                         </a>
                         {selectedProject.github && (
                           <a
-                          href={selectedProject.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center justify-center gap-2 w-full py-4 border border-border text-text font-medium rounded-full hover:bg-surface-hover transition-colors"
-                        >
-                          View Source Code <Github className="w-4 h-4" />
-                        </a>)}
+                            href={selectedProject.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-center gap-2 w-full py-4 border border-border text-text font-medium rounded-full hover:bg-surface-hover transition-colors"
+                          >
+                            View Source Code <Github className="w-4 h-4" />
+                          </a>)}
                       </div>
                     </div>
                   </div>

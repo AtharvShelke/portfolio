@@ -5,7 +5,7 @@ import { SKILLS } from '../constants';
 
 
 export default function Skills() {
-  const containerVariants:Variants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -16,16 +16,16 @@ export default function Skills() {
     },
   };
 
-  const titleVariants:Variants = {
+  const titleVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { type: 'spring', stiffness: 100, damping: 20 } 
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { type: 'spring', stiffness: 100, damping: 20 }
     }
   };
 
-  const itemVariants:Variants = {
+  const itemVariants: Variants = {
     hidden: { y: 20, opacity: 0, scale: 0.9 },
     visible: {
       y: 0,
@@ -36,7 +36,7 @@ export default function Skills() {
   };
 
   return (
-    <section id="skills" className="py-32 bg-surface relative overflow-hidden">
+    <section id="skills" className="py-18 md:py-24 bg-surface relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <div className="mb-24 text-center">
           <h2 className="text-4xl md:text-6xl lg:text-8xl font-display font-bold uppercase tracking-tighter">
@@ -60,8 +60,8 @@ export default function Skills() {
                 </h3>
                 <div className="h-[1px] flex-grow bg-gradient-to-r from-border to-transparent" />
               </motion.div>
-              
-              <motion.div 
+
+              <motion.div
                 variants={containerVariants}
                 className="flex flex-wrap gap-4"
               >
@@ -69,10 +69,10 @@ export default function Skills() {
                   <motion.div
                     key={item}
                     variants={itemVariants}
-                    whileHover={{ 
-                      scale: 1.05, 
+                    whileHover={{
+                      scale: 1.05,
                       y: -5,
-                      backgroundColor: 'var(--color-accent)', 
+                      backgroundColor: 'var(--color-accent)',
                       color: 'var(--color-bg)',
                       borderColor: 'var(--color-accent)',
                       boxShadow: '0 10px 30px -10px rgba(242, 125, 38, 0.5)'
