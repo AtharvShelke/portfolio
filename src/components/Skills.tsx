@@ -71,13 +71,12 @@ export default function Skills() {
                     variants={itemVariants}
                     whileHover={{
                       scale: 1.05,
-                      y: -5,
+                      y: -2,
                       backgroundColor: 'var(--color-accent)',
                       color: 'var(--color-bg)',
                       borderColor: 'var(--color-accent)',
-                      boxShadow: '0 10px 30px -10px rgba(242, 125, 38, 0.5)'
                     }}
-                    className="px-6 py-3 text-base font-mono bg-bg/40 backdrop-blur-sm border border-border rounded-2xl text-text-muted transition-all duration-300 cursor-pointer"
+                    className="px-6 py-3 text-base font-mono bg-bg/40 border border-border rounded-2xl text-text-muted transition-all duration-300 cursor-pointer will-change-transform"
                   >
                     {item}
                   </motion.div>

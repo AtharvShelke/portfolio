@@ -22,27 +22,27 @@ const ProjectCard = ({ project, index, onClick }: { project: typeof PROJECTS[0],
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-100px' }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      whileHover={{ scale: 1.03, boxShadow: '0 30px 60px -15px rgba(0,0,0,0.8)' }}
+      whileHover={{ scale: 1.01 }}
       className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
         } gap-12 items-center group cursor-pointer p-4 md:p-8 rounded-3xl transition-colors hover:bg-surface/50`}
       onClick={() => onClick(project)}
     >
       {/* Image Container */}
-      <div className="w-full lg:w-3/5 overflow-hidden rounded-2xl relative aspect-video">
+      <div className="w-full lg:w-3/5 overflow-hidden rounded-2xl relative aspect-video will-change-transform">
         <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
         <motion.img
           style={{ y, scale: 1 }}
-          whileHover={{ scale: 1.25 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
+          whileHover={{ scale: 1.1 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
           src={project.image}
           alt={project.title}
-          className="w-full h-full object-contain origin-center"
+          className="w-full h-full object-contain origin-center will-change-transform"
           referrerPolicy="no-referrer"
         />
       </div>
 
       {/* Content Container */}
-      <div className="w-full lg:w-2/5 space-y-6">
+      <div className="w-full lg:w-2/5 space-y-6 will-change-transform">
         <div className="flex flex-wrap gap-2 mb-4">
           {project.tech.map((t) => (
             <span
@@ -85,7 +85,7 @@ export default function Projects() {
   }, [selectedProject]);
 
   return (
-    <section id="work" className="py-18 md:py-24 bg-bg relative">
+    <section id="work" className="py-18 md:py-24 bg-bg relative overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="mb-24">
           <h2 className="text-4xl md:text-6xl lg:text-8xl font-display font-bold uppercase tracking-tighter">
@@ -110,10 +110,11 @@ export default function Projects() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.15 }}
-              className="fixed inset-0 z-[90] bg-bg/90 backdrop-blur-xl"
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-[90] bg-bg/80 backdrop-blur-md"
               onClick={() => setSelectedProject(null)}
             />
+
 
             <motion.div
               key="modal"

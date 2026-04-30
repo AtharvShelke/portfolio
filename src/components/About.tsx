@@ -50,7 +50,7 @@ export default function About() {
 
           {/* Left Side: Headline */}
           <motion.div
-            className="lg:col-span-7"
+            className="lg:col-span-7 will-change-transform"
             style={{ y: y1 }}
           >
             {/* Section label — helps hierarchy, answers "what is this section?" */}
@@ -82,7 +82,7 @@ export default function About() {
 
           {/* Right Side: Details */}
           <motion.div
-            className="lg:col-span-5 space-y-7 text-text-muted text-lg font-light leading-relaxed"
+            className="lg:col-span-5 space-y-7 text-text-muted text-lg font-light leading-relaxed will-change-transform"
             style={{ y: y2 }}
           >
             {/* BEFORE: "With 2 years of experience in the digital landscape, I specialize

@@ -16,43 +16,31 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
-    let scrollTimeout: NodeJS.Timeout;
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -70% 0px',
+      threshold: 0,
+    };
 
-    const handleScroll = () => {
-      // Throttle updates slightly to avoid layoutId skipping
-      if (scrollTimeout) clearTimeout(scrollTimeout);
-      
-      scrollTimeout = setTimeout(() => {
-        // Find current section by checking which one is closest to the middle of the screen
-        const scrollPosition = window.scrollY + window.innerHeight / 2;
-        let current = 'home';
-
-        // Loop array in reverse: deepest nested elements first
-        const reversedItems = [...navItems].reverse();
-        for (const item of reversedItems) {
-          const id = item.href.substring(1);
-          const element = document.getElementById(id);
-          if (element) {
-            const top = element.getBoundingClientRect().top + window.scrollY;
-            if (top <= scrollPosition) {
-              current = id;
-              break;
-            }
-          }
+    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
         }
-
-        setActiveSection(current);
-      }, 50); // slight debounce stabilizes the framer motion transitions
+      });
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+    const observer = new IntersectionObserver(handleIntersection, observerOptions);
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (scrollTimeout) clearTimeout(scrollTimeout);
-    };
+    navItems.forEach((item) => {
+      const id = item.href.substring(1);
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
   }, []);
+
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
