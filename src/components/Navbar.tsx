@@ -1,11 +1,12 @@
 import { motion, LayoutGroup } from 'motion/react';
 import { useEffect, useState } from 'react';
-import { Home, User, Briefcase, Code, Sparkles, GraduationCap, Mail } from 'lucide-react';
+import { Home, User, FolderGit2, Briefcase, Code, Sparkles, GraduationCap, Mail } from 'lucide-react';
 
 const navItems = [
   { name: 'Home', href: '#home', icon: Home },
   { name: 'About', href: '#about', icon: User },
-  { name: 'Projects', href: '#work', icon: Briefcase },
+  { name: 'Projects', href: '#work', icon: FolderGit2 },
+  { name: 'Experience', href: '#experience', icon: Briefcase },
   { name: 'Skills', href: '#skills', icon: Code },
   { name: 'Services', href: '#services', icon: Sparkles },
   { name: 'Education', href: '#education', icon: GraduationCap },

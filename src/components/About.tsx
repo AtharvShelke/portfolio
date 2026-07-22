@@ -43,9 +43,9 @@ export default function About() {
     <section
       id="about"
       ref={containerRef}
-      className="pb-18 md:py-24 relative overflow-hidden bg-surface"
+      className="py-16 md:py-24 relative overflow-hidden bg-surface"
     >
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="max-w-6xl mx-auto px-6 md:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
 
           {/* Left Side: Headline */}
@@ -62,11 +62,11 @@ export default function About() {
                         — buzzword salad, means nothing specific
                 AFTER:  Specific claim with a clear differentiator */}
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold leading-tight mb-8">
-              I engineer interfaces that close the gap between{' '}
-              <span className="text-accent italic">design intent</span>{' '}
-              and{' '}
-              {/* Changed from text-stroke to inline underline for readability */}
-              <span className="text-stroke">code reality.</span>
+              Bridging complex{' '}
+              <span className="text-accent italic">backend logic</span>{' '}
+              with{' '}
+              <span className="text-stroke">60fps frontend</span>{' '}
+              user experiences.
             </h2>
 
             <div className="w-16 h-[2px] bg-accent mb-8" />

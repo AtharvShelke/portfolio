@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
-import { SERVICES } from '../constants.js';
+import { SERVICES, ServiceItem } from '../constants';
 
 // ─────────────────────────────────────────────────────────────
 // REFINEMENTS APPLIED:
@@ -29,8 +29,8 @@ import { SERVICES } from '../constants.js';
 
 export default function Services() {
   return (
-    <section id="services" className="py-18 md:py-24 bg-surface relative">
-      <div className="container mx-auto px-6">
+    <section id="services" className="py-16 md:py-24 bg-surface relative">
+      <div className="max-w-6xl mx-auto px-6 md:px-8">
         <div className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div>
             {/* Section label */}

@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { EDUCATION } from '../constants.js';
+import { EDUCATION, EducationEntry } from '../constants';
 
 // ─────────────────────────────────────────────────────────────
 // REFINEMENTS APPLIED:
@@ -23,8 +23,8 @@ import { EDUCATION } from '../constants.js';
 
 export default function Education() {
   return (
-    <section id="education" className="py-18 md:py-24 bg-bg relative">
-      <div className="container mx-auto px-6">
+    <section id="education" className="py-16 md:py-24 bg-bg relative">
+      <div className="max-w-6xl mx-auto px-6 md:px-8">
         <div className="mb-24">
           {/* Section label — consistency with other sections */}
           <p className="text-xs font-mono uppercase tracking-[0.2em] text-accent mb-4">

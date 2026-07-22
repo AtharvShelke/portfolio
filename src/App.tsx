@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
+import Experience from './components/Experience';
 import Skills from './components/Skills';
 import Education from './components/Education';
 import Services from './components/Services';
@@ -36,14 +37,23 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-bg text-text font-sans selection:bg-accent selection:text-bg">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-6 focus:py-3 focus:bg-accent focus:text-bg focus:font-semibold focus:rounded-full focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-accent"
+      >
+        Skip to main content
+      </a>
       <div className="noise-bg" />
       <CustomCursor />
-      <Navbar />
+      <header className="relative z-[100]">
+        <Navbar />
+      </header>
 
-      <main>
+      <main id="main" tabIndex={-1}>
         <Hero />
         <About />
         <Projects />
+        <Experience />
         <Skills />
         <Services />
         <Education />

@@ -8,7 +8,7 @@
   --color-surface: #111111;
   --color-surface-hover: #1a1a1a;
   --color-text: #F5F5F5;
-  --color-text-muted: #888888;
+  --color-text-muted: #A1A1AA; /* Passes WCAG AA contrast (7.40:1 against #050505) */
   --color-accent: #F27D26; /* Warm orange accent */
   --color-accent-hover: #ff9545;
   --color-border: rgba(255, 255, 255, 0.1);
@@ -53,16 +53,15 @@ body {
   overflow-x: hidden;
 }
 
-/* Custom Cursor Styles */
-* {
-  cursor: none !important;
+/* Global Focus-Visible Ring for Keyboard Accessibility (WCAG 2.1 AA) */
+:focus-visible {
+  outline: 2px solid var(--color-accent) !important;
+  outline-offset: 3px !important;
+  border-radius: 4px;
 }
 
-/* Restore default cursor on touch devices (no custom cursor needed) */
-@media (pointer: coarse) {
-  * {
-    cursor: auto !important;
-  }
+/* Custom Cursor Styles — Non-intrusive, scoped, disabled on touch/reduced-motion */
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
   .custom-cursor {
     display: none !important;
   }
@@ -78,7 +77,7 @@ body {
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
-  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, opacity 0.3s ease;
   mix-blend-mode: difference;
   background-color: white;
   will-change: transform;

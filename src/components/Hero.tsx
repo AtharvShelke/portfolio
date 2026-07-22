@@ -1,8 +1,13 @@
+import { useState } from "react";
 import { motion } from "motion/react";
 import { ArrowRight, ArrowDownRight } from "lucide-react";
 import { Variants } from "framer-motion";
+import HeroTerminal from "./HeroTerminal";
+import ResumeDrawer from "./ResumeDrawer";
 
 export default function Hero() {
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -56,26 +61,25 @@ export default function Hero() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 will-change-[opacity]"
+        className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 md:px-8 will-change-[opacity]"
       >
-        <div className="max-w-5xl mx-auto text-center w-full">
+        <div className="max-w-6xl mx-auto text-center w-full">
           <motion.h1
             variants={itemVariants}
-            className="text-[clamp(36px,8.5vw,112px)] font-display font-bold tracking-[-0.03em] leading-[0.88] mb-7 will-change-transform"
+            className="text-[clamp(32px,7.5vw,96px)] font-display font-bold tracking-[-0.03em] leading-[0.92] mb-7 will-change-transform uppercase"
           >
-            INTERFACES
+            BUILDING HIGH-SCALE
             <br />
-            THAT <span className="text-accent">PERFORM</span>
+            <span className="text-accent">FULL-STACK</span>
             <br />
-            <span className="text-stroke">& CONVERT</span>
+            <span className="text-stroke">WEB PRODUCTS</span>
           </motion.h1>
 
           <motion.p
             variants={itemVariants}
-            className="text-base sm:text-lg md:text-xl text-text-muted max-w-[480px] mx-auto mb-11 font-light leading-relaxed will-change-transform"
+            className="text-base sm:text-lg md:text-xl text-text-muted max-w-[580px] mx-auto mb-11 font-light leading-relaxed will-change-transform"
           >
-            I design backend systems that handle concurrency, scale predictably,
-            and stay reliable under load — not just polished UIs.
+            Full-stack engineer crafting production applications in Next.js, Node, and PostgreSQL. Focused on type-safe architecture, sub-100ms API responses, and resilient design systems.
           </motion.p>
 
           <motion.div
@@ -100,19 +104,23 @@ export default function Hero() {
               See the Work
             </a>
 
-            <a
-              href="/Atharv_Shelke_CV.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-medium text-text-muted hover:text-accent transition-colors underline underline-offset-4 decoration-border hover:decoration-accent"
+            <button
+              onClick={() => setIsResumeOpen(true)}
+              className="text-sm font-medium text-text-muted hover:text-accent transition-colors underline underline-offset-4 decoration-border hover:decoration-accent cursor-pointer"
             >
-              Download CV ↗
-            </a>
+              Preview CV ↗
+            </button>
+          </motion.div>
+
+          <ResumeDrawer isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
+
+          <motion.div variants={itemVariants} className="mt-8">
+            <HeroTerminal />
           </motion.div>
 
           <motion.div
             variants={itemVariants}
-            className="mt-12 flex items-center justify-center gap-6 text-text-muted will-change-transform"
+            className="mt-8 flex items-center justify-center gap-6 text-text-muted will-change-transform"
           >
             <div className="h-px w-12 bg-border" />
             <span className="text-xs tracking-widest uppercase font-light">

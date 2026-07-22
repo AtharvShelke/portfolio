@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowUpRight, Github, Linkedin, Twitter } from 'lucide-react';
+import ResumeDrawer from './ResumeDrawer';
 
 // ─────────────────────────────────────────────────────────────
 // REFINEMENTS APPLIED:
@@ -59,9 +60,11 @@ const MagneticLink = ({ children, href }: { children: React.ReactNode, href: str
 };
 
 export default function Footer() {
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
+
   return (
-    <footer className="bg-surface py-20 relative overflow-hidden">
-      <div className="container mx-auto px-6 relative z-10">
+    <footer className="bg-surface py-16 md:py-24 relative overflow-hidden">
+      <div className="max-w-6xl mx-auto px-6 md:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
 
           {/* Brand */}
@@ -108,9 +111,9 @@ export default function Footer() {
               {[
                 { label: 'About', href: '#about' },
                 { label: 'Work', href: '#work' },
+                { label: 'Experience', href: '#experience' },
                 { label: 'Skills', href: '#skills' },
                 { label: 'Services', href: '#services' },
-                /* BEFORE: Education was missing from footer nav */
                 { label: 'Education', href: '#education' },
                 { label: 'Contact', href: '#contact' },
               ].map(({ label, href }) => (
@@ -134,15 +137,13 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3">
               <li>
-                <a
-                  href="/Atharv_Shelke_CV.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-base font-light hover:text-accent transition-colors flex items-center gap-2 group w-fit"
+                <button
+                  onClick={() => setIsResumeOpen(true)}
+                  className="text-base font-light hover:text-accent transition-colors flex items-center gap-2 group w-fit cursor-pointer"
                 >
-                  Download CV
+                  Preview / Download CV
                   <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </a>
+                </button>
               </li>
               <li>
                 <a href="#" className="text-base font-light hover:text-accent transition-colors w-fit block">
@@ -187,6 +188,8 @@ export default function Footer() {
           </motion.p>
         </div>
       </div>
+
+      <ResumeDrawer isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
     </footer>
   );
 }
