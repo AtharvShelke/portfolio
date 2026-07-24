@@ -1,72 +1,68 @@
-import { motion } from 'motion/react';
-import { EXPERIENCE, ExperienceEntry } from '../constants';
+import { motion } from 'framer-motion';
+import { EXPERIENCE } from '../constants';
+import { Card } from './ui/Card';
+import { Badge } from './ui/Badge';
+import { Briefcase } from 'lucide-react';
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-16 md:py-24 bg-surface relative">
-      <div className="max-w-6xl mx-auto px-6 md:px-8">
-        <div className="mb-24">
-          <p className="text-xs font-mono uppercase tracking-[0.2em] text-accent mb-4">
-            Experience
-          </p>
-
-          <h2 className="text-4xl md:text-6xl lg:text-8xl font-display font-bold uppercase tracking-tighter">
-            Engineering <span className="text-stroke">Impact</span>
+    <section id="experience" className="py-24 bg-[var(--bg-elevation-1)] border-t border-[var(--border-default)] relative overflow-hidden">
+      <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mb-16">
+          <Badge variant="primary" className="mb-4 uppercase tracking-wider font-mono">
+            <Briefcase className="w-3.5 h-3.5" /> Career History
+          </Badge>
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold font-[#font-heading] uppercase tracking-tight">
+            ENGINEERING <span className="text-[#F27D26]">EXPERIENCE</span>
           </h2>
-
-          <div className="w-16 h-[2px] bg-accent mt-8 mb-6" />
-
-          <p className="text-text-muted font-light max-w-md">
-            Production roles, founder experience, and client product delivery.
-          </p>
+          <div className="w-20 h-[3px] bg-[#F27D26] rounded-full mt-6 shadow-[0_0_12px_rgba(242,125,38,0.5)]" />
         </div>
 
-        <div className="max-w-4xl mx-auto relative overflow-hidden">
-          {/* Vertical Line */}
-          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-[1px] bg-border -translate-x-1/2" />
+        <div className="max-w-4xl mx-auto relative">
+          {/* Vertical Timeline Bar */}
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] bg-[var(--border-default)] -translate-x-1/2" />
 
           {EXPERIENCE.map((item, index) => (
             <motion.div
               key={item.id}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-100px' }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
-              className={`relative flex flex-col md:flex-row items-center justify-between mb-16 ${
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className={`relative flex flex-col md:flex-row items-center justify-between mb-12 ${
                 index % 2 === 0 ? 'md:flex-row-reverse' : ''
               }`}
             >
-              {/* Timeline Dot */}
-              <div className="absolute left-0 md:left-1/2 w-4 h-4 bg-accent rounded-full -translate-x-1/2 z-10 shadow-[0_0_15px_rgba(242,125,38,0.5)]" />
+              {/* Timeline Node */}
+              <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-[#F27D26] rounded-full -translate-x-1/2 z-10 shadow-[0_0_16px_rgba(242,125,38,0.8)] border-2 border-[var(--bg-base)]" />
 
-              {/* Content Card */}
-              <div className="w-full md:w-5/12 pl-8 md:pl-0">
-                <div className="glass-panel p-7 rounded-2xl hover:border-accent transition-colors duration-300">
-                  <span className="text-accent font-mono text-xs tracking-[0.18em] uppercase mb-3 block">
+              {/* Card Container */}
+              <div className="w-full md:w-5/12 pl-12 md:pl-0">
+                <Card variant="interactive" className="p-6">
+                  <span className="text-[#F27D26] font-mono text-xs font-bold uppercase tracking-wider mb-2 block">
                     {item.period}
                   </span>
-                  <h3 className="text-xl font-display font-bold mb-1 leading-tight">
+                  <h3 className="text-xl font-bold tracking-tight text-[var(--text-primary)] mb-1">
                     {item.role}
                   </h3>
-                  <h4 className="text-text font-medium text-sm mb-4 tracking-wide text-accent/90">
+                  <h4 className="text-xs font-mono font-semibold text-[var(--text-tertiary)] uppercase tracking-wider mb-3">
                     {item.company}
                   </h4>
-                  <p className="text-text-muted text-sm font-light leading-relaxed mb-4">
+                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed mb-4">
                     {item.description}
                   </p>
-                  
-                  <ul className="space-y-2 border-t border-border/40 pt-4">
+
+                  <ul className="space-y-2 border-t border-[var(--border-default)] pt-3">
                     {item.highlights.map((bullet, i) => (
-                      <li key={i} className="flex items-start gap-2.5 text-xs text-text-muted font-light leading-relaxed">
-                        <span className="w-1.5 h-1.5 rounded-full bg-accent mt-1 shrink-0" />
+                      <li key={i} className="flex items-start gap-2 text-xs text-[var(--text-secondary)]">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#F27D26] mt-1 shrink-0" />
                         <span>{bullet}</span>
                       </li>
                     ))}
                   </ul>
-                </div>
+                </Card>
               </div>
 
-              {/* Empty space for zigzag alignment */}
               <div className="hidden md:block w-5/12" />
             </motion.div>
           ))}

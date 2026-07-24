@@ -1,17 +1,62 @@
 @import "tailwindcss";
 
+@layer base {
+  :root, html.dark {
+    /* Canvas & Elevation Backgrounds (Dark Mode Base) */
+    --bg-base: #050505;
+    --bg-elevation-1: #0B0E14;
+    --bg-elevation-2: #121722;
+    
+    /* Card & Hover Surfaces */
+    --surface-card: #141A24;
+    --surface-hover: #1E2636;
+    
+    /* Glassmorphism Layers */
+    --glass-surface: rgba(18, 23, 34, 0.72);
+    --glass-border: rgba(255, 255, 255, 0.09);
+    --glass-modal: rgba(11, 14, 20, 0.88);
+    
+    /* Brand Accent Hierarchy (Preserved Warm Ember / Orange Scheme) */
+    --brand-primary-glow: #F27D26;
+    --brand-primary-core: #E06C1B;
+    --brand-secondary-core: #FF9545;
+    --brand-accent-violet: #A855F7;
+    
+    /* Borders & Dividers */
+    --border-default: rgba(255, 255, 255, 0.09);
+    --border-hover: rgba(242, 125, 38, 0.40);
+    --border-focus: #FF9545;
+    
+    /* Typography Roles */
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+    --text-tertiary: #64748B;
+    --text-disabled: #475569;
+    
+    /* Status Colors */
+    --status-success: #10B981;
+    --status-warning: #F59E0B;
+    --status-error: #EF4444;
+    --status-info: #0EA5E9;
+
+    /* Sub-pixel Grid Pattern Line Color */
+    --grid-line-color: rgba(255, 255, 255, 0.04);
+  }
+}
+
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Syne", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Syne", "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
   
-  --color-bg: #050505;
-  --color-surface: #111111;
-  --color-surface-hover: #1a1a1a;
-  --color-text: #F5F5F5;
-  --color-text-muted: #A1A1AA; /* Passes WCAG AA contrast (7.40:1 against #050505) */
-  --color-accent: #F27D26; /* Warm orange accent */
-  --color-accent-hover: #ff9545;
-  --color-border: rgba(255, 255, 255, 0.1);
+  --color-bg: var(--bg-base);
+  --color-surface: var(--surface-card);
+  --color-surface-hover: var(--surface-hover);
+  --color-text: var(--text-primary);
+  --color-text-muted: var(--text-secondary);
+  --color-accent: var(--brand-primary-glow);
+  --color-accent-hover: var(--brand-secondary-core);
+  --color-border: var(--border-default);
 }
 
 @layer utilities {
@@ -23,15 +68,46 @@
     color: transparent;
   }
   .text-stroke-hover {
-    -webkit-text-stroke: 1px var(--color-accent);
-    color: var(--color-accent);
+    -webkit-text-stroke: 1px var(--brand-primary-glow);
+    color: var(--brand-primary-glow);
   }
+
+  /* Glassmorphism Classes */
   .glass-panel {
-    background: rgba(17, 17, 17, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--color-border);
+    background: var(--glass-surface);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
   }
+
+  .glass-modal {
+    background: var(--glass-modal);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--glass-border);
+  }
+
+  /* Elevation Orange Glows */
+  .glow-sm {
+    box-shadow: 0 0 16px -2px rgba(242, 125, 38, 0.20);
+  }
+
+  .glow-md {
+    box-shadow: 0 0 28px -4px rgba(242, 125, 38, 0.30);
+  }
+
+  .glow-lg {
+    box-shadow: 0 0 44px -6px rgba(242, 125, 38, 0.40);
+  }
+
+  /* Vector Sub-Pixel Grid Pattern Overlay */
+  .bg-grid-pattern {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
+  }
+
   .hide-scrollbar::-webkit-scrollbar {
     display: none;
   }
@@ -44,23 +120,24 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  background-color: var(--bg-base);
 }
 
 body {
-  background-color: var(--color-bg);
-  color: var(--color-text);
+  background-color: var(--bg-base);
+  color: var(--text-primary);
   font-family: var(--font-sans);
   overflow-x: hidden;
 }
 
-/* Global Focus-Visible Ring for Keyboard Accessibility (WCAG 2.1 AA) */
+/* Global Focus Ring (WCAG 2.1 AA) */
 :focus-visible {
-  outline: 2px solid var(--color-accent) !important;
+  outline: 2px solid var(--brand-primary-glow) !important;
   outline-offset: 3px !important;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
-/* Custom Cursor Styles — Non-intrusive, scoped, disabled on touch/reduced-motion */
+/* Custom Cursor Styles — Scoped, touch fallback */
 @media (pointer: coarse), (prefers-reduced-motion: reduce) {
   .custom-cursor {
     display: none !important;
@@ -86,12 +163,13 @@ body {
 .custom-cursor.hovering {
   width: 60px;
   height: 60px;
-  background-color: var(--color-accent);
+  background-color: var(--brand-primary-glow);
   mix-blend-mode: normal;
-  opacity: 0.8;
+  opacity: 0.85;
+  box-shadow: 0 0 24px var(--brand-primary-glow);
 }
 
-/* Subtle noise overlay — optimized */
+/* Subtle noise overlay */
 .noise-bg {
   position: fixed;
   top: 0;
@@ -100,12 +178,10 @@ body {
   height: 100vh;
   pointer-events: none;
   z-index: 9998;
-  opacity: 0.02;
+  opacity: 0.025;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  will-change: opacity;
 }
 
-/* Performance: Content visibility hints for large sections */
 section {
   content-visibility: auto;
   contain-intrinsic-size: 1px 1000px;
@@ -114,4 +190,3 @@ section {
 #home {
   content-visibility: visible;
 }
-

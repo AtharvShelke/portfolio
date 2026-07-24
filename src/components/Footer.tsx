@@ -1,33 +1,9 @@
 import { useRef, useState } from 'react';
-import { motion } from 'motion/react';
-import { ArrowUpRight, Github, Linkedin, Twitter } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowUpRight, Github, Linkedin, Twitter, Terminal } from 'lucide-react';
 import ResumeDrawer from './ResumeDrawer';
 
-// ─────────────────────────────────────────────────────────────
-// REFINEMENTS APPLIED:
-//
-// COPY:
-//  BEFORE: "Crafting digital experiences that blend design and engineering for
-//           forward-thinking brands."
-//          — the word "crafting" is overused, "forward-thinking brands" is filler
-//  AFTER:  Specific, positioning-clear, one-line manifesto
-//
-//  BEFORE: Copyright "Premium Portfolio. All rights reserved."
-//          — "Premium Portfolio" is a template placeholder, not a brand name
-//  AFTER:  "Atharv Shelke" — own your name, builds personal brand equity
-//
-//  BEFORE: "Designed & Built with ♥" — generic developer footer cliché  
-//  AFTER:  "Designed, built, and shipped with ♥ in Aurangabad" 
-//          — adds location, humanises, "shipped" signals real-world delivery
-//
-// STRUCTURE:
-//  - Navigation labels tightened — added "Education" missing from footer nav
-//  - Added GitHub link anchor instead of "#" placeholder on Twitter
-//  - Added subtle "Built on Next.js · Deployed on Vercel" tech signal
-//    (optional, shows stack pride, can be removed if preferred)
-// ─────────────────────────────────────────────────────────────
-
-const MagneticLink = ({ children, href }: { children: React.ReactNode, href: string }) => {
+const MagneticLink = ({ children, href }: { children: React.ReactNode; href: string }) => {
   const ref = useRef<HTMLAnchorElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -37,7 +13,7 @@ const MagneticLink = ({ children, href }: { children: React.ReactNode, href: str
     const { height, width, left, top } = ref.current.getBoundingClientRect();
     const middleX = clientX - (left + width / 2);
     const middleY = clientY - (top + height / 2);
-    setPosition({ x: middleX * 0.3, y: middleY * 0.3 });
+    setPosition({ x: middleX * 0.25, y: middleY * 0.25 });
   };
 
   const reset = () => setPosition({ x: 0, y: 0 });
@@ -51,8 +27,8 @@ const MagneticLink = ({ children, href }: { children: React.ReactNode, href: str
       onMouseMove={handleMouse}
       onMouseLeave={reset}
       animate={{ x: position.x, y: position.y }}
-      transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
-      className="w-11 h-11 rounded-full border border-border flex items-center justify-center hover:bg-accent hover:border-accent hover:text-bg transition-colors duration-300 relative z-10"
+      transition={{ type: 'spring', stiffness: 200, damping: 20, mass: 0.1 }}
+      className="w-10 h-10 rounded-full border border-[var(--border-default)] flex items-center justify-center text-[var(--text-secondary)] hover:bg-[#F27D26] hover:border-[#F27D26] hover:text-[#050505] transition-colors duration-300 relative z-10"
     >
       {children}
     </motion.a>
@@ -63,28 +39,25 @@ export default function Footer() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   return (
-    <footer className="bg-surface py-16 md:py-24 relative overflow-hidden">
-      <div className="max-w-6xl mx-auto px-6 md:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
-
-          {/* Brand */}
-          <div className="lg:col-span-2 space-y-7">
-            <div>
-              <h2 className="text-3xl font-display font-bold tracking-tighter mb-3">
-                Atharv <span className="text-accent">Shelke</span>
+    <footer className="bg-[var(--bg-elevation-2)] py-16 border-t border-[var(--border-default)] relative overflow-hidden">
+      <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          {/* Brand Column */}
+          <div className="lg:col-span-2 space-y-5">
+            <a href="#home" className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-lg bg-[#F27D26]/15 border border-[#F27D26]/40 flex items-center justify-center text-[#F27D26]">
+                <Terminal className="w-4 h-4" />
+              </div>
+              <h2 className="text-2xl font-bold font-[#font-heading] tracking-tight text-[var(--text-primary)]">
+                ATHARV <span className="text-[#F27D26]">SHELKE</span>
               </h2>
-              {/* BEFORE: "Crafting digital experiences that blend design and 
-                           engineering for forward-thinking brands." */}
-              {/* AFTER: Clear positioning statement, no filler */}
-              <p className="text-text-muted max-w-xs text-base font-light leading-relaxed">
-                Full-stack engineer who builds production-ready web applications —
-                clean code, precise design, no shortcuts.
-              </p>
-            </div>
+            </a>
 
-            <div className="flex items-center gap-5">
-              {/* BEFORE: href="#" on Twitter — broken link */}
-              {/* AFTER: Real URLs where available, placeholder clearly marked */}
+            <p className="text-sm text-[var(--text-secondary)] max-w-sm leading-relaxed">
+              Full-stack engineer crafting production-ready applications with Next.js, Node, and PostgreSQL. Type-safe architecture and 60fps user experiences.
+            </p>
+
+            <div className="flex items-center gap-3">
               <MagneticLink href="https://twitter.com/atharvshelke_">
                 <Twitter className="w-4 h-4" />
               </MagneticLink>
@@ -95,32 +68,27 @@ export default function Footer() {
                 <Github className="w-4 h-4" />
               </MagneticLink>
             </div>
-
-            {/* Stack pride signal — optional, can remove */}
-            <p className="text-[10px] font-mono tracking-widest text-text-muted/40 uppercase">
-              Built with Next.js · Deployed on Vercel
-            </p>
           </div>
 
-          {/* Navigation */}
-          <div className="space-y-7">
-            <h3 className="text-[10px] uppercase tracking-[0.2em] text-text-muted font-medium">
-              Navigate
+          {/* Navigation Links */}
+          <div className="space-y-4">
+            <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[var(--text-tertiary)]">
+              Navigation
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2.5">
               {[
+                { label: 'Home', href: '#home' },
                 { label: 'About', href: '#about' },
-                { label: 'Work', href: '#work' },
+                { label: 'Projects', href: '#work' },
                 { label: 'Experience', href: '#experience' },
                 { label: 'Skills', href: '#skills' },
                 { label: 'Services', href: '#services' },
-                { label: 'Education', href: '#education' },
                 { label: 'Contact', href: '#contact' },
               ].map(({ label, href }) => (
                 <li key={label}>
                   <a
                     href={href}
-                    className="text-base font-light hover:text-accent transition-colors flex items-center gap-2 group w-fit"
+                    className="text-xs text-[var(--text-secondary)] hover:text-[#F27D26] transition-colors inline-flex items-center gap-1 group"
                   >
                     {label}
                     <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -130,62 +98,38 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Legal + Quick CTA */}
-          <div className="space-y-7">
-            <h3 className="text-[10px] uppercase tracking-[0.2em] text-text-muted font-medium">
+          {/* Quick Actions */}
+          <div className="space-y-4">
+            <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[var(--text-tertiary)]">
               Quick Links
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2.5">
               <li>
                 <button
                   onClick={() => setIsResumeOpen(true)}
-                  className="text-base font-light hover:text-accent transition-colors flex items-center gap-2 group w-fit cursor-pointer"
+                  className="text-xs text-[var(--text-secondary)] hover:text-[#F27D26] transition-colors inline-flex items-center gap-1 cursor-pointer"
                 >
                   Preview / Download CV
-                  <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <ArrowUpRight className="w-3 h-3" />
                 </button>
               </li>
               <li>
-                <a href="#" className="text-base font-light hover:text-accent transition-colors w-fit block">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-base font-light hover:text-accent transition-colors w-fit block">
-                  Terms of Service
-                </a>
+                <span className="text-xs font-mono text-[var(--text-tertiary)]">
+                  Built with Next.js &amp; Tailwind CSS
+                </span>
               </li>
             </ul>
           </div>
-
         </div>
 
-        {/* Bottom bar */}
-        <div className="pt-10 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
-          {/* BEFORE: "© 2025 Premium Portfolio. All rights reserved." — template placeholder */}
-          {/* AFTER: Real name — builds personal brand equity */}
-          <p className="text-text-muted text-xs font-light">
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-[var(--border-default)] flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-[var(--text-tertiary)] font-mono">
             &copy; {new Date().getFullYear()} Atharv Shelke. All rights reserved.
           </p>
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-text-muted text-xs font-light flex items-center gap-2"
-          >
-            {/* BEFORE: "Designed & Built with ♥" — cliché developer footer */}
-            {/* AFTER: Adds location and "shipped" — shows real-world delivery mindset */}
-            Designed, built & shipped with
-            <motion.span
-              whileInView={{ scale: [1, 1.3, 1] }}
-              transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-              className="text-accent inline-block"
-            >
-              ♥
-            </motion.span>
-            in Chh. Sambhajinagar
-          </motion.p>
+          <p className="text-xs text-[var(--text-tertiary)] font-mono flex items-center gap-1.5">
+            Designed &amp; engineered in Aurangabad, IN
+          </p>
         </div>
       </div>
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { motion, useMotionValue, useSpring } from 'motion/react';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 export default function CustomCursor() {
   const [isVisible, setIsVisible] = useState(false);
@@ -9,12 +9,14 @@ export default function CustomCursor() {
   const mouseX = useMotionValue(-100);
   const mouseY = useMotionValue(-100);
 
-  const springConfig = { stiffness: 500, damping: 35, mass: 0.5 };
+  const springConfig = { stiffness: 450, damping: 30, mass: 0.4 };
   const cursorX = useSpring(mouseX, springConfig);
   const cursorY = useSpring(mouseY, springConfig);
 
+  const spotX = useSpring(mouseX, { stiffness: 120, damping: 25 });
+  const spotY = useSpring(mouseY, { stiffness: 120, damping: 25 });
+
   useEffect(() => {
-    // Check if touch device or prefers-reduced-motion
     const pointerCoarse = window.matchMedia('(pointer: coarse)').matches;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -63,14 +65,28 @@ export default function CustomCursor() {
   if (isDisabled || !isVisible) return null;
 
   return (
-    <motion.div
-      aria-hidden="true"
-      className={`custom-cursor ${isHovering ? 'hovering' : ''}`}
-      style={{
-        x: cursorX,
-        y: cursorY,
-      }}
-    />
+    <>
+      {/* Ambient Spotlight Follower */}
+      <motion.div
+        aria-hidden="true"
+        className="fixed top-0 left-0 w-[360px] h-[360px] pointer-events-none z-[40] opacity-35 rounded-full blur-[90px] bg-[radial-gradient(circle_at_center,#F27D26_0%,transparent_70%)]"
+        style={{
+          x: spotX,
+          y: spotY,
+          translateX: '-50%',
+          translateY: '-50%',
+        }}
+      />
+
+      {/* Tactile Cursor Dot */}
+      <motion.div
+        aria-hidden="true"
+        className={`custom-cursor ${isHovering ? 'hovering' : ''}`}
+        style={{
+          x: cursorX,
+          y: cursorY,
+        }}
+      />
+    </>
   );
 }
-

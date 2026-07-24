@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import CustomCursor from './components/CustomCursor';
 import Navbar from './components/Navbar';
+import MobileDockNav from './components/MobileDockNav';
 import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
@@ -17,15 +18,16 @@ export default function App() {
 
     anchors.forEach((anchor) => {
       anchor.addEventListener('click', (e) => {
-        e.preventDefault();
-
         const targetId = anchor.getAttribute('href');
 
-        if (targetId) {
+        if (targetId && targetId !== '#') {
+          e.preventDefault();
           const targetElement = document.querySelector(targetId);
 
           if (targetElement) {
-            targetElement.scrollIntoView({
+            const topPosition = targetElement.getBoundingClientRect().top + window.scrollY - 80;
+            window.scrollTo({
+              top: topPosition,
               behavior: 'smooth',
             });
           }
@@ -34,22 +36,25 @@ export default function App() {
     });
   }, []);
 
-
   return (
-    <div className="min-h-screen bg-bg text-text font-sans selection:bg-accent selection:text-bg">
+    <div className="min-h-screen bg-[var(--bg-base)] text-[var(--text-primary)] font-sans selection:bg-[#F27D26] selection:text-[#050505] bg-grid-pattern relative">
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-6 focus:py-3 focus:bg-accent focus:text-bg focus:font-semibold focus:rounded-full focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-accent"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-6 focus:py-3 focus:bg-[#F27D26] focus:text-[#050505] focus:font-bold focus:rounded-full focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-[#FF9545]"
       >
         Skip to main content
       </a>
+
+      {/* Global Noise Overlay & Custom Spotlight Cursor */}
       <div className="noise-bg" />
       <CustomCursor />
-      <header className="relative z-[100]">
-        <Navbar />
-      </header>
 
-      <main id="main" tabIndex={-1}>
+      {/* Navigation Headers (Desktop Header & Mobile Dock) */}
+      <Navbar />
+      <MobileDockNav />
+
+      {/* Main Content Sections */}
+      <main id="main" tabIndex={-1} className="relative z-10 focus:outline-none">
         <Hero />
         <About />
         <Projects />
@@ -57,10 +62,10 @@ export default function App() {
         <Skills />
         <Services />
         <Education />
-
         <Contact />
       </main>
 
+      {/* Footer */}
       <Footer />
     </div>
   );

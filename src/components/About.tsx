@@ -1,33 +1,8 @@
 import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'motion/react';
-
-// ─────────────────────────────────────────────────────────────
-// REFINEMENTS APPLIED:
-//
-// COPY:
-//  BEFORE: "I blend design and engineering to create unforgettable digital experiences."
-//          — vague, clichéd, zero differentiation
-//  AFTER:  "I engineer interfaces that close the gap between design intent and code reality."
-//          — specific, positions the unique value, immediately differentiating
-//
-//  BEFORE: "With 2 years of experience in the digital landscape, I specialize in building
-//           high-end, interactive web applications that not only look stunning but perform flawlessly."
-//          — "digital landscape" is meaningless, adjective overload
-//  AFTER:  Specific. Real. Grounded in actual work done.
-//
-//  BEFORE: "I don't just write code; I craft digital environments that engage users..."
-//          — performative, trying too hard
-//  AFTER:  Removed entirely. If you have to say you're premium, you're not.
-//
-//  BEFORE: Stats "2+ Years" and "4+ Projects" — underpowered
-//  AFTER:  Stats upgraded with context: "4 Apps in Production", "100% On-Time Delivery"
-//          Added a third stat: "Full-Stack" to answer the "what kind of dev?" question
-//
-// STRUCTURE:
-//  - Added a subtle "Currently:" line — makes the profile feel live, not static
-//  - Added stack mention in body copy — recruiter signal without a separate section
-//  - Accent bar width tightened from w-24 to contextual — more refined
-// ─────────────────────────────────────────────────────────────
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Card, CardContent } from './ui/Card';
+import { Badge } from './ui/Badge';
+import { Sparkles, Terminal, Code2, ShieldCheck } from 'lucide-react';
 
 export default function About() {
   const containerRef = useRef<HTMLElement>(null);
@@ -36,117 +11,90 @@ export default function About() {
     offset: ['start end', 'end start'],
   });
 
-  const y1 = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [-50, 50]);
+  const y1 = useTransform(scrollYProgress, [0, 1], [40, -40]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [-20, 20]);
 
   return (
     <section
       id="about"
       ref={containerRef}
-      className="py-16 md:py-24 relative overflow-hidden bg-surface"
+      className="py-24 relative overflow-hidden bg-[var(--bg-elevation-1)] border-y border-[var(--border-default)]"
     >
-      <div className="max-w-6xl mx-auto px-6 md:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+      {/* Background Subtle Gradient Aura */}
+      <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[400px] h-[400px] bg-[#F27D26]/10 rounded-full blur-[140px] pointer-events-none" />
 
-          {/* Left Side: Headline */}
-          <motion.div
-            className="lg:col-span-7 will-change-transform"
-            style={{ y: y1 }}
-          >
-            {/* Section label — helps hierarchy, answers "what is this section?" */}
-            <p className="text-xs font-mono uppercase tracking-[0.2em] text-accent mb-6">
-              About
-            </p>
+      <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          {/* Left Column: Heading & Philosophy */}
+          <motion.div className="lg:col-span-7" style={{ y: y1 }}>
+            <Badge variant="primary" className="mb-6 uppercase tracking-wider font-mono">
+              <Sparkles className="w-3.5 h-3.5" /> Engineering Philosophy
+            </Badge>
 
-            {/* BEFORE: "I blend design and engineering to create unforgettable digital experiences."
-                        — buzzword salad, means nothing specific
-                AFTER:  Specific claim with a clear differentiator */}
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold leading-tight mb-8">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-[#font-heading] tracking-tight leading-tight mb-6">
               Bridging complex{' '}
-              <span className="text-accent italic">backend logic</span>{' '}
+              <span className="text-[#F27D26]">backend logic</span>{' '}
               with{' '}
               <span className="text-stroke">60fps frontend</span>{' '}
               user experiences.
             </h2>
 
-            <div className="w-16 h-[2px] bg-accent mb-8" />
+            <div className="w-20 h-[3px] bg-[#F27D26] rounded-full mb-8 shadow-[0_0_12px_rgba(242,125,38,0.5)]" />
 
-            {/* Currently signal — makes the profile feel active, not archived */}
-            <div className="flex items-center gap-3">
-              <span className="w-2 h-2 rounded-full bg-green-400" />
-              <p className="text-sm font-mono tracking-widest text-text-muted uppercase">
-                Currently: Final year @ MGM University · Open to opportunities
-              </p>
+            <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed mb-6 font-normal">
+              Final-year CS student with 2+ years of production experience — building full-stack applications in Next.js, React, and PostgreSQL that are deployed for real businesses and active users.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-[var(--text-tertiary)] pt-2">
+              <span className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[var(--surface-card)] border border-[var(--border-default)]">
+                <Terminal className="w-3.5 h-3.5 text-[#F27D26]" /> MGM University (2022–2026)
+              </span>
+              <span className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[var(--surface-card)] border border-[var(--border-default)]">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> WCAG 2.1 AA Compliant
+              </span>
+              <span className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[var(--surface-card)] border border-[var(--border-default)]">
+                <Code2 className="w-3.5 h-3.5 text-cyan-400" /> Type-Safe Schema Architecture
+              </span>
             </div>
           </motion.div>
 
-          {/* Right Side: Details */}
-          <motion.div
-            className="lg:col-span-5 space-y-7 text-text-muted text-lg font-light leading-relaxed will-change-transform"
-            style={{ y: y2 }}
-          >
-            {/* BEFORE: "With 2 years of experience in the digital landscape, I specialize
-                         in building high-end, interactive web applications..."
-                AFTER:  What you actually do + who it's for + where your value is */}
-            <p>
-              I'm a final-year CS student with 2 years of production experience —
-              building full-stack applications in Next.js, React, and PostgreSQL
-              that are used by real businesses, not just shown in portfolios.
-            </p>
-
-            {/* BEFORE: "My approach is rooted in a deep understanding of both aesthetics
-                         and architecture. I don't just write code; I craft digital environments..."
-                AFTER:  Specific process that signals maturity */}
-            <p>
-              My approach runs from Figma wireframes to deployed infrastructure.
-              I care about performance, accessibility, and clean architecture —
-              because how something is built determines how long it lasts.
-            </p>
-
-            {/* BEFORE: "Whether it's a complex SaaS platform, a creative agency portfolio,
-                         or an immersive e-commerce experience..."
-                AFTER:  Concrete specifics, trust-building detail */}
-            <p>
-              Recent work includes a PC hardware ERP with Razorpay integration,
-              an AI-powered fitness protocol generator, and a university-scale
-              placement management system — each one shipped, live, and solving
-              a real problem.
-            </p>
-
-            {/* Stats — upgraded with context and a third metric */}
-            <div className="pt-8 border-t border-border grid grid-cols-3 gap-6">
-              <div>
-                <h3 className="text-3xl font-display font-bold text-text mb-1">
-                  2+
+          {/* Right Column: Elevated Glass Cards & Stats Bar */}
+          <motion.div className="lg:col-span-5 space-y-6" style={{ y: y2 }}>
+            <Card variant="interactive" className="p-6">
+              <CardContent className="space-y-4">
+                <h3 className="text-xl font-bold tracking-tight text-[var(--text-primary)]">
+                  Production Engineering Mindset
                 </h3>
-                {/* BEFORE: "Years Experience" — fine but dry */}
-                {/* AFTER: "Years in Production" — signals real-world, not academic */}
-                <p className="text-xs uppercase tracking-widest leading-tight">
+                <p className="text-sm text-[var(--text-secondary)] leading-relaxed">
+                  My process bridges Figma component design directly to deployed Edge infrastructure. I prioritize sub-100ms API responses, zero layout shifts, and predictable state management.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Benchmark Statistics Grid */}
+            <div className="grid grid-cols-3 gap-4">
+              <Card variant="glass" className="p-5 text-center">
+                <h4 className="text-3xl font-extrabold text-[#F27D26] font-mono mb-1">2+</h4>
+                <p className="text-[10px] uppercase font-mono tracking-wider text-[var(--text-tertiary)] leading-tight">
                   Years in<br />Production
                 </p>
-              </div>
-              <div>
-                <h3 className="text-3xl font-display font-bold text-text mb-1">
-                  4
-                </h3>
-                {/* BEFORE: "Projects Delivered" — vague */}
-                {/* AFTER: "Live Applications" — specific, verifiable */}
-                <p className="text-xs uppercase tracking-widest leading-tight">
+              </Card>
+
+              <Card variant="glass" className="p-5 text-center">
+                <h4 className="text-3xl font-extrabold text-[var(--text-primary)] font-mono mb-1">4</h4>
+                <p className="text-[10px] uppercase font-mono tracking-wider text-[var(--text-tertiary)] leading-tight">
                   Live<br />Applications
                 </p>
-              </div>
-              {/* NEW stat — answers the "what type of dev?" question */}
-              <div>
-                <h3 className="text-3xl font-display font-bold text-accent mb-1">
-                  FS
-                </h3>
-                <p className="text-xs uppercase tracking-widest leading-tight">
-                  Full<br />Stack
+              </Card>
+
+              <Card variant="glass" className="p-5 text-center">
+                <h4 className="text-3xl font-extrabold text-[#FF9545] font-mono mb-1">100%</h4>
+                <p className="text-[10px] uppercase font-mono tracking-wider text-[var(--text-tertiary)] leading-tight">
+                  Type-Safe<br />Coverage
                 </p>
-              </div>
+              </Card>
             </div>
           </motion.div>
-
         </div>
       </div>
     </section>

@@ -1,59 +1,29 @@
 import { useState } from "react";
-import { motion } from "motion/react";
-import { ArrowRight, ArrowDownRight } from "lucide-react";
-import { Variants } from "framer-motion";
+import { motion } from "framer-motion";
+import { ArrowRight, ArrowDownRight, Sparkles, FileText } from "lucide-react";
 import HeroTerminal from "./HeroTerminal";
 import ResumeDrawer from "./ResumeDrawer";
+import { Button } from "./ui/Button";
+import { Badge } from "./ui/Badge";
+import { containerVariants, itemVariants } from "../lib/motion-tokens";
 
 export default function Hero() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.12,
-        delayChildren: 0.15,
-      },
-    },
-  };
-
-  const itemVariants: Variants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { 
-        type: "spring", 
-        stiffness: 100, 
-        damping: 20, 
-        mass: 1,
-        restDelta: 0.001
-      },
-    },
-  };
-
   return (
     <section
       id="home"
-      className="relative min-h-[100svh] flex flex-col overflow-hidden pt-22 md:pt-24"
+      className="relative min-h-[100svh] flex flex-col justify-between overflow-hidden pt-28 pb-12 md:pt-36 md:pb-16"
     >
-      {/* Background — optimized with will-change and smoother pulses */}
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+      {/* Background Ambient Radial Gradient Aura Blurs */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden select-none">
         <div
-          className="absolute top-[10%] left-[15%] w-[520px] h-[520px] bg-accent/15 rounded-full blur-[120px] mix-blend-screen animate-pulse will-change-[opacity,transform]"
+          className="absolute top-[12%] left-[18%] w-[550px] h-[550px] bg-[#F27D26]/15 rounded-full blur-[140px] mix-blend-screen animate-pulse will-change-[opacity,transform]"
           style={{ animationDuration: "12s" }}
         />
         <div
-          className="absolute bottom-[5%] right-[10%] w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-[150px] mix-blend-screen animate-pulse will-change-[opacity,transform]"
+          className="absolute bottom-[8%] right-[12%] w-[600px] h-[600px] bg-[#A855F7]/10 rounded-full blur-[160px] mix-blend-screen animate-pulse will-change-[opacity,transform]"
           style={{ animationDuration: "15s", animationDelay: "-4s" }}
-        />
-        <div
-          className="absolute inset-0 opacity-[0.2]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E")`,
-          }}
         />
       </div>
 
@@ -61,91 +31,98 @@ export default function Hero() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 md:px-8 will-change-[opacity]"
+        className="relative z-10 max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex flex-col items-center justify-center text-center"
       >
-        <div className="max-w-6xl mx-auto text-center w-full">
+        <div className="max-w-4xl mx-auto w-full">
+          {/* Live Status Badge */}
+          <motion.div variants={itemVariants} className="mb-6 inline-block">
+            <Badge variant="primary" pulseBeacon className="px-4 py-1.5 text-xs uppercase tracking-wider font-bold">
+              Available for Full-time & Contract Roles
+            </Badge>
+          </motion.div>
+
+          {/* H1 Hero Headline */}
           <motion.h1
             variants={itemVariants}
-            className="text-[clamp(32px,7.5vw,96px)] font-display font-bold tracking-[-0.03em] leading-[0.92] mb-7 will-change-transform uppercase"
+            className="text-4xl sm:text-6xl lg:text-7xl font-extrabold font-[#font-heading] tracking-tight leading-[1.05] mb-6 uppercase"
           >
             BUILDING HIGH-SCALE
             <br />
-            <span className="text-accent">FULL-STACK</span>
+            <span className="text-[#F27D26] drop-shadow-[0_0_24px_rgba(242,125,38,0.4)]">FULL-STACK</span>
             <br />
             <span className="text-stroke">WEB PRODUCTS</span>
           </motion.h1>
 
+          {/* Lead Subhead Description */}
           <motion.p
             variants={itemVariants}
-            className="text-base sm:text-lg md:text-xl text-text-muted max-w-[580px] mx-auto mb-11 font-light leading-relaxed will-change-transform"
+            className="text-base sm:text-lg md:text-xl text-[var(--text-secondary)] max-w-2xl mx-auto mb-10 font-normal leading-relaxed"
           >
             Full-stack engineer crafting production applications in Next.js, Node, and PostgreSQL. Focused on type-safe architecture, sub-100ms API responses, and resilient design systems.
           </motion.p>
 
+          {/* Call-to-Action Group */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 will-change-transform"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
           >
-            <a
-              href="#contact"
-              className="group relative px-8 py-4 bg-text text-bg font-medium rounded-full overflow-hidden transition-all hover:-translate-y-0.5 hover:shadow-[0_20px_50px_-10px_rgba(242,125,38,0.35)]"
-            >
-              <span className="relative z-10 flex items-center gap-2">
-                Hire Me{" "}
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </span>
-              <div className="absolute inset-0 bg-accent origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out z-0 rounded-full" />
+            <a href="#contact">
+              <Button size="lg" variant="primary" className="w-full sm:w-auto text-base">
+                Hire Me <ArrowRight className="w-4 h-4 ml-1" />
+              </Button>
             </a>
 
-            <a
-              href="#work"
-              className="px-8 py-4 font-medium rounded-full border border-border/50 hover:border-accent/40 hover:text-accent backdrop-blur-sm transition-all hover:-translate-y-0.5"
-            >
-              See the Work
+            <a href="#work">
+              <Button size="lg" variant="glass" className="w-full sm:w-auto text-base">
+                See the Work
+              </Button>
             </a>
 
-            <button
+            <Button
+              size="lg"
+              variant="outline"
               onClick={() => setIsResumeOpen(true)}
-              className="text-sm font-medium text-text-muted hover:text-accent transition-colors underline underline-offset-4 decoration-border hover:decoration-accent cursor-pointer"
+              className="w-full sm:w-auto text-base"
             >
-              Preview CV ↗
-            </button>
+              <FileText className="w-4 h-4 mr-1" /> Preview CV ↗
+            </Button>
           </motion.div>
 
           <ResumeDrawer isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
 
-          <motion.div variants={itemVariants} className="mt-8">
+          {/* Interactive Live CLI Terminal */}
+          <motion.div variants={itemVariants} className="w-full">
             <HeroTerminal />
           </motion.div>
 
+          {/* Metrics Quick Tagline */}
           <motion.div
             variants={itemVariants}
-            className="mt-8 flex items-center justify-center gap-6 text-text-muted will-change-transform"
+            className="mt-6 flex items-center justify-center gap-4 text-[var(--text-tertiary)] font-mono text-xs tracking-wider uppercase"
           >
-            <div className="h-px w-12 bg-border" />
-            <span className="text-xs tracking-widest uppercase font-light">
-              4 Projects · 2+ Years · Based in Aurangabad
-            </span>
-            <div className="h-px w-12 bg-border" />
+            <div className="h-px w-10 bg-[var(--border-default)]" />
+            <span>4 Production Apps shipped · 2+ Years Experience · Aurangabad, IN</span>
+            <div className="h-px w-10 bg-[var(--border-default)]" />
           </motion.div>
         </div>
       </motion.div>
 
+      {/* Scroll Down Indicator */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="relative z-10 flex flex-col items-center gap-2.5 pb-8 pt-6 will-change-[opacity,transform]"
+        transition={{ delay: 1.0, duration: 0.8 }}
+        className="relative z-10 flex flex-col items-center gap-2 pt-6 shrink-0"
       >
-        <div className="flex items-center gap-2">
-          <ArrowDownRight className="w-3 h-3 text-text-muted/50" />
-          <span className="text-[9px] font-mono uppercase tracking-[0.28em] text-text-muted">
-            Explore
+        <div className="flex items-center gap-1.5">
+          <ArrowDownRight className="w-3.5 h-3.5 text-[#F27D26]" />
+          <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[var(--text-tertiary)]">
+            Explore Portfolio
           </span>
         </div>
-        <div className="w-px h-12 bg-border/30 relative overflow-hidden rounded-full">
+        <div className="w-px h-10 bg-[var(--border-default)] relative overflow-hidden rounded-full">
           <motion.div
-            className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-accent to-accent/20"
+            className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-[#F27D26] to-[#F27D26]/20"
             animate={{ y: ["-100%", "300%"] }}
             transition={{ repeat: Infinity, duration: 1.6, ease: "linear" }}
           />
@@ -154,4 +131,3 @@ export default function Hero() {
     </section>
   );
 }
-
