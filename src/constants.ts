@@ -145,7 +145,7 @@ export const PROJECTS: Project[] = [
     width: 1896,
     height: 925,
     slug: 'pc-builder-erp',
-    link: 'https://pc-ecommerce-demo.vercel.app',
+    link: 'https://ecommerce-md.vercel.app/',
     architectureNotes: 'Built on Next.js 16 (App Router) and React 19. Implemented client-side compatibility evaluation algorithms for PC components (CPU socket matching, motherboard chipset validation, RAM generation & TDP thermal margin checking) paired with serverless PostgreSQL queries via Prisma ORM to eliminate server round-trips during component configuration.',
     schemaDecisions: 'Relational PostgreSQL database schema designed around category-specific attribute tables (CPUs, GPUs, Motherboards, PSUs, Storage). Relational foreign keys manage multi-warehouse inventory levels, supplier purchase orders, and Razorpay transaction records.',
     metrics: [
@@ -188,7 +188,7 @@ export const PROJECTS: Project[] = [
     width: 1898,
     height: 925,
     slug: 'enrich-kitchen-studio',
-    link: 'https://enrichfurniture.com/',
+    link: 'https://enrich-kitchen-studio.vercel.app',
     architectureNotes: 'Full-stack Next.js 14 application providing centralized inventory & business management for a live kitchen studio client. Replaced legacy spreadsheet workflows with role-based access control (NextAuth.js) and real-time dashboard analytics using Recharts.',
     schemaDecisions: 'MongoDB database managed via Prisma ORM. Schema utilizes embedded document models for item stock history logs and relational references for multi-location inventory adjustments, supplier profiles, and billing statements.',
     metrics: [
