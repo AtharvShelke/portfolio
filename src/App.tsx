@@ -1,72 +1,87 @@
-import { useEffect } from 'react';
-import CustomCursor from './components/CustomCursor';
-import Navbar from './components/Navbar';
-import MobileDockNav from './components/MobileDockNav';
-import Hero from './components/Hero';
-import About from './components/About';
-import Projects from './components/Projects';
-import Experience from './components/Experience';
-import Skills from './components/Skills';
-import Education from './components/Education';
-import Services from './components/Services';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import React, { useState } from 'react';
+import { BrandProvider } from './lib/brandContext';
+import { SmoothScrollProvider } from './lib/smoothScroll';
+import { StarFieldCanvas } from './components/global/StarFieldCanvas';
+import { GridHairlines } from './components/global/GridHairlines';
+import { StarCursor } from './components/global/StarCursor';
+import { ScrollPathNav } from './components/global/ScrollPathNav';
+import { Navbar } from './components/global/Navbar';
+import { HeroSection } from './components/sections/HeroSection';
+import { ManifestoSection } from './components/sections/ManifestoSection';
+import { PointPathProgressSection } from './components/sections/PointPathProgressSection';
+import { WhatWeBuildSection } from './components/sections/WhatWeBuildSection';
+import { PrinciplesSection } from './components/sections/PrinciplesSection';
+import { FindDirectionSection } from './components/sections/FindDirectionSection';
+import { ClosingCtaSection } from './components/sections/ClosingCtaSection';
+import { Footer } from './components/sections/Footer';
+import { ContactModal } from './components/modals/ContactModal';
+import { LeadCopilotModal } from './components/modals/LeadCopilotModal';
 
 export default function App() {
-  useEffect(() => {
-    const anchors = document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]');
+  const [isContactOpen, setIsContactOpen] = useState(false);
+  const [isLeadCopilotOpen, setIsLeadCopilotOpen] = useState(false);
 
-    anchors.forEach((anchor) => {
-      anchor.addEventListener('click', (e) => {
-        const targetId = anchor.getAttribute('href');
-
-        if (targetId && targetId !== '#') {
-          e.preventDefault();
-          const targetElement = document.querySelector(targetId);
-
-          if (targetElement) {
-            const topPosition = targetElement.getBoundingClientRect().top + window.scrollY - 80;
-            window.scrollTo({
-              top: topPosition,
-              behavior: 'smooth',
-            });
-          }
-        }
-      });
-    });
-  }, []);
+  const handleExploreProducts = () => {
+    const el = document.getElementById('products');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
-    <div className="min-h-screen bg-[var(--bg-base)] text-[var(--text-primary)] font-sans selection:bg-[#F27D26] selection:text-[#050505] bg-grid-pattern relative">
-      <a
-        href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-6 focus:py-3 focus:bg-[#F27D26] focus:text-[#050505] focus:font-bold focus:rounded-full focus:shadow-2xl focus:outline-none focus:ring-2 focus:ring-[#FF9545]"
-      >
-        Skip to main content
-      </a>
+    <BrandProvider>
+      <SmoothScrollProvider>
+        <div className="relative min-h-screen bg-[#070B14] text-[#F4F6F8] selection:bg-[#6EA8FF] selection:text-[#070B14] overflow-x-hidden">
+          {/* Accessibility Skip Link */}
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-6 focus:py-3 focus:bg-[#6EA8FF] focus:text-[#070B14] focus:font-bold focus:rounded-xl focus:outline-none focus:ring-2 focus:ring-[#8DEBFF]"
+          >
+            Skip to main content
+          </a>
 
-      {/* Global Noise Overlay & Custom Spotlight Cursor */}
-      <div className="noise-bg" />
-      <CustomCursor />
+          {/* 1. Global Persistent Layers */}
+          <StarFieldCanvas />
+          <GridHairlines />
+          <StarCursor />
+          <ScrollPathNav />
 
-      {/* Navigation Headers (Desktop Header & Mobile Dock) */}
-      <Navbar />
-      <MobileDockNav />
+          {/* 2. Top Navigation */}
+          <Navbar onOpenContact={() => setIsContactOpen(true)} />
 
-      {/* Main Content Sections */}
-      <main id="main" tabIndex={-1} className="relative z-10 focus:outline-none">
-        <Hero />
-        <About />
-        <Projects />
-        <Experience />
-        <Skills />
-        <Services />
-        <Education />
-        <Contact />
-      </main>
+          {/* 3. Main Landmark & Flow Sections */}
+          <main id="main-content" tabIndex={-1} className="relative z-10 focus:outline-none">
+            <HeroSection
+              onOpenContact={() => setIsContactOpen(true)}
+              onExploreProducts={handleExploreProducts}
+            />
+            <ManifestoSection />
+            <PointPathProgressSection />
+            <WhatWeBuildSection onOpenLeadCopilot={() => setIsLeadCopilotOpen(true)} />
+            <PrinciplesSection />
+            <FindDirectionSection onOpenContact={() => setIsContactOpen(true)} />
+            <ClosingCtaSection onOpenContact={() => setIsContactOpen(true)} />
+          </main>
 
-      {/* Footer */}
-      <Footer />
-    </div>
+          {/* 4. Footer */}
+          <Footer />
+
+          {/* 5. Modals */}
+          <ContactModal
+            isOpen={isContactOpen}
+            onClose={() => setIsContactOpen(false)}
+          />
+          <LeadCopilotModal
+            isOpen={isLeadCopilotOpen}
+            onClose={() => setIsLeadCopilotOpen(false)}
+            onOpenContact={() => {
+              setIsLeadCopilotOpen(false);
+              setIsContactOpen(true);
+            }}
+          />
+        </div>
+      </SmoothScrollProvider>
+    </BrandProvider>
   );
 }
+
