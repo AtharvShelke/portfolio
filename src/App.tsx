@@ -1,53 +1,36 @@
-import { useEffect } from 'react';
 import CustomCursor from './components/CustomCursor';
+import SmoothScroll from './components/SmoothScroll';
+import ScrollProgress from './components/ScrollProgress';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import About from './components/About';
+import MetricsBar from './components/MetricsBar';
+import Solutions from './components/Solutions';
 import Projects from './components/Projects';
+import Framework from './components/Framework';
+import ScopeEstimator from './components/ScopeEstimator';
+import About from './components/About';
 import Skills from './components/Skills';
-import Education from './components/Education';
-import Services from './components/Services';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 export default function App() {
-  useEffect(() => {
-    const anchors = document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]');
-
-    anchors.forEach((anchor) => {
-      anchor.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        const targetId = anchor.getAttribute('href');
-
-        if (targetId) {
-          const targetElement = document.querySelector(targetId);
-
-          if (targetElement) {
-            targetElement.scrollIntoView({
-              behavior: 'smooth',
-            });
-          }
-        }
-      });
-    });
-  }, []);
-
-
   return (
-    <div className="min-h-screen bg-bg text-text font-sans selection:bg-accent selection:text-bg">
+    <div className="min-h-screen bg-bg text-text font-sans selection:bg-accent selection:text-bg relative">
+      <SmoothScroll />
+      <ScrollProgress />
       <div className="noise-bg" />
       <CustomCursor />
       <Navbar />
 
       <main>
         <Hero />
-        <About />
+        <MetricsBar />
+        <Solutions />
         <Projects />
+        <Framework />
+        <ScopeEstimator />
+        <About />
         <Skills />
-        <Services />
-        <Education />
-
         <Contact />
       </main>
 

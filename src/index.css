@@ -4,14 +4,17 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Syne", ui-sans-serif, system-ui, sans-serif;
   
-  --color-bg: #050505;
-  --color-surface: #111111;
-  --color-surface-hover: #1a1a1a;
-  --color-text: #F5F5F5;
-  --color-text-muted: #888888;
-  --color-accent: #F27D26; /* Warm orange accent */
-  --color-accent-hover: #ff9545;
-  --color-border: rgba(255, 255, 255, 0.1);
+  --color-bg: #07080B;
+  --color-surface: #0E1015;
+  --color-surface-hover: #161820;
+  --color-surface-card: rgba(18, 20, 28, 0.7);
+  --color-text: #F3F4F6;
+  --color-text-muted: #9CA3AF;
+  --color-accent: #F27D26; /* High-energy Warm Amber/Orange */
+  --color-accent-hover: #ff9342;
+  --color-accent-glow: rgba(242, 125, 38, 0.35);
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-glow: rgba(242, 125, 38, 0.3);
 }
 
 @layer utilities {
@@ -19,18 +22,34 @@
     text-wrap: balance;
   }
   .text-stroke {
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.25);
     color: transparent;
   }
-  .text-stroke-hover {
+  .text-stroke-accent {
     -webkit-text-stroke: 1px var(--color-accent);
-    color: var(--color-accent);
+    color: transparent;
   }
   .glass-panel {
-    background: rgba(17, 17, 17, 0.6);
+    background: rgba(14, 16, 22, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--color-border);
+  }
+  .glass-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--color-border);
+  }
+  .glass-card-hover {
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .glass-card-hover:hover {
+    border-color: rgba(242, 125, 38, 0.35);
+    box-shadow: 0 10px 40px -10px rgba(242, 125, 38, 0.15);
+  }
+  .glow-accent {
+    box-shadow: 0 0 50px -10px rgba(242, 125, 38, 0.35);
   }
   .hide-scrollbar::-webkit-scrollbar {
     display: none;
@@ -58,7 +77,6 @@ body {
   cursor: none !important;
 }
 
-/* Restore default cursor on touch devices (no custom cursor needed) */
 @media (pointer: coarse) {
   * {
     cursor: auto !important;
@@ -72,27 +90,27 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
-  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), height 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease;
   mix-blend-mode: difference;
-  background-color: white;
+  background-color: #ffffff;
   will-change: transform;
 }
 
 .custom-cursor.hovering {
-  width: 60px;
-  height: 60px;
+  width: 54px;
+  height: 54px;
   background-color: var(--color-accent);
   mix-blend-mode: normal;
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
-/* Subtle noise overlay — optimized */
+/* Subtle noise overlay */
 .noise-bg {
   position: fixed;
   top: 0;
@@ -101,18 +119,49 @@ body {
   height: 100vh;
   pointer-events: none;
   z-index: 9998;
-  opacity: 0.02;
+  opacity: 0.025;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   will-change: opacity;
 }
 
-/* Performance: Content visibility hints for large sections */
+/* Radial Glow Ambient Lights */
+.radial-glow-top {
+  position: absolute;
+  top: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(242, 125, 38, 0.15) 0%, rgba(99, 102, 241, 0.05) 50%, transparent 80%);
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(80px);
+}
+
+/* Section Scroll Margins for accurate navbar offset */
 section {
-  content-visibility: auto;
-  contain-intrinsic-size: 1px 1000px;
+  scroll-margin-top: 5rem;
 }
 
 #home {
-  content-visibility: visible;
+  scroll-margin-top: 0;
 }
+
+/* Sleek subtle scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #07080B;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(242, 125, 38, 0.6);
+}
+
+
+
 

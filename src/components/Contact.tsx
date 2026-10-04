@@ -1,237 +1,207 @@
 import { motion } from 'motion/react';
-import { ArrowRight, Mail, MapPin, Phone } from 'lucide-react';
-
-// ─────────────────────────────────────────────────────────────
-// REFINEMENTS APPLIED:
-//
-// COPY:
-//  BEFORE: "Let's Talk" headline — too casual, low commitment signal
-//  AFTER:  "Let's Build Something." — outcome-oriented, confident, not loud
-//
-//  BEFORE: "Have a project in mind or just want to say hi? Feel free to reach out.
-//           I'm always open to discussing new projects, creative ideas, or 
-//           opportunities to be part of your visions."
-//          — padding words, "be part of your visions" is hollow
-//  AFTER:  Specific. Tells the user exactly what to expect after sending.
-//          Answers: "what happens when I contact you?"
-//
-//  BEFORE: Form title "Send a Message" — bland
-//  AFTER:  "What are you working on?" — conversational, lowers friction psychologically
-//
-//  BEFORE: Subject placeholder "Project Inquiry" — defaults to generic
-//  AFTER:  "e.g. Full-stack build, freelance sprint, job opportunity" — guided, specific
-//
-//  BEFORE: Button "Send Message" — standard
-//  AFTER:  "Send It →" — confident, casual but intentional (matches brand tone)
-//
-// STRUCTURE:
-//  - Added a "Response time" signal — manages expectations, increases trust
-//  - Added a LinkedIn link alongside email/phone/location — recruiter-critical
-//  - Tightened left-side layout — removed 2 lines of filler copy
-// ─────────────────────────────────────────────────────────────
+import { ArrowRight, Mail, MapPin, Phone, ShieldCheck, Clock, MessageSquare } from 'lucide-react';
+import { TESTIMONIALS_SIGNAL } from '../constants.js';
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-18 md:py-24 bg-bg relative overflow-hidden">
+    <section id="contact" className="py-24 bg-surface relative overflow-hidden border-t border-white/5">
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24">
-
-          {/* Left Side: Info */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+          {/* Left Column: Direct Consultation Channels & Signal */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="space-y-12"
+            className="lg:col-span-5 space-y-10"
           >
             <div>
-              {/* Section label */}
-              <p className="text-xs font-mono uppercase tracking-[0.2em] text-accent mb-6">
-                Contact
-              </p>
+              <div className="flex items-center gap-2 mb-4">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                <p className="text-xs font-mono uppercase tracking-[0.2em] text-accent">
+                  Initiate Technical Consultation
+                </p>
+              </div>
 
-              {/* BEFORE: "Let's\nTalk" — casual, low commitment */}
-              {/* AFTER: Outcome-oriented, still warm */}
-              <h2 className="text-4xl md:text-5xl lg:text-7xl font-display font-bold uppercase tracking-tighter mb-8 leading-none">
-                Let's Build<br />
-                <span className="text-stroke">Something.</span>
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold uppercase tracking-tight leading-none mb-6">
+                Let's Build <br />
+                <span className="text-stroke">Your System.</span>
               </h2>
 
-              <div className="w-16 h-[2px] bg-accent mb-8" />
+              <div className="w-16 h-1 bg-accent mb-6" />
 
-              {/* BEFORE: Generic "feel free to reach out" paragraph */}
-              {/* AFTER: Sets expectations + removes vagueness + speaks to both audiences */}
-              <p className="text-text-muted text-lg font-light leading-relaxed max-w-md">
-                Whether you're hiring, scoping a project, or just want to talk tech —
-                send a message and I'll reply within 24 hours.
+              <p className="text-text-muted text-base font-light leading-relaxed">
+                Whether you're launching a new digital venture, re-architecting an ERP, or need specialized full-stack and AI engineering — let's review your specifications.
               </p>
 
-              {/* Response signal — small but trust-building */}
-              <div className="mt-4 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
-                <p className="text-xs text-text-muted tracking-wide font-mono uppercase">
-                  Usually responds within 24h
-                </p>
+              <div className="mt-6 inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-emerald-400/10 border border-emerald-400/20 text-xs font-mono text-emerald-400">
+                <Clock className="w-3.5 h-3.5" />
+                <span>Response Guarantee: Under 24 Hours</span>
               </div>
             </div>
 
-            {/* Contact details — unchanged structure, refined microcopy */}
-            <div className="space-y-5">
-              <div className="flex items-center gap-6 group cursor-pointer">
-                <div className="w-14 h-14 rounded-full border border-border flex items-center justify-center group-hover:bg-accent group-hover:border-accent group-hover:text-bg transition-all duration-300 shrink-0">
+            {/* Direct Connect Grid */}
+            <div className="space-y-4">
+              <a
+                href="mailto:atharvshelke964@gmail.com"
+                className="p-4 rounded-2xl glass-card border border-white/10 flex items-center gap-4 hover:border-accent/40 transition-colors group"
+              >
+                <div className="w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-bg transition-colors shrink-0">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase tracking-widest text-text-muted mb-1">
-                    Email
-                  </p>
-                  <a
-                    href="mailto:atharvshelke964@gmail.com"
-                    className="text-base md:text-xl font-display font-medium hover:text-accent transition-colors break-all"
-                  >
+                  <p className="text-[10px] uppercase font-mono tracking-widest text-text-muted">Direct Email</p>
+                  <p className="text-sm sm:text-base font-display font-semibold text-text group-hover:text-accent transition-colors">
                     atharvshelke964@gmail.com
-                  </a>
+                  </p>
                 </div>
-              </div>
+              </a>
 
-              <div className="flex items-center gap-6 group cursor-pointer">
-                <div className="w-14 h-14 rounded-full border border-border flex items-center justify-center group-hover:bg-accent group-hover:border-accent group-hover:text-bg transition-all duration-300 shrink-0">
+              <a
+                href="tel:+917517616955"
+                className="p-4 rounded-2xl glass-card border border-white/10 flex items-center gap-4 hover:border-accent/40 transition-colors group"
+              >
+                <div className="w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-bg transition-colors shrink-0">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase tracking-widest text-text-muted mb-1">
-                    Phone
-                  </p>
-                  <a
-                    href="tel:+917517616955"
-                    className="text-base md:text-xl font-display font-medium hover:text-accent transition-colors"
-                  >
+                  <p className="text-[10px] uppercase font-mono tracking-widest text-text-muted">Telephone / WhatsApp</p>
+                  <p className="text-sm sm:text-base font-display font-semibold text-text group-hover:text-accent transition-colors">
                     +91 75176 16955
-                  </a>
+                  </p>
                 </div>
-              </div>
+              </a>
 
-              <div className="flex items-center gap-6 group cursor-pointer">
-                <div className="w-14 h-14 rounded-full border border-border flex items-center justify-center group-hover:bg-accent group-hover:border-accent group-hover:text-bg transition-all duration-300 shrink-0">
+              <div className="p-4 rounded-2xl glass-card border border-white/10 flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-text-muted shrink-0">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="text-[10px] uppercase tracking-widest text-text-muted mb-1">
-                    Location
-                  </p>
-                  {/* BEFORE: "Chhatrapati Sambhajinagar, Maharashtra, India" — correct but wordy */}
-                  {/* AFTER: Shortened, with remote signal */}
-                  <p className="text-base md:text-xl font-display font-medium">
-                    Chh. Sambhajinagar, Maharashtra{' '}
-                    <span className="text-text-muted text-sm font-sans font-light">
-                      · Open to Remote
-                    </span>
+                  <p className="text-[10px] uppercase font-mono tracking-widest text-text-muted">Headquarters & Remote</p>
+                  <p className="text-sm sm:text-base font-display font-semibold text-text">
+                    Maharashtra, India <span className="text-xs font-mono text-text-muted font-normal">· Worldwide Remote</span>
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* LinkedIn CTA — critical for recruiters, was missing */}
-            <div className="pt-4 border-t border-border/30">
-              <p className="text-sm text-text-muted mb-3">Also find me on</p>
-              <a
-                href="https://www.linkedin.com/in/atharv-shelke"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-medium hover:text-accent transition-colors group"
-              >
-                LinkedIn — Atharv Shelke
-                <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-              </a>
-            </div>
+            {/* Client Testimonial Snippet */}
+            {TESTIMONIALS_SIGNAL.length > 0 && (
+              <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/5 space-y-3">
+                <p className="text-xs text-text-muted italic leading-relaxed">
+                  "{TESTIMONIALS_SIGNAL[0].quote}"
+                </p>
+                <div className="text-[11px] font-mono text-accent">
+                  — {TESTIMONIALS_SIGNAL[0].author}, {TESTIMONIALS_SIGNAL[0].role}
+                </div>
+              </div>
+            )}
           </motion.div>
 
-          {/* Right Side: Form */}
+          {/* Right Column: Ingestion Form */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="glass-panel p-10 rounded-3xl"
+            className="lg:col-span-7 glass-panel p-8 sm:p-12 rounded-3xl border border-white/10"
           >
-            {/* BEFORE: "Send a Message" — mechanical */}
-            {/* AFTER: Conversational opener — lowers form anxiety, feels human */}
-            <h3 className="text-2xl font-display font-bold mb-2">
-              What are you working on?
-            </h3>
-            <p className="text-text-muted text-sm font-light mb-8">
-              Tell me about your project or opportunity — the more detail, the better.
-            </p>
+            <div className="mb-8">
+              <h3 className="text-2xl sm:text-3xl font-display font-bold text-text mb-2">
+                Project Specification Brief
+              </h3>
+              <p className="text-sm text-text-muted font-light">
+                Submit your target deliverables, timeline, or inquiries directly to the engineering team.
+              </p>
+            </div>
 
-            <form className="space-y-7" action="https://api.web3forms.com/submit" method="POST">
-              <input type="hidden" name="access_key" value={import.meta.env.VITE_WEB3FORMS_ACCESS_KEY} />
+            <form
+              className="space-y-6"
+              action="https://api.web3forms.com/submit"
+              method="POST"
+            >
+              <input
+                type="hidden"
+                name="access_key"
+                value={import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS_KEY_HERE"}
+              />
               <input type="hidden" name="redirect" value="false" />
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label htmlFor="name" className="text-[10px] uppercase tracking-widest text-text-muted">
-                    Your Name
+                  <label htmlFor="name" className="text-[11px] font-mono uppercase tracking-wider text-text-muted">
+                    Your Name / Organization
                   </label>
                   <input
-                    name="name" type="text" id="name"
-                    className="w-full bg-transparent border-b border-border py-3 focus:outline-none focus:border-accent transition-colors font-light text-base"
-                    placeholder="Atharv Shelke"
+                    name="name"
+                    type="text"
+                    id="name"
+                    required
+                    className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-accent text-sm font-light text-text transition-colors"
+                    placeholder="e.g. Alex Vance, Retail Dynamics"
                   />
                 </div>
+
                 <div className="space-y-2">
-                  <label htmlFor="email" className="text-[10px] uppercase tracking-widest text-text-muted">
-                    Email Address
+                  <label htmlFor="email" className="text-[11px] font-mono uppercase tracking-wider text-text-muted">
+                    Business Email
                   </label>
                   <input
-                    name="email" type="email" id="email"
-                    className="w-full bg-transparent border-b border-border py-3 focus:outline-none focus:border-accent transition-colors font-light text-base"
-                    placeholder="you@company.com"
+                    name="email"
+                    type="email"
+                    id="email"
+                    required
+                    className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-accent text-sm font-light text-text transition-colors"
+                    placeholder="alex@company.com"
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="subject" className="text-[10px] uppercase tracking-widest text-text-muted">
-                  Subject
+                <label htmlFor="subject" className="text-[11px] font-mono uppercase tracking-wider text-text-muted">
+                  Project Engagement Type
                 </label>
-                {/* BEFORE: Placeholder "Project Inquiry" — defaults to vague */}
-                {/* AFTER: Guided examples — shows range of what you're open to */}
                 <input
-                  name="subject" type="text" id="subject"
-                  className="w-full bg-transparent border-b border-border py-3 focus:outline-none focus:border-accent transition-colors font-light text-base"
-                  placeholder="e.g. Full-stack build, freelance sprint, job opportunity"
+                  name="subject"
+                  type="text"
+                  id="subject"
+                  className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-accent text-sm font-light text-text transition-colors"
+                  placeholder="e.g. Custom ERP Build, AI Pipeline Integration, Next.js Web App"
                 />
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="message" className="text-[10px] uppercase tracking-widest text-text-muted">
-                  Message
+                <label htmlFor="message" className="text-[11px] font-mono uppercase tracking-wider text-text-muted">
+                  Specifications & Architectural Requirements
                 </label>
                 <textarea
-                  name="message" id="message"
-                  rows={4}
-                  className="w-full bg-transparent border-b border-border py-3 focus:outline-none focus:border-accent transition-colors font-light text-base resize-none"
-                  placeholder="What's the project? What's the timeline? What's the stack?"
+                  name="message"
+                  id="message"
+                  rows={5}
+                  required
+                  className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-accent text-sm font-light text-text transition-colors resize-none"
+                  placeholder="Describe your current bottleneck, target features, expected user scale, and timeline..."
                 />
               </div>
 
               <button
                 type="submit"
-                className="group relative px-10 py-5 bg-text text-bg font-medium rounded-full overflow-hidden transition-transform hover:scale-[1.02] w-full flex items-center justify-center gap-4"
+                className="group relative px-8 py-5 bg-text text-bg font-semibold rounded-full overflow-hidden transition-all hover:shadow-[0_20px_50px_-10px_rgba(242,125,38,0.35)] w-full flex items-center justify-center gap-3 text-base"
               >
-                <span className="relative z-10 flex items-center gap-2 text-base">
-                  {/* BEFORE: "Send Message" — functional but flat */}
-                  {/* AFTER: "Send It →" — confident, intentional, matches brand tone */}
-                  Send It
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                <span className="relative z-10 flex items-center gap-2">
+                  Transmit Technical Specification
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
                 </span>
-                <div className="absolute inset-0 bg-accent transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-300 ease-out z-0" />
+                <div className="absolute inset-0 bg-accent origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out z-0" />
               </button>
 
-              {/* Trust signal below form */}
-              <p className="text-center text-[10px] text-text-muted/50 tracking-wide">
-                No spam. No unsolicited follow-ups. Just a conversation.
-              </p>
+              <div className="flex items-center justify-center gap-4 text-[11px] font-mono text-text-muted/60 text-center">
+                <span className="flex items-center gap-1">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> NDA / IP Protected
+                </span>
+                <span>•</span>
+                <span>Direct Lead Architect Contact</span>
+              </div>
             </form>
           </motion.div>
         </div>

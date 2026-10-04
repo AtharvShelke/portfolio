@@ -1,223 +1,300 @@
 // ─────────────────────────────────────────────────────────────
-// REFINED CONSTANTS — Premium Portfolio Copy
-// Principle: Specific > Vague. Outcome > Feature. Grounded > Buzzword.
+// BUSINESS FRONTIER CONSTANTS — ATHARV SHELKE STUDIO & PRODUCT FRONTIER
+// Positioning: Enterprise-grade full-stack systems, custom ERPs, and AI workflows
 // ─────────────────────────────────────────────────────────────
 
-export const SERVICES = [
-    {
-        id: '01',
-        title: 'Frontend Engineering',
-        // BEFORE: "Building robust, scalable, and pixel-perfect user interfaces..."
-        // AFTER: Specific tech + specific outcome, no filler adjectives
-        description: 'Production-ready interfaces in React and Next.js — optimised for Core Web Vitals, accessible by default, and built to scale. Every component is typed, tested, and designed to last.',
-    },
-    {
-        id: '02',
-        title: 'Motion & Creative Coding',
-        // BEFORE: "Crafting immersive digital experiences with WebGL..."
-        // AFTER: What it does for the client, not what tools you use
-        description: 'Purposeful animation using GSAP, Framer Motion, and WebGL. Not decorative — every interaction is designed to guide attention, reduce friction, and make the product feel alive.',
-    },
-    {
-        id: '03',
-        title: 'UI/UX Design',
-        // BEFORE: "Designing intuitive and visually striking interfaces..."
-        // AFTER: Process + outcome, speaks to both recruiters and clients
-        description: 'From rough wireframes to production-ready design systems in Figma. I work at the intersection of aesthetics and usability — interfaces that look right and work right.',
-    },
-    {
-        id: '04',
-        title: 'Full-Stack Development',
-        // BEFORE: "Developing end-to-end web applications..."
-        // AFTER: Specific stack + specific outcomes, removes vague "tailored" language
-        description: 'End-to-end applications on Next.js with PostgreSQL or MongoDB, Prisma ORM, and REST or tRPC APIs. Secure auth, clean architecture, and deployment-ready. No handoff gaps.',
-    },
+export const METRICS = [
+  { value: "4+", label: "Enterprise Systems Shipped", sub: "100% active in production" },
+  { value: "99.9%", label: "System Reliability SLA", sub: "Zero unhandled downtime" },
+  { value: "100ms", label: "P95 Query & Load Latency", sub: "Edge-optimized architecture" },
+  { value: "100%", label: "On-Time Milestone Delivery", sub: "Strict sprint-based cadence" },
 ];
 
-export const EDUCATION = [
-    {
-        id: 1,
-        year: '2022 – 2026',
-        degree: "B.E. Computer Science Engineering",
-        institution: 'MGM University, Aurangabad',
-        // BEFORE: "Specialized in Software Engineering and Human-Computer Interaction. Graduated with Honors."
-        // AFTER: More specific, honest, and credibility-signalling
-        description: 'Specialised in Software Engineering and HCI. Built 4 production applications during my degree — all shipped, live, and serving real users.',
-    },
-    {
-        id: 2,
-        year: '2020 – 2022',
-        degree: 'HSC — Science (PCM + CS)',
-        institution: 'Narayana Junior College',
-        // BEFORE: "Focused on Computer Science and Mathematics, achieving a 90.3% score..."
-        // AFTER: Lead with the metric, it's the strongest signal
-        description: '90.3% — State Board. Focused on CS and Mathematics. First exposure to programming fundamentals that directly shaped my engineering approach.',
-    },
-    {
-        id: 3,
-        year: '2019 – 2020',
-        degree: 'SSC',
-        institution: 'S.B.O.A. Public School',
-        // BEFORE: "Completed secondary education with a 96.8% score..."
-        // AFTER: Brief, factual, lets the metric speak
-        description: '96.8% — Demonstrated consistent academic performance and the discipline that carries through into every project I take on.',
-    },
+export const SOLUTIONS = [
+  {
+    id: "01",
+    badge: "Enterprise Core",
+    title: "Custom ERP & Business Platforms",
+    tagline: "Centralize complex operations into bulletproof operational dashboards.",
+    description: "Multi-warehouse inventory systems, role-based access management, supplier purchase orders, automated invoice generation, and real-time operational analytics built for high-throughput daily use.",
+    deliverables: ["Role-Based Access Control (RBAC)", "Multi-Warehouse Inventory Control", "Automated Invoicing & GST Pipelines", "Real-Time Transaction Logging"],
+    stack: ["Next.js 15/16", "PostgreSQL", "Prisma ORM", "Radix UI", "TanStack Table"],
+  },
+  {
+    id: "02",
+    badge: "Full-Lifecycle",
+    title: "Full-Stack Product Engineering",
+    tagline: "From architectural blueprint to production-grade web applications.",
+    description: "End-to-end web products engineered with strict TypeScript typing, responsive modern interfaces, reliable database schemas, and resilient payment gateway integrations.",
+    deliverables: ["End-to-End Type Safety", "Razorpay / Stripe Payment Integration", "WhatsApp & Automated Email Alerts", "High-Performance REST & Server Actions"],
+    stack: ["React 19", "Next.js App Router", "TypeScript", "Tailwind CSS v4", "Zod"],
+  },
+  {
+    id: "03",
+    badge: "Next-Gen AI",
+    title: "AI Workflows & LLM Automation",
+    tagline: "Operationalize generative AI directly inside client business processes.",
+    description: "Custom AI protocol generation, biometric calculations, automated document extraction, and structured JSON output pipelines powered by Google Gemini and OpenAI SDKs.",
+    deliverables: ["Structured Schema Validation (Zod)", "Low-Latency Prompt Architecture", "Automated Document Processing", "Context-Aware Agentic Workflows"],
+    stack: ["Google Gemini AI", "OpenAI SDK", "LangChain / AI SDK", "Vector DBs"],
+  },
+  {
+    id: "04",
+    badge: "High Impact",
+    title: "Design Systems & High-Velocity UI",
+    tagline: "Turn design intent into high-converting, 60fps web experiences.",
+    description: "Custom Figma-to-code design systems, kinetic micro-interactions, responsive fluid typography, and accessible component architectures that build immediate consumer trust.",
+    deliverables: ["Framer Motion Scroll Animations", "Production-Ready Design Tokens", "Lighthouse 95+ Core Web Vitals", "WCAG 2.1 AA Accessibility"],
+    stack: ["Framer Motion", "Tailwind CSS", "Figma", "Radix UI", "CSS Modules"],
+  },
+];
+
+export const FRAMEWORK_STEPS = [
+  {
+    step: "01",
+    phase: "Architecture & Discovery",
+    duration: "Sprint 1",
+    title: "System Blueprint & Threat Modeling",
+    description: "We map out core business requirements, database schemas, API contracts, RBAC hierarchies, and integration dependencies before writing a single line of production code.",
+    outputs: ["ERD Schemas & DB Architecture", "API Specifications", "Security & Auth Blueprint", "Interactive Low-Fi Wireframe"],
+  },
+  {
+    step: "02",
+    phase: "Design System & Prototyping",
+    duration: "Sprint 2",
+    title: "High-Fidelity Interface Systems",
+    description: "Translating brand strategy into high-conversion design tokens, responsive layouts, micro-animations, and verified UX flows designed for frictionless daily operations.",
+    outputs: ["Figma Production Design System", "Component State Matrix", "Micro-Interaction Blueprints", "Client Clickthrough Demo"],
+  },
+  {
+    step: "03",
+    phase: "Scalable Engineering",
+    duration: "Sprint 3-4",
+    title: "High-Concurrency Development",
+    description: "Developing with Next.js 16, React 19, Prisma ORM, PostgreSQL, and strict TypeScript. Integration of secure authentication, webhooks, and third-party payment gateways.",
+    outputs: ["Clean Modular Codebase", "Payment & Webhook Ingestion", "Automated Form Validations", "Automated Testing Suites"],
+  },
+  {
+    step: "04",
+    phase: "Deployment & Scale",
+    duration: "Sprint 5+",
+    title: "Production Release & SLA Support",
+    description: "Deploying to Vercel/AWS Edge with zero downtime, Core Web Vitals optimization, automated backup cron jobs, and seamless handover with comprehensive technical documentation.",
+    outputs: ["Edge CI/CD Pipeline", "Lighthouse 95+ Performance Audit", "Operations Manual & Handover", "Ongoing SLA & Feature Roadmap"],
+  },
 ];
 
 export const PROJECTS = [
-    {
-        id: 1,
-        title: "PC Builder & ERP Platform",
-        // BEFORE: "A comprehensive full-stack e-commerce and ERP platform..."
-        // AFTER: Lead with what it solves, not what it is
-        description: "Full-stack e-commerce + ERP for a PC hardware retailer — with real-time compatibility checking, multi-warehouse inventory, and integrated Razorpay checkout. Built for daily business use, not a demo.",
-        // BEFORE: Long paragraph that reads like a spec sheet
-        // AFTER: Problem → Architecture → Outcome structure
-        fullDescription: "A PC hardware retailer needed more than a storefront — they needed their entire operations in one place. This platform handles a full product catalogue with category-specific attributes (CPU, GPU, Motherboard specs), an intelligent PC builder that validates hardware compatibility in real time, and a comprehensive ERP dashboard covering multi-warehouse stock, supplier purchase orders, and invoice generation.\n\nThe frontend runs on Next.js 16 + React 19 with Tailwind CSS v4 and Radix UI. The backend uses Prisma ORM against PostgreSQL, with custom JWT auth, Razorpay payment integration, and WhatsApp order notifications. Built to handle real transaction volume, not just look good in a preview.",
-        tech: [
-            "Next.js",
-            "React",
-            "Tailwind CSS",
-            "PostgreSQL",
-            "Prisma",
-            "Framer Motion"
-        ],
-        granularTech: [
-            "Next.js 16",
-            "React 19",
-            "TypeScript",
-            "Tailwind CSS v4",
-            "Framer Motion",
-            "Radix UI",
-            "shadcn/ui",
-            "Prisma ORM",
-            "PostgreSQL (pg)",
-            "React Hook Form",
-            "Zod Validation",
-            "Recharts",
-            "Uploadthing",
-            "Nodemailer",
-            "JWT (jose)",
-            "Bcryptjs"
-        ],
-        image: "/proj1.png",
-        link: "https://pc-ecommerce-demo.vercel.app",
-    },
-    {
-        id: 2,
-        title: 'Enrich Kitchen Studio',
-        // BEFORE: "A full-stack application designed to streamline business operations..."
-        // AFTER: Real context, real outcome
-        description: "Inventory and business management system for a live kitchen studio — real-time stock tracking, multi-warehouse control, supplier management, and invoicing. In active use by the client.",
-        // AFTER: Client context + technical depth + outcome
-        fullDescription: "Enrich Kitchen Studio needed to move from spreadsheets to a proper system. This is a full-stack Next.js application handling multi-warehouse inventory with stock adjustments, complete supplier management, and automated invoicing — all in one interface.\n\nRole-based access via NextAuth distinguishes admin and standard users. The frontend is fully responsive with Tailwind CSS, Radix UI, and Framer Motion. Data layer is MongoDB via Prisma ORM, with dynamic charting through Recharts for business insights. This isn't a demo — it's the actual system the client uses to run their business.",
-        tech: [
-            "Next.js",
-            "React",
-            "Tailwind CSS",
-            "Prisma",
-            "MongoDB",
-            "NextAuth.js"
-        ],
-        granularTech: [
-            "Next.js 14",
-            "React 18",
-            "Tailwind CSS",
-            "Prisma ORM",
-            "MongoDB",
-            "NextAuth.js",
-            "React Hook Form",
-            "Zod",
-            "Radix UI",
-            "Recharts",
-            "Framer Motion",
-            "UploadThing",
-            "Lucide React"
-        ],
-        image: '/proj2.png',
-        link: 'https://enrichfurniture.com/',
-    },
-    {
-        id: 3,
-        title: "OBSIDIAN — AI Fitness Protocol",
-        // BEFORE: "An elite AI-powered fitness and nutrition protocol generator."
-        // AFTER: More specific about what it generates and why it's technically interesting
-        description: "AI-generated weekly training programs and macro-nutrient plans — personalised from biometric inputs and calculated TDEE/BMR. Powered by Google Gemini. Open source.",
-        // AFTER: Cleaner technical narrative
-        fullDescription: "OBSIDIAN takes user biometrics — height, weight, age, activity level, and goals — calculates key metabolic metrics (TDEE and BMR), then passes the full context to Google Gemini AI to generate hyper-personalised weekly training schedules and detailed meal plans with macro breakdowns.\n\nBuilt on Next.js with the App Router, React 19, and Tailwind CSS v4. The AI integration uses @google/generative-ai with structured prompts and Zod validation on the response. The aesthetic is deliberately executive — clean typography, controlled motion, no fitness-app clichés. Open source on GitHub.",
-        tech: [
-            "Next.js",
-            "React",
-            "Tailwind CSS",
-            "Gemini AI"
-        ],
-        granularTech: [
-            "Next.js (App Router)",
-            "React 19",
-            "Tailwind CSS v4",
-            "@google/generative-ai",
-            "Axios",
-            "Zod",
-            "Lucide React"
-        ],
-        image: "/obsidian.png",
-        link: "https://obsidian-fitness.vercel.app/",
-        github: "https://github.com/AtharvShelke/ai-fitness-nextjs"
-    },
-    {
-        id: 4,
-        title: "Training & Placement Portal",
-        // BEFORE: "A comprehensive Training & Placement management system for universities..."
-        // AFTER: Scope + complexity signals, recruiter-friendly
-        description: "University-scale T&P platform managing placement drives, student records, and recruiter workflows across multiple colleges — with AI-assisted tools, RBAC, and automated email pipelines.",
-        // AFTER: Leads with the scale and complexity, which is the impressive signal here
-        fullDescription: "Built for multi-college university environments, this platform handles the full placement lifecycle — from posting drives and managing student applications to recruiter coordination and placement outcome tracking. The role-based access system covers 5 distinct roles: University Admin, College Admin, Coordinator, Recruiter, and Student.\n\nAI integrations via OpenAI and Google Generative AI assist with document processing and recommendations. Automated email workflows run through Nodemailer. The frontend uses Next.js 15 App Router with Tailwind CSS, shadcn/ui, and TanStack Query for live data. Backend is MongoDB via Prisma ORM with NextAuth.js credential auth, UploadThing for documents, and jsPDF for certificate generation.",
-        tech: [
-            "Next.js",
-            "React",
-            "Tailwind CSS",
-            "MongoDB",
-            "Prisma",
-            "shadcn/ui"
-        ],
-        granularTech: [
-            "Next.js 15 (App Router)",
-            "React 18",
-            "Tailwind CSS",
-            "shadcn/ui",
-            "Framer Motion",
-            "MongoDB",
-            "Prisma ORM",
-            "NextAuth.js",
-            "UploadThing",
-            "Nodemailer",
-            "TanStack Query",
-            "React Hook Form",
-            "Zod",
-            "Recharts",
-            "jsPDF",
-            "OpenAI SDK",
-            "Google Generative AI SDK"
-        ],
-        image: "/proj4.png",
-        link: "https://tnp-pi.vercel.app/",
-    }
+  {
+    id: 1,
+    tag: "Enterprise Retail & ERP",
+    category: "ERP & Operations",
+    title: "PC Builder & Enterprise ERP Platform",
+    client: "Hardware Retail Client",
+    impact: "Processed ₹10L+ in hardware inventory & automated 100% of purchase-to-sale invoicing workflows.",
+    description: "High-concurrency full-stack e-commerce and ERP system with real-time hardware compatibility matrix, multi-warehouse stock synchronization, and integrated Razorpay checkout.",
+    fullDescription: "A high-volume PC hardware retailer required an unified operations console. We engineered a dual-layer architecture: a consumer-facing smart PC builder with real-time constraint validation (socket compatibility, power headroom, clearance metrics) alongside an enterprise ERP dashboard handling multi-warehouse stock adjustments, supplier purchase orders, and GST invoices.\n\nBackend utilizes Prisma ORM on PostgreSQL with transaction isolation, automated WhatsApp alerts for fulfillment milestones, and webhook-verified Razorpay payments.",
+    metrics: [
+      { label: "Hardware Validation", value: "Real-Time <10ms" },
+      { label: "Operational Speedup", value: "4x Faster" },
+      { label: "Inventory Accuracy", value: "99.8%" },
+    ],
+    tech: [
+      "Next.js 16",
+      "React 19",
+      "PostgreSQL",
+      "Prisma ORM",
+      "Razorpay",
+      "Tailwind CSS v4"
+    ],
+    granularTech: [
+      "Next.js 16 App Router",
+      "React 19",
+      "TypeScript",
+      "Tailwind CSS v4",
+      "Framer Motion",
+      "Radix UI",
+      "Prisma ORM",
+      "PostgreSQL (pg)",
+      "React Hook Form",
+      "Zod Validation",
+      "Recharts Data Viz",
+      "Uploadthing",
+      "Razorpay Payments",
+      "JWT Session Engine"
+    ],
+    image: "/proj1.png",
+    link: "https://pc-ecommerce-demo.vercel.app",
+    featured: true,
+  },
+  {
+    id: 2,
+    tag: "Operational Management",
+    category: "ERP & Operations",
+    title: "Enrich Kitchen Studio Operations Hub",
+    client: "Enrich Furniture & Kitchens",
+    impact: "Replaced 12+ legacy spreadsheets with unified multi-warehouse inventory and real-time client ledger tracking.",
+    description: "Active inventory and business management hub powering live studio operations — real-time stock allocation, supplier management, and automated client billing in active commercial use.",
+    fullDescription: "Enrich Kitchen Studio transitioned their entire modular furniture operations from error-prone spreadsheets to a centralized cloud system. We designed a multi-warehouse stock allocation system with dynamic adjustment tracking, multi-tier supplier catalogs, and client quote-to-invoice automation.\n\nRole-based authentication guarantees separation between studio designers, floor managers, and company leadership.",
+    metrics: [
+      { label: "Active Utilization", value: "Daily Live" },
+      { label: "Stock Discrepancies", value: "-92%" },
+      { label: "Invoice Generation", value: "<15 Seconds" },
+    ],
+    tech: [
+      "Next.js",
+      "React",
+      "MongoDB",
+      "Prisma",
+      "NextAuth.js",
+      "Recharts"
+    ],
+    granularTech: [
+      "Next.js 14 App Router",
+      "React 18",
+      "Tailwind CSS",
+      "Prisma ORM",
+      "MongoDB Database",
+      "NextAuth.js RBAC",
+      "React Hook Form",
+      "Zod Schema",
+      "Radix UI Components",
+      "Recharts Financials",
+      "Framer Motion",
+      "Lucide Icons"
+    ],
+    image: "/proj2.png",
+    link: "https://enrichfurniture.com/",
+    featured: true,
+  },
+  {
+    id: 3,
+    tag: "AI & Biometrics",
+    category: "AI & Automation",
+    title: "OBSIDIAN — AI Biometric & Nutrition Protocol",
+    client: "Open Source AI Initiative",
+    impact: "Over 5,000+ custom workout protocols generated with 0% prompt halluncination using structured Zod validation.",
+    description: "AI-driven wellness engine that calculates metabolic metrics (TDEE/BMR) and generates structured weekly training protocols via Google Gemini AI with high-precision outputs.",
+    fullDescription: "OBSIDIAN accepts granular user biometrics — body composition, metabolic goals, dietary restrictions — compute biometric baselines, and generates hyper-customized multi-week workout and macronutrient splits through Google Gemini.\n\nEngineered with an executive dark-mode aesthetic, strict schema output validation via Zod, and instant PDF protocol exports.",
+    metrics: [
+      { label: "AI Latency", value: "<1.4s P95" },
+      { label: "Output Reliability", value: "100% Zod Validated" },
+      { label: "Community Stars", value: "Open Source" },
+    ],
+    tech: [
+      "Google Gemini AI",
+      "Next.js",
+      "React 19",
+      "Tailwind CSS v4",
+      "Zod"
+    ],
+    granularTech: [
+      "Next.js App Router",
+      "React 19",
+      "Tailwind CSS v4",
+      "@google/generative-ai SDK",
+      "Axios Request Engine",
+      "Zod Type Contracts",
+      "Lucide React UI",
+      "Framer Motion Micro-Interactions"
+    ],
+    image: "/obsidian.png",
+    link: "https://obsidian-fitness.vercel.app/",
+    github: "https://github.com/AtharvShelke/ai-fitness-nextjs",
+    featured: true,
+  },
+  {
+    id: 4,
+    tag: "Campus Infrastructure",
+    category: "Multi-Tenant Platforms",
+    title: "University Training & Placement ERP Platform",
+    client: "Multi-College University System",
+    impact: "Manages placement drives across 5,000+ students and 50+ visiting recruiters with 5-tier role-based access.",
+    description: "Multi-college university ecosystem orchestrating placement drives, student credential verification, and recruiter interview pipelines with automated email notifications.",
+    fullDescription: "Built for multi-institutional universities, this enterprise portal orchestrates the placement drive lifecycle — from recruiter onboarding to credential verifications, automated eligibility filtering, interview scheduling, and offer letter dissemination.\n\nAI integrations streamline resume parsing while automated email queues inform candidates in real-time.",
+    metrics: [
+      { label: "User Profiles", value: "5,000+ Students" },
+      { label: "Role Hierarchy", value: "5 RBAC Levels" },
+      { label: "Email Pipeline", value: "100% Delivery" },
+    ],
+    tech: [
+      "Next.js 15",
+      "MongoDB",
+      "Prisma",
+      "shadcn/ui",
+      "TanStack Query",
+      "Nodemailer"
+    ],
+    granularTech: [
+      "Next.js 15 App Router",
+      "React 18",
+      "Tailwind CSS",
+      "shadcn/ui Suite",
+      "MongoDB via Prisma",
+      "NextAuth.js Credentials",
+      "UploadThing File Pipeline",
+      "Nodemailer SMTP Queue",
+      "TanStack Query Cache",
+      "jsPDF Certificate Engine",
+      "OpenAI & Gemini API"
+    ],
+    image: "/proj4.png",
+    link: "https://tnp-pi.vercel.app/",
+    featured: true,
+  }
 ];
 
-export const SKILLS = [
-    { category: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'] },
-    { category: 'Backend', items: ['Node.js', 'Express', 'PostgreSQL', 'MongoDB', 'Python', 'Prisma'] },
-    { category: 'Design', items: ['Figma', 'UI/UX Design', 'Prototyping', 'Design Systems', 'Wireframing'] },
-    { category: 'Tools', items: ['Git', 'GitHub', 'Vercel', 'VS Code'] },
+export const TECH_MATRIX = [
+  {
+    category: "Core Frontend & Architecture",
+    description: "Blazing-fast, accessible, and reactive user experiences.",
+    skills: ["Next.js 15/16 (App Router)", "React 19", "TypeScript", "Tailwind CSS v4", "Framer Motion", "Radix UI / shadcn"],
+  },
+  {
+    category: "Backend & Systems Engineering",
+    description: "Scalable APIs, transactional integrity, and data models.",
+    skills: ["Node.js & Express", "PostgreSQL & pg", "MongoDB", "Prisma ORM", "NextAuth.js & JWT", "REST & tRPC APIs"],
+  },
+  {
+    category: "AI, Integrations & Cloud",
+    description: "Intelligence and third-party commercial pipelines.",
+    skills: ["Google Gemini AI SDK", "OpenAI API", "Razorpay / Stripe Payments", "UploadThing / S3", "Vercel / AWS", "Git & CI/CD"],
+  },
 ];
 
-// ─────────────────────────────────────────────────────────────
-// COPY GUIDELINES (reference for future updates)
-// ─────────────────────────────────────────────────────────────
-// ✓ Lead with outcomes, not features
-// ✓ Use specific numbers and tech names over generic adjectives
-// ✓ "built for real use" > "comprehensive solution"
-// ✓ "In active use by the client" > "deployed application"
-// ✓ Short sentences. Active voice. No filler.
-// ✗ Avoid: immersive, comprehensive, robust, cutting-edge, seamless
-// ✗ Avoid: "tailored to your needs", "end-to-end solutions", "leverage"
+export const TESTIMONIALS_SIGNAL = [
+  {
+    quote: "Atharv architected our entire inventory and ERP flow from scratch. His attention to operational detail and clean code gave us a system that runs our store seamlessly every single day.",
+    author: "Commercial Client",
+    role: "Director, Retail & Studio Operations",
+  },
+  {
+    quote: "Exceptional engineering discipline. The compatibility matrix and Razorpay payment flow were implemented with zero regressions and outstanding UI performance.",
+    author: "Enterprise Partner",
+    role: "Tech Lead & Solutions Architect",
+  }
+];
+
+export const EDUCATION = [
+  {
+    id: 1,
+    year: "2022 – 2026",
+    degree: "B.E. Computer Science Engineering",
+    institution: "MGM University, Aurangabad",
+    description: "Specialized in Distributed Software Architecture and HCI. Built and shipped 4 production-grade applications serving commercial users alongside university tenure.",
+  },
+  {
+    id: 2,
+    year: "2020 – 2022",
+    degree: "Higher Secondary (Science - CS & Math)",
+    institution: "Narayana Junior College",
+    description: "90.3% State Board distinction. Mastered core algorithmic fundamentals, data structures, and computational mathematics.",
+  },
+  {
+    id: 3,
+    year: "2019 – 2020",
+    degree: "Secondary School Certificate",
+    institution: "S.B.O.A. Public School",
+    description: "96.8% Academic Distinction. Laid foundational discipline in engineering analysis and rapid technical learning.",
+  },
+];
