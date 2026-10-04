@@ -1,19 +1,19 @@
 import { motion } from 'framer-motion';
-import { EDUCATION } from '../constants';
+import { EXPERIENCE } from '../constants';
 import { Card } from './ui/Card';
 import { Badge } from './ui/Badge';
-import { GraduationCap } from 'lucide-react';
+import { Briefcase } from 'lucide-react';
 
-export default function Education() {
+export default function Experience() {
   return (
-    <section id="education" className="py-24 bg-[var(--bg-base)] relative overflow-hidden">
+    <section id="experience" className="py-24 bg-[var(--bg-elevation-1)] border-t border-[var(--border-default)] relative overflow-hidden">
       <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16">
           <Badge variant="primary" className="mb-4 uppercase tracking-wider font-mono">
-            <GraduationCap className="w-3.5 h-3.5" /> Academic Background
+            <Briefcase className="w-3.5 h-3.5" /> Career History
           </Badge>
           <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold font-[#font-heading] uppercase tracking-tight">
-            COMPUTER SCIENCE <span className="text-[#F27D26]">FOUNDATIONS</span>
+            ENGINEERING <span className="text-[#F27D26]">EXPERIENCE</span>
           </h2>
           <div className="w-20 h-[3px] bg-[#F27D26] rounded-full mt-6 shadow-[0_0_12px_rgba(242,125,38,0.5)]" />
         </div>
@@ -22,7 +22,7 @@ export default function Education() {
           {/* Vertical Timeline Bar */}
           <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] bg-[var(--border-default)] -translate-x-1/2" />
 
-          {EDUCATION.map((item, index) => (
+          {EXPERIENCE.map((item, index) => (
             <motion.div
               key={item.id}
               initial={{ opacity: 0, y: 30 }}
@@ -40,17 +40,26 @@ export default function Education() {
               <div className="w-full md:w-5/12 pl-12 md:pl-0">
                 <Card variant="interactive" className="p-6">
                   <span className="text-[#F27D26] font-mono text-xs font-bold uppercase tracking-wider mb-2 block">
-                    {item.year}
+                    {item.period}
                   </span>
                   <h3 className="text-xl font-bold tracking-tight text-[var(--text-primary)] mb-1">
-                    {item.degree}
+                    {item.role}
                   </h3>
                   <h4 className="text-xs font-mono font-semibold text-[var(--text-tertiary)] uppercase tracking-wider mb-3">
-                    {item.institution}
+                    {item.company}
                   </h4>
-                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed mb-4">
                     {item.description}
                   </p>
+
+                  <ul className="space-y-2 border-t border-[var(--border-default)] pt-3">
+                    {item.highlights.map((bullet, i) => (
+                      <li key={i} className="flex items-start gap-2 text-xs text-[var(--text-secondary)]">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#F27D26] mt-1 shrink-0" />
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </Card>
               </div>
 

@@ -12,7 +12,7 @@ const MagneticLink = ({ children, href }: { children: React.ReactNode; href: str
     const { height, width, left, top } = ref.current.getBoundingClientRect();
     const middleX = clientX - (left + width / 2);
     const middleY = clientY - (top + height / 2);
-    setPosition({ x: middleX * 0.3, y: middleY * 0.3 });
+    setPosition({ x: middleX * 0.25, y: middleY * 0.25 });
   };
 
   const reset = () => setPosition({ x: 0, y: 0 });

@@ -1,8 +1,41 @@
+import { useState } from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, Mail, MapPin, Phone, ShieldCheck, Clock, MessageSquare } from 'lucide-react';
+import { ArrowRight, Mail, MapPin, Phone, ShieldCheck, Clock, CheckCircle2 } from 'lucide-react';
 import { TESTIMONIALS_SIGNAL } from '../constants.js';
 
 export default function Contact() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitStatus('success');
+        form.reset();
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="py-24 bg-surface relative overflow-hidden border-t border-white/5">
       <div className="container mx-auto px-6 relative z-10">
@@ -119,6 +152,7 @@ export default function Contact() {
               className="space-y-6"
               action="https://api.web3forms.com/submit"
               method="POST"
+              onSubmit={handleSubmit}
             >
               <input
                 type="hidden"
@@ -184,12 +218,25 @@ export default function Contact() {
                 />
               </div>
 
+              {submitStatus === 'success' && (
+                <div className="p-4 rounded-xl bg-emerald-400/10 border border-emerald-400/20 text-emerald-400 text-xs font-mono flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4" /> Message sent successfully! We will reply within 24 hours.
+                </div>
+              )}
+
+              {submitStatus === 'error' && (
+                <div className="p-4 rounded-xl bg-rose-400/10 border border-rose-400/20 text-rose-400 text-xs font-mono">
+                  Submission error. Please email directly to atharvshelke964@gmail.com.
+                </div>
+              )}
+
               <button
                 type="submit"
-                className="group relative px-8 py-5 bg-text text-bg font-semibold rounded-full overflow-hidden transition-all hover:shadow-[0_20px_50px_-10px_rgba(242,125,38,0.35)] w-full flex items-center justify-center gap-3 text-base"
+                disabled={isSubmitting}
+                className="group relative px-8 py-5 bg-text text-bg font-semibold rounded-full overflow-hidden transition-all hover:shadow-[0_20px_50px_-10px_rgba(242,125,38,0.35)] w-full flex items-center justify-center gap-3 text-base disabled:opacity-50"
               >
                 <span className="relative z-10 flex items-center gap-2">
-                  Transmit Technical Specification
+                  {isSubmitting ? 'Transmitting...' : 'Transmit Technical Specification'}
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
                 </span>
                 <div className="absolute inset-0 bg-accent origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out z-0" />

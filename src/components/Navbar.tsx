@@ -15,6 +15,8 @@ const navItems = [
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState('home');
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const observerOptions = {

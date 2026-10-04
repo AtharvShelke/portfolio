@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'motion/react';
-import { ExternalLink, Github, X, ArrowRight, CheckCircle2, TrendingUp, Cpu, Server } from 'lucide-react';
+import { ExternalLink, Github, X, ArrowRight, TrendingUp, Cpu, Server } from 'lucide-react';
 import { PROJECTS } from '../constants.js';
 
 const CATEGORIES = ['All Systems', 'ERP & Operations', 'AI & Automation', 'Multi-Tenant Platforms'];
@@ -22,7 +22,6 @@ const CaseStudyCard = ({
 
   const smoothProgress = useSpring(scrollYProgress, { stiffness: 140, damping: 28, mass: 0.1 });
   const yImg = useTransform(smoothProgress, [0, 1], ['-6%', '6%']);
-
 
   return (
     <motion.div
