@@ -510,11 +510,11 @@ export const EXPERIENCE: ExperienceEntry[] = [
   {
     id: 1,
     period: "2024 – Present",
-    role: "Lead Systems Architect & Co-Founder",
+    role: "Full-Stack Web Developer",
     company: "DiscoverrLabs.AI",
-    description: "Architected and launched document generation platforms and agentic workflows.",
+    description: "Developed and launched document generation platforms and agentic workflows.",
     highlights: [
-      "Architected core web platforms using Next.js App Router, React 19, and Tailwind CSS.",
+      "Built core web platforms using Next.js App Router, React 19, and Tailwind CSS.",
       "Integrated Google Gemini SDK for automated content generation and structured AI workflows.",
       "Engineered role-based access control (RBAC) and multi-tenant document management pipelines.",
     ],
