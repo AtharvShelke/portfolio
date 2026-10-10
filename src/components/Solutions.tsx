@@ -25,8 +25,11 @@ export default function Solutions() {
                 Core Capabilities & Enterprise Offerings
               </p>
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-7xl font-display font-bold uppercase tracking-tight">
-              Enterprise <span className="text-stroke">Solutions</span>
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-display font-bold uppercase tracking-tight text-text">
+              Enterprise{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-amber-300 to-accent">
+                Solutions
+              </span>
             </h2>
             <div className="w-20 h-1 bg-accent mt-6" />
           </div>

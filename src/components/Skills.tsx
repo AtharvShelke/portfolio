@@ -11,8 +11,11 @@ export default function Skills() {
             <Terminal className="w-3.5 h-3.5" />
             <span>Systems & Architecture Matrix</span>
           </div>
-          <h2 className="text-4xl sm:text-5xl md:text-7xl font-display font-bold uppercase tracking-tight">
-            Technical <span className="text-stroke">Matrix</span>
+          <h2 className="text-4xl sm:text-5xl md:text-7xl font-display font-bold uppercase tracking-tight text-text">
+            Technical{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-amber-300 to-accent">
+              Matrix
+            </span>
           </h2>
           <div className="w-16 h-1 bg-accent mx-auto mt-6 mb-6" />
           <p className="text-text-muted text-base font-light leading-relaxed">

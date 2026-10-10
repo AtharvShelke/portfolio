@@ -70,8 +70,11 @@ Let's schedule technical scoping to finalize details.`;
               <Calculator className="w-3.5 h-3.5" />
               <span>Interactive Scoping Engine</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-6xl font-display font-bold uppercase tracking-tight">
-              Project Scope <span className="text-stroke">Estimator</span>
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-display font-bold uppercase tracking-tight text-text">
+              Project Scope{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-amber-300 to-accent">
+                Estimator
+              </span>
             </h2>
             <div className="w-16 h-1 bg-accent mx-auto mt-4 mb-4" />
             <p className="text-text-muted text-sm sm:text-base font-light max-w-xl mx-auto">

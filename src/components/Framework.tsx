@@ -27,8 +27,11 @@ export default function Framework() {
             <Zap className="w-3.5 h-3.5" />
             <span>High-Velocity Execution Model</span>
           </div>
-          <h2 className="text-4xl sm:text-5xl md:text-7xl font-display font-bold uppercase tracking-tight">
-            How We <span className="text-stroke">Deliver</span>
+          <h2 className="text-4xl sm:text-5xl md:text-7xl font-display font-bold uppercase tracking-tight text-text">
+            How We{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-amber-300 to-accent">
+              Deliver
+            </span>
           </h2>
           <div className="w-16 h-1 bg-accent mx-auto mt-6 mb-6" />
           <p className="text-text-muted text-base sm:text-lg font-light leading-relaxed">

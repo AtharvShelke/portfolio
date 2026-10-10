@@ -17,6 +17,7 @@ import {
   Zap,
 } from 'lucide-react';
 import { PROJECTS, Project } from '../constants.js';
+import type Lenis from 'lenis';
 
 const CATEGORIES = ['All Systems', 'ERP & Operations', 'AI & Automation', 'Multi-Tenant Platforms'] as const;
 
@@ -330,7 +331,10 @@ export default function Projects() {
               </p>
             </div>
             <h2 className="text-4xl sm:text-5xl md:text-7xl font-display font-bold uppercase tracking-tight text-text">
-              Selected <span className="text-stroke">Work</span>
+              Selected{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-amber-300 to-accent">
+                Work
+              </span>
             </h2>
             <p className="text-text-muted text-sm sm:text-base mt-4 max-w-xl font-light">
               End-to-end architectures, high-concurrency ERP suites, and autonomous AI pipelines engineered for verified commercial scale.
@@ -462,7 +466,12 @@ export default function Projects() {
               transition={{ type: 'spring', damping: 26, stiffness: 240 }}
               className="fixed inset-0 z-[130] flex items-center justify-center p-3 sm:p-6 pointer-events-none"
             >
-              <div className="relative w-full max-w-5xl max-h-[92vh] overflow-y-auto hide-scrollbar bg-[#0C0E14] border border-white/15 rounded-3xl shadow-2xl pointer-events-auto flex flex-col">
+              <div
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="modal-project-title"
+                className="relative w-full max-w-5xl max-h-[92vh] overflow-y-auto hide-scrollbar bg-[#0C0E14] border border-white/15 rounded-3xl shadow-2xl pointer-events-auto flex flex-col"
+              >
                 {/* Close Button */}
                 <button
                   type="button"
@@ -487,7 +496,7 @@ export default function Projects() {
                       <span className="px-3 py-1 rounded-full text-xs font-mono bg-accent/20 border border-accent/40 text-accent mb-2 inline-block">
                         {selectedProject.tag}
                       </span>
-                      <h3 className="text-2xl sm:text-4xl font-display font-bold text-text">
+                      <h3 id="modal-project-title" className="text-2xl sm:text-4xl font-display font-bold text-text">
                         {selectedProject.title}
                       </h3>
                     </div>
@@ -555,11 +564,37 @@ export default function Projects() {
                       </div>
 
                       <div className="flex flex-col gap-3">
+                        <button
+                          onClick={() => {
+                            const projectTitle = selectedProject.title;
+                            setSelectedProject(null);
+                            const subjectBox = document.getElementById('subject') as HTMLInputElement | null;
+                            const messageBox = document.getElementById('message') as HTMLTextAreaElement | null;
+                            if (subjectBox) subjectBox.value = `Architecture Inquiry: ${projectTitle}`;
+                            if (messageBox) {
+                              messageBox.value = `Hi Atharv, I reviewed the case study for "${projectTitle}" and would like to build a system with similar architectural specifications. Let's schedule technical scoping.`;
+                            }
+                            const contactSection = document.getElementById('contact');
+                            if (contactSection) {
+                              const lenis = (window as unknown as { __lenis?: Lenis }).__lenis;
+                              if (lenis) {
+                                lenis.scrollTo(contactSection, { offset: -70, duration: 1.2 });
+                              } else {
+                                contactSection.scrollIntoView({ behavior: 'smooth' });
+                              }
+                            }
+                          }}
+                          className="flex items-center justify-center gap-2 w-full py-3.5 bg-accent hover:bg-accent-hover text-bg font-semibold rounded-2xl transition-all text-sm shadow-lg shadow-accent/25 cursor-pointer"
+                        >
+                          <span>Inquire About Similar Architecture</span>
+                          <ArrowRight className="w-4 h-4" />
+                        </button>
+
                         <a
                           href={selectedProject.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center justify-center gap-2 w-full py-3.5 bg-text text-bg font-semibold rounded-2xl hover:bg-accent transition-colors text-sm shadow-lg"
+                          className="flex items-center justify-center gap-2 w-full py-3 bg-white/[0.06] hover:bg-white/15 text-text font-medium rounded-2xl transition-colors text-sm border border-white/10"
                         >
                           <span>Visit Live Production Site</span>
                           <ExternalLink className="w-4 h-4" />
@@ -570,10 +605,10 @@ export default function Projects() {
                             href={selectedProject.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center justify-center gap-2 w-full py-3.5 glass-card text-text font-medium rounded-2xl hover:border-accent hover:text-accent transition-colors text-sm"
+                            className="flex items-center justify-center gap-2 w-full py-2.5 glass-card text-text-muted hover:text-text font-mono text-xs rounded-2xl hover:border-accent transition-colors"
                           >
-                            <span>View Source Repository</span>
-                            <Github className="w-4 h-4" />
+                            <span>View Source Code</span>
+                            <Github className="w-3.5 h-3.5" />
                           </a>
                         )}
                       </div>

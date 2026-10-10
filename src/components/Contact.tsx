@@ -56,9 +56,11 @@ export default function Contact() {
                 </p>
               </div>
 
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold uppercase tracking-tight leading-none mb-6">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold uppercase tracking-tight leading-none mb-6 text-text">
                 Let's Build <br />
-                <span className="text-stroke">Your System.</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-amber-300 to-accent">
+                  Your System.
+                </span>
               </h2>
 
               <div className="w-16 h-1 bg-accent mb-6" />
@@ -225,8 +227,14 @@ export default function Contact() {
               )}
 
               {submitStatus === 'error' && (
-                <div className="p-4 rounded-xl bg-rose-400/10 border border-rose-400/20 text-rose-400 text-xs font-mono">
-                  Submission error. Please email directly to atharvshelke964@gmail.com.
+                <div className="p-4 rounded-xl bg-rose-400/10 border border-rose-400/20 text-rose-400 text-xs font-mono space-y-2">
+                  <p>Submission gateway unreachable. Please send directly via email:</p>
+                  <a
+                    href="mailto:atharvshelke964@gmail.com?subject=Technical%20Consultation%20Inquiry&body=Hi%20Atharv,%20I%20would%20like%20to%20discuss%20a%20project%20inquiry."
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-rose-400/20 hover:bg-rose-400/30 text-rose-300 font-semibold transition-colors"
+                  >
+                    Open Pre-filled Mail Client ↗
+                  </a>
                 </div>
               )}
 

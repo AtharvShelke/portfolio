@@ -1,22 +1,24 @@
 import { motion, LayoutGroup } from 'motion/react';
 import { useEffect, useState } from 'react';
-import { Home, Briefcase, Layers, GitFork, Calculator, User, Mail } from 'lucide-react';
+import { Home, Briefcase, Layers, GitFork, Calculator, User, Mail, FileText } from 'lucide-react';
 import type Lenis from 'lenis';
+
+interface NavbarProps {
+  onOpenResume?: () => void;
+}
 
 const navItems = [
   { name: 'Overview', href: '#home', id: 'home', icon: Home },
   { name: 'Solutions', href: '#solutions', id: 'solutions', icon: Layers },
-  { name: 'Case Studies', href: '#work', id: 'work', icon: Briefcase },
-  { name: 'Execution', href: '#framework', id: 'framework', icon: GitFork },
+  { name: 'Work', href: '#work', id: 'work', icon: Briefcase },
+  { name: 'Process', href: '#framework', id: 'framework', icon: GitFork },
+  { name: 'Track Record', href: '#experience', id: 'experience', icon: User },
   { name: 'Scoping', href: '#estimator', id: 'estimator', icon: Calculator },
-  { name: 'Philosophy', href: '#about', id: 'about', icon: User },
   { name: 'Contact', href: '#contact', id: 'contact', icon: Mail },
 ];
 
-export default function Navbar() {
+export default function Navbar({ onOpenResume }: NavbarProps) {
   const [activeSection, setActiveSection] = useState('home');
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const observerOptions = {
@@ -77,7 +79,7 @@ export default function Navbar() {
     >
       <LayoutGroup>
         <nav
-          className="pointer-events-auto flex items-center p-1.5 sm:p-2 rounded-full glass-panel shadow-[0_20px_50px_rgba(0,0,0,0.6)] border border-white/10"
+          className="pointer-events-auto flex items-center gap-1 p-1.5 sm:p-2 rounded-full glass-panel shadow-[0_20px_50px_rgba(0,0,0,0.6)] border border-white/10"
           style={{ backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)' }}
         >
           {navItems.map((item) => {
@@ -88,8 +90,8 @@ export default function Navbar() {
                 key={item.name}
                 href={item.href}
                 onClick={(e) => handleClick(e, item.id)}
-                className={`relative flex items-center justify-center px-3 sm:px-4 py-2 sm:py-2 rounded-full outline-none transition-colors duration-300 ${
-                  isActive ? 'text-white font-medium' : 'text-white/40 hover:text-white/90 hover:bg-white/5'
+                className={`relative flex items-center justify-center px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full outline-none transition-colors duration-300 ${
+                  isActive ? 'text-white font-medium' : 'text-white/50 hover:text-white/90 hover:bg-white/5'
                 }`}
               >
                 {isActive && (
@@ -105,13 +107,25 @@ export default function Navbar() {
                     className={`w-4 h-4 sm:w-3.5 sm:h-3.5 ${isActive ? 'text-accent' : ''}`}
                     strokeWidth={isActive ? 2.5 : 2}
                   />
-                  <span className="hidden md:block text-xs font-semibold tracking-wide">
+                  <span className="hidden lg:block text-xs font-semibold tracking-wide">
                     {item.name}
                   </span>
                 </span>
               </a>
             );
           })}
+
+          {/* Quick CV Trigger */}
+          {onOpenResume && (
+            <button
+              onClick={onOpenResume}
+              className="ml-1 sm:ml-2 px-3 py-1.5 sm:py-2 rounded-full bg-accent/15 hover:bg-accent text-accent hover:text-bg border border-accent/30 hover:border-accent transition-all duration-300 flex items-center gap-1.5 text-xs font-mono font-semibold shadow-sm cursor-pointer"
+              title="Preview Curriculum Vitae"
+            >
+              <FileText className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">CV</span>
+            </button>
+          )}
         </nav>
       </LayoutGroup>
     </motion.div>

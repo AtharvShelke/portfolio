@@ -1,8 +1,12 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'motion/react';
-import { ShieldCheck, Cpu, Code2, Compass, ArrowUpRight } from 'lucide-react';
+import { ShieldCheck, Cpu, Code2, Compass, ArrowUpRight, FileText } from 'lucide-react';
 
-export default function About() {
+interface AboutProps {
+  onOpenResume?: () => void;
+}
+
+export default function About({ onOpenResume }: AboutProps) {
   const containerRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -13,14 +17,13 @@ export default function About() {
   const y1 = useTransform(smoothProgress, [0, 1], [40, -40]);
   const y2 = useTransform(smoothProgress, [0, 1], [-30, 30]);
 
-
   return (
     <section
       id="about"
       ref={containerRef}
       className="py-24 relative overflow-hidden bg-surface border-t border-b border-white/5"
     >
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-6 relative z-10 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           {/* Left Column: Vision & Philosophy */}
           <motion.div
@@ -34,11 +37,13 @@ export default function About() {
               </p>
             </div>
 
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-display font-bold leading-tight">
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-display font-bold leading-tight text-text">
               We engineer architectures where{' '}
               <span className="text-accent italic">high visual polish</span>{' '}
               meets{' '}
-              <span className="text-stroke">bulletproof reliability.</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-amber-300 to-accent">
+                bulletproof reliability.
+              </span>
             </h2>
 
             <div className="w-20 h-1 bg-accent" />
@@ -102,15 +107,25 @@ export default function About() {
                 </div>
               </div>
 
-              <div className="pt-4">
-                <a
-                  href="/Atharv_Shelke_CV.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full py-3.5 rounded-full border border-white/15 hover:border-accent hover:text-accent font-mono text-xs flex items-center justify-center gap-2 transition-colors"
-                >
-                  Download Complete Engineering Dossier (CV) <ArrowUpRight className="w-3.5 h-3.5" />
-                </a>
+              <div className="pt-4 flex flex-col gap-2.5">
+                {onOpenResume ? (
+                  <button
+                    onClick={onOpenResume}
+                    className="w-full py-3.5 rounded-full bg-accent text-bg hover:bg-accent-hover font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-all shadow-md shadow-accent/20 cursor-pointer"
+                  >
+                    <FileText className="w-3.5 h-3.5" />
+                    <span>Preview Engineering Dossier (CV)</span>
+                  </button>
+                ) : (
+                  <a
+                    href="/Atharv_Shelke_CV.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-3.5 rounded-full border border-white/15 hover:border-accent hover:text-accent font-mono text-xs flex items-center justify-center gap-2 transition-colors"
+                  >
+                    Download Engineering Dossier (CV) <ArrowUpRight className="w-3.5 h-3.5" />
+                  </a>
+                )}
               </div>
             </div>
           </motion.div>
