@@ -4,15 +4,15 @@ import { Calculator, Check, ArrowRight, Sparkles, Layers, ShieldCheck, Database,
 import type Lenis from 'lenis';
 
 const MODULES = [
-  { id: 'custom-erp', label: 'Custom ERP & Inventory Dashboard', timeWeeks: 3, icon: Database, desc: 'Multi-warehouse, stock adjustments, GST invoicing' },
-  { id: 'fullstack-web', label: 'Next.js 16 Web Application', timeWeeks: 2, icon: Layers, desc: 'React 19, TypeScript, Tailwind v4, Responsive UI' },
-  { id: 'ai-pipeline', label: 'AI Protocol & Gemini LLM Integration', timeWeeks: 2, icon: Cpu, desc: 'Prompt engineering, structured Zod validation, PDF output' },
-  { id: 'rbac-auth', label: 'Multi-Tier Role-Based Auth (RBAC)', timeWeeks: 1, icon: ShieldCheck, desc: 'NextAuth / JWT, permissions matrix, admin portal' },
-  { id: 'payments', label: 'Payment Gateway (Razorpay/Stripe)', timeWeeks: 1, icon: Sparkles, desc: 'Webhook verification, transaction ledger, auto-receipts' },
+  { id: 'ai-lead-intake', label: 'Autonomous Inbound AI & Lead Attribution Engine', timeWeeks: 2, icon: Cpu, desc: 'Sub-120ms multi-channel intake, Google Gemini 2.0 intent scoring, Slack & CRM deal routing' },
+  { id: 'deterministic-llm', label: 'Deterministic LLM & Document Synthesis Pipeline', timeWeeks: 2, icon: Sparkles, desc: 'Strict runtime Zod validation, prompt engineering, structured JSON outputs, PDF protocol generation' },
+  { id: 'vector-rag', label: 'Enterprise Vector RAG & Semantic Knowledge Discovery', timeWeeks: 2, icon: Database, desc: 'High-density vector embeddings, sub-50ms hybrid search, private contextual copilots' },
+  { id: 'custom-erp', label: 'Custom Enterprise ERP & Operations Dashboard', timeWeeks: 3, icon: Layers, desc: 'Multi-warehouse stock synchronization, real-time constraint matrices, automated GST invoicing' },
+  { id: 'rbac-telemetry', label: 'Multi-Tenant RBAC Security & Telemetry Hub', timeWeeks: 1, icon: ShieldCheck, desc: 'NextAuth JWT guards, audit logging, role separation, and rate limiting' },
 ];
 
 export default function ScopeEstimator() {
-  const [selectedModules, setSelectedModules] = useState<string[]>(['custom-erp', 'rbac-auth', 'payments']);
+  const [selectedModules, setSelectedModules] = useState<string[]>(['ai-lead-intake', 'deterministic-llm', 'rbac-telemetry']);
   const [timelineMode, setTimelineMode] = useState<'accelerated' | 'standard'>('standard');
 
   const toggleModule = (id: string) => {
@@ -34,10 +34,11 @@ export default function ScopeEstimator() {
       .filter(Boolean)
       .join(', ');
 
-    const text = `Hi Atharv, I configured an initial project blueprint:
-- Target Architecture: ${moduleNames}
+    const text = `Hi Atharv, I configured an AI solution blueprint via your brochure estimator:
+- Configured AI Modules: ${moduleNames}
 - Target Timeline: ${calculatedWeeks} Weeks (${timelineMode === 'accelerated' ? 'Accelerated Sprint' : 'Standard Sprint'})
-Let's schedule technical scoping to finalize details.`;
+- Required SLAs: Zero hallucination, sub-150ms execution
+Let's schedule a technical architecture scoping session.`;
 
     const messageBox = document.getElementById('message') as HTMLTextAreaElement | null;
     const subjectBox = document.getElementById('subject') as HTMLInputElement | null;
@@ -45,7 +46,7 @@ Let's schedule technical scoping to finalize details.`;
       messageBox.value = text;
     }
     if (subjectBox) {
-      subjectBox.value = `Custom Architecture Scope (${selectedModules.length} Modules)`;
+      subjectBox.value = `AI Solution Scope (${selectedModules.length} Modules)`;
     }
 
     const contactSection = document.getElementById('contact');
@@ -68,17 +69,17 @@ Let's schedule technical scoping to finalize details.`;
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-mono mb-4">
               <Calculator className="w-3.5 h-3.5" />
-              <span>Interactive Scoping Engine</span>
+              <span>Interactive AI Scoping Engine</span>
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-6xl font-display font-bold uppercase tracking-tight text-text">
-              Project Scope{' '}
+              AI Solution{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-amber-300 to-accent">
                 Estimator
               </span>
             </h2>
             <div className="w-16 h-1 bg-accent mx-auto mt-4 mb-4" />
             <p className="text-text-muted text-sm sm:text-base font-light max-w-xl mx-auto">
-              Select your required architectural modules below to generate an instantaneous engineering scope & delivery timeline estimation.
+              Configure your desired AI capabilities and systems to calculate estimated turnaround time, recommended cloud architecture, and delivery cadence.
             </p>
           </div>
 

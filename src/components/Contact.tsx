@@ -71,7 +71,7 @@ export default function Contact() {
 
               <div className="mt-6 inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-emerald-400/10 border border-emerald-400/20 text-xs font-mono text-emerald-400">
                 <Clock className="w-3.5 h-3.5" />
-                <span>Response Guarantee: Under 24 Hours</span>
+                <span>Response Guarantee: Guaranteed Under 4 Hours · Direct Architect Access</span>
               </div>
             </div>
 
@@ -143,10 +143,10 @@ export default function Contact() {
           >
             <div className="mb-8">
               <h3 className="text-2xl sm:text-3xl font-display font-bold text-text mb-2">
-                Project Specification Brief
+                Book Technical Architecture Session
               </h3>
               <p className="text-sm text-text-muted font-light">
-                Submit your target deliverables, timeline, or inquiries directly to the engineering team.
+                Discuss your AI pipeline, autonomous lead triage, or enterprise ERP directly with Atharv. Zero sales pressure, 100% technical architectural focus.
               </p>
             </div>
 

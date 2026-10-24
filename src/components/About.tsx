@@ -80,7 +80,7 @@ export default function About({ onOpenResume }: AboutProps) {
               <div className="flex items-center gap-3">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
                 <span className="text-xs font-mono tracking-wider uppercase text-emerald-400">
-                  Lead Solutions Architect
+                  AI Solutions Architect
                 </span>
               </div>
 
@@ -89,7 +89,7 @@ export default function About({ onOpenResume }: AboutProps) {
               </h3>
 
               <p className="text-text-muted text-sm sm:text-base font-light leading-relaxed">
-                Specialized in Full-Stack Web Architecture, Distributed ERPs, and Agentic AI Workflows. I partner with founders, retail enterprises, and tech companies to turn high-complexity specifications into intuitive, revenue-generating software.
+                Specialized in Production Generative AI Pipelines, Autonomous Inbound Agents, Deterministic LLMs, and High-Concurrency Enterprise Platforms. I partner with founders, enterprise leadership, and product teams to turn high-friction business operations into automated, revenue-generating advantages.
               </p>
 
               <div className="space-y-3 pt-4 border-t border-white/10">
@@ -99,7 +99,7 @@ export default function About({ onOpenResume }: AboutProps) {
                 </div>
                 <div className="flex justify-between items-center text-xs font-mono">
                   <span className="text-text-muted">Core Focus:</span>
-                  <span className="text-accent font-medium">Next.js 16 • PostgreSQL • AI SDKs</span>
+                  <span className="text-accent font-medium">Gemini 2.0 • Autonomous Agents • Next.js 16</span>
                 </div>
                 <div className="flex justify-between items-center text-xs font-mono">
                   <span className="text-text-muted">Deployment Standard:</span>

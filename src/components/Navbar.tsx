@@ -1,23 +1,24 @@
 import { motion, LayoutGroup } from 'motion/react';
 import { useEffect, useState } from 'react';
-import { Home, Briefcase, Layers, GitFork, Calculator, User, Mail, FileText } from 'lucide-react';
+import { Home, Briefcase, Layers, GitFork, Calculator, User, Mail, FileText, Sparkles } from 'lucide-react';
 import type Lenis from 'lenis';
 
 interface NavbarProps {
   onOpenResume?: () => void;
+  onOpenBrochure?: () => void;
 }
 
 const navItems = [
   { name: 'Overview', href: '#home', id: 'home', icon: Home },
   { name: 'Solutions', href: '#solutions', id: 'solutions', icon: Layers },
-  { name: 'Work', href: '#work', id: 'work', icon: Briefcase },
+  { name: 'AI Work', href: '#work', id: 'work', icon: Briefcase },
   { name: 'Process', href: '#framework', id: 'framework', icon: GitFork },
   { name: 'Track Record', href: '#experience', id: 'experience', icon: User },
   { name: 'Scoping', href: '#estimator', id: 'estimator', icon: Calculator },
   { name: 'Contact', href: '#contact', id: 'contact', icon: Mail },
 ];
 
-export default function Navbar({ onOpenResume }: NavbarProps) {
+export default function Navbar({ onOpenResume, onOpenBrochure }: NavbarProps) {
   const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
@@ -115,11 +116,23 @@ export default function Navbar({ onOpenResume }: NavbarProps) {
             );
           })}
 
+          {/* Quick AI Brochure Trigger */}
+          {onOpenBrochure && (
+            <button
+              onClick={onOpenBrochure}
+              className="ml-1 sm:ml-2 px-3 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-accent/25 to-amber-400/20 hover:from-accent hover:to-accent text-accent hover:text-bg border border-accent/40 hover:border-accent transition-all duration-300 flex items-center gap-1.5 text-xs font-mono font-bold shadow-[0_0_15px_-3px_rgba(242,125,38,0.4)] cursor-pointer"
+              title="Open AI Solutions Executive Brochure"
+            >
+              <Sparkles className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">AI Brochure</span>
+            </button>
+          )}
+
           {/* Quick CV Trigger */}
           {onOpenResume && (
             <button
               onClick={onOpenResume}
-              className="ml-1 sm:ml-2 px-3 py-1.5 sm:py-2 rounded-full bg-accent/15 hover:bg-accent text-accent hover:text-bg border border-accent/30 hover:border-accent transition-all duration-300 flex items-center gap-1.5 text-xs font-mono font-semibold shadow-sm cursor-pointer"
+              className="px-2.5 py-1.5 sm:py-2 rounded-full bg-white/[0.04] hover:bg-white/10 text-text-muted hover:text-white border border-white/10 hover:border-white/20 transition-all duration-300 flex items-center gap-1.5 text-xs font-mono font-medium cursor-pointer"
               title="Preview Curriculum Vitae"
             >
               <FileText className="w-3.5 h-3.5" />
@@ -131,3 +144,4 @@ export default function Navbar({ onOpenResume }: NavbarProps) {
     </motion.div>
   );
 }
+

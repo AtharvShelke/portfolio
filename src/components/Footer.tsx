@@ -49,10 +49,10 @@ export default function Footer() {
                 </span>
               </div>
               <h2 className="text-3xl font-display font-bold tracking-tight mb-3">
-                Architecting High-Velocity <span className="text-accent">Digital Products.</span>
+                Architecting Production <span className="text-accent">AI Solutions.</span>
               </h2>
               <p className="text-text-muted max-w-sm text-sm font-light leading-relaxed">
-                Full-stack engineering consultancy & product studio specializing in custom ERPs, transactional web platforms, and agentic AI pipelines.
+                AI Solutions Studio &amp; systems engineering practice specializing in autonomous lead attribution engines, deterministic LLM pipelines, and custom enterprise platforms.
               </p>
             </div>
 

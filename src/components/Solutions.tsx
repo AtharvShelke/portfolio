@@ -1,15 +1,19 @@
 import { motion } from 'motion/react';
-import { ArrowUpRight, CheckCircle2, Layers, Cpu, Database, Sparkles } from 'lucide-react';
+import { ArrowUpRight, CheckCircle2, Layers, Cpu, Database, Sparkles, ShieldCheck } from 'lucide-react';
 import { SOLUTIONS } from '../constants.js';
 
+interface SolutionsProps {
+  onOpenBrochure?: () => void;
+}
+
 const iconMap: Record<string, typeof Layers> = {
-  '01': Database,
-  '02': Layers,
-  '03': Cpu,
-  '04': Sparkles,
+  '01': Cpu,
+  '02': Sparkles,
+  '03': Database,
+  '04': Layers,
 };
 
-export default function Solutions() {
+export default function Solutions({ onOpenBrochure }: SolutionsProps) {
   return (
     <section id="solutions" className="py-24 bg-surface relative overflow-hidden">
       {/* Background ambient lighting */}
@@ -20,13 +24,13 @@ export default function Solutions() {
         <div className="mb-20 flex flex-col lg:flex-row lg:items-end justify-between gap-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
               <p className="text-xs font-mono uppercase tracking-[0.2em] text-accent">
-                Core Capabilities & Enterprise Offerings
+                Capabilities Brochure &amp; AI Solution Packages
               </p>
             </div>
             <h2 className="text-4xl sm:text-5xl md:text-7xl font-display font-bold uppercase tracking-tight text-text">
-              Enterprise{' '}
+              AI Enterprise{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-amber-300 to-accent">
                 Solutions
               </span>
@@ -34,9 +38,21 @@ export default function Solutions() {
             <div className="w-20 h-1 bg-accent mt-6" />
           </div>
 
-          <p className="text-text-muted max-w-md text-base font-light leading-relaxed">
-            We don't assemble generic cookie-cutter templates. Every system is custom-engineered for your operational workflow, transactional scale, and proprietary business logic.
-          </p>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <p className="text-text-muted max-w-md text-base font-light leading-relaxed">
+              We don't assemble fragile prompt wrappers. Every solution is engineered for sub-120ms execution, deterministic schema validation, and verified business ROI.
+            </p>
+
+            {onOpenBrochure && (
+              <button
+                onClick={onOpenBrochure}
+                className="px-4 py-2.5 rounded-full bg-accent/15 border border-accent/40 text-accent hover:bg-accent hover:text-bg font-mono text-xs font-bold transition-all shrink-0 flex items-center gap-1.5 shadow-md shadow-accent/10 cursor-pointer"
+              >
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Executive Brochure ↗</span>
+              </button>
+            )}
+          </div>
         </div>
 
         {/* 2x2 Bento Solution Grid */}
@@ -86,8 +102,9 @@ export default function Solutions() {
 
                   {/* Deliverables Checklist */}
                   <div className="space-y-2.5 mb-8 pt-6 border-t border-white/5">
-                    <p className="text-[11px] uppercase tracking-widest font-mono text-text-muted">
-                      Key Deliverables:
+                    <p className="text-[11px] uppercase tracking-widest font-mono text-text-muted flex items-center gap-1.5">
+                      <ShieldCheck className="w-3.5 h-3.5 text-accent" />
+                      <span>Production Deliverables:</span>
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       {solution.deliverables.map((item) => (
@@ -117,7 +134,7 @@ export default function Solutions() {
                     href="#contact"
                     className="inline-flex items-center gap-1 text-xs font-mono font-medium text-accent hover:underline underline-offset-4"
                   >
-                    Request Scoping <ArrowUpRight className="w-3.5 h-3.5" />
+                    Scope Architecture <ArrowUpRight className="w-3.5 h-3.5" />
                   </a>
                 </div>
               </motion.div>

@@ -14,6 +14,7 @@ import {
   Layers,
   ChevronRight,
   Calculator,
+  Calendar,
   Terminal,
   Server,
   Clock,
@@ -40,19 +41,61 @@ interface ShowcaseProject {
 
 const SHOWCASE_SYSTEMS: ShowcaseProject[] = [
   {
+    id: 'leadcopilot',
+    tabTitle: 'Autonomous Inbound AI',
+    badge: 'SUB-120MS RUNTIME',
+    title: 'LeadCopilot — Autonomous Inbound AI & Attribution',
+    client: 'Enterprise B2B SaaS',
+    impactMetric: '10k+ Leads Processed',
+    impactSub: 'Sub-120ms intake, semantic intent scoring & real-time webhook dispatch',
+    description: 'High-velocity inbound intake engine that ingests, scores, and attributes enterprise prospects within 120ms using Google Gemini 2.0 with zero lead drop-off.',
+    tech: ['Google Gemini 2.0', 'Next.js 16', 'Redis Queue', 'TypeScript Strict', 'Webhooks', 'Tailwind v4'],
+    image: '/project-images/lead-copilot.png',
+    liveUrl: 'https://lead-copilot-frontend.vercel.app/',
+    timeline: '1–2 Weeks Deployment',
+    deliverables: ['Sub-120ms Inbound Intake', 'Semantic Intent & Deal Scoring', 'Instant Slack Deal-Desk Alerts', 'Zero-Loss Redis Queue'],
+    logLines: [
+      { text: '[WEBHOOK] Multi-channel intake event received (latency: 18ms)', type: 'info' },
+      { text: '[GEMINI-2.0] Analyzing corporate deal intent & telemetry score...', type: 'info' },
+      { text: '[ZOD-GUARD] 100% Schema validation passed: DealScore = 94/100', type: 'success' },
+      { text: '[DISPATCH] Real-time webhook sent to CRM & Slack deal desk (84ms)', type: 'success' },
+    ],
+  },
+  {
+    id: 'obsidian',
+    tabTitle: 'Deterministic LLM',
+    badge: 'ZERO HALLUCINATION',
+    title: 'OBSIDIAN — AI Biometric & Health Protocol Engine',
+    client: 'HealthTech & Open Source AI',
+    impactMetric: '5,000+ Protocols Generated',
+    impactSub: 'Sub-1.4s generation with 100% Zod schema validation & zero hallucination',
+    description: 'Deterministic Generative AI wellness engine translating user biometric metrics into validated weekly protocols using Google Gemini SDK with strict schema enforcement.',
+    tech: ['Google Gemini 2.0', 'Zod Validation', 'Next.js App Router', 'React 19', 'Tailwind v4'],
+    image: '/project-images/ai-fitness.png',
+    liveUrl: 'https://obsidian-fitness.vercel.app/',
+    timeline: '1–2 Weeks Deployment',
+    deliverables: ['Runtime Zod Schema Enforcement', 'Streaming AI Token Interface', 'Instant PDF Protocol Export', 'Deterministic Fallbacks'],
+    logLines: [
+      { text: '[PROMPT] Injected biometric baselines (TDEE/BMR) into context', type: 'info' },
+      { text: '[AI-SDK] Streaming Google Gemini 2.0 Flash response...', type: 'info' },
+      { text: '[ZOD] Enforcing strict JSON schema on workout & nutrition payload', type: 'success' },
+      { text: '[OUTPUT] Validated PDF protocol generated with 0 retries in 1.14s', type: 'success' },
+    ],
+  },
+  {
     id: 'erp',
-    tabTitle: 'Enterprise ERP & Retail',
+    tabTitle: 'Enterprise ERP & Ops',
     badge: 'LIVE IN PRODUCTION',
     title: 'PC Builder & Enterprise Operations ERP',
     client: 'Hardware Retail Client',
     impactMetric: '₹10L+ Inventory Processed',
-    impactSub: '100% automated purchase-to-sale invoicing & multi-warehouse stock sync',
+    impactSub: '100% automated purchase-to-sale invoicing & real-time compatibility matrix',
     description: 'High-concurrency ERP platform with real-time hardware compatibility matrix, multi-depot stock synchronization, and webhook-verified Razorpay checkout.',
     tech: ['Next.js 16', 'React 19', 'PostgreSQL', 'Prisma ORM', 'Razorpay', 'Tailwind v4'],
     image: '/project-images/ecommerce.png',
     liveUrl: 'https://ecommerce-md.vercel.app/',
     timeline: '3–4 Weeks Deployment',
-    deliverables: ['Multi-Warehouse Inventory', 'Automated GST Invoicing', 'Role-Based Access Control', 'Razorpay & Webhooks'],
+    deliverables: ['Multi-Warehouse Stock Isolation', 'Real-Time Constraint Matrices', 'Automated GST Invoicing', 'Role-Based Access Control'],
     logLines: [
       { text: '[DB] PostgreSQL connection pool active (latency: 4ms)', type: 'info' },
       { text: '[PRISMA] Transaction isolation SERIALIZABLE: Stock lock acquired', type: 'success' },
@@ -62,7 +105,7 @@ const SHOWCASE_SYSTEMS: ShowcaseProject[] = [
   },
   {
     id: 'studio',
-    tabTitle: 'Operations & Inventory',
+    tabTitle: 'Operations Hub',
     badge: 'COMMERCIAL USE',
     title: 'Enrich Kitchen Studio Operations Hub',
     client: 'Enrich Furniture & Kitchens',
@@ -71,41 +114,24 @@ const SHOWCASE_SYSTEMS: ShowcaseProject[] = [
     description: 'Mission-critical enterprise dashboard handling live stock allocations, multi-tier supplier catalogs, client ledgers, and automated quote-to-bill pipelines.',
     tech: ['React 19', 'TypeScript', 'PostgreSQL', 'Prisma', 'Radix UI', 'TanStack Table'],
     image: '/project-images/enrich.png',
-    liveUrl: 'https://enrich-furniture.vercel.app/',
+    liveUrl: 'https://www.enrichfurniture.com/',
     timeline: '2–3 Weeks Deployment',
     deliverables: ['Multi-Depot Inventory', 'Automated Supplier Purchase Orders', 'Customer Ledger Engine', 'Role Separation (Admin/Sales)'],
     logLines: [
       { text: '[SYNC] Multi-warehouse ledger synced across 3 regional depots', type: 'success' },
       { text: '[RBAC] Authorization verified: Studio Manager clearance', type: 'info' },
-      { text: '[RECON] Zero stock drift detected across 1,420 catalog SKUs', type: 'success' },
+      { text: '[RECON] Zero stock drift detected across 1,420 SKUs', type: 'success' },
       { text: '[PERF] Client quote generation completed in 1.1s', type: 'info' },
-    ],
-  },
-  {
-    id: 'ai',
-    tabTitle: 'AI Automation & LLMs',
-    badge: 'DETERMINISTIC AI',
-    title: 'Biometric AI Health Protocol Engine',
-    client: 'High-Growth Fitness Platform',
-    impactMetric: '100% Zod Schema Adherence',
-    impactSub: 'Sub-1.2s LLM prompt generation with zero non-deterministic text fallbacks',
-    description: 'Generative AI pipeline translating biometric metrics into verified clinical workout protocols using Google Gemini SDK with strict schema enforcement.',
-    tech: ['Google Gemini 2.0', 'Zod Validation', 'Next.js App Router', 'TypeScript', 'Tailwind'],
-    image: '/project-images/ai-fitness.png',
-    liveUrl: 'https://ai-workout-app-tau.vercel.app/',
-    timeline: '1–2 Weeks Deployment',
-    deliverables: ['Strict Zod Schema Enforcement', 'Streaming AI Protocols', 'Low-Latency Prompt Architecture', 'Exportable Technical Reports'],
-    logLines: [
-      { text: '[AI-SDK] Connecting to Google Gemini 2.0 Flash stream...', type: 'info' },
-      { text: '[ZOD] Enforcing strict JSON schema on biometric payload', type: 'info' },
-      { text: '[VALIDATION] 100% Schema conformity: 0 retries required', type: 'success' },
-      { text: '[STREAM] First token time: 310ms | Total generation: 1.18s', type: 'success' },
     ],
   },
 ];
 
-export default function Hero() {
-  const [activeSystemId, setActiveSystemId] = useState<string>('erp');
+interface HeroProps {
+  onOpenBrochure?: () => void;
+}
+
+export default function Hero({ onOpenBrochure }: HeroProps) {
+  const [activeSystemId, setActiveSystemId] = useState<string>('leadcopilot');
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [isPinging, setIsPinging] = useState(false);
   const [pingLatency, setPingLatency] = useState<number>(14);
@@ -192,7 +218,7 @@ export default function Hero() {
           <div className="flex flex-wrap items-center gap-2.5 mb-5 sm:mb-6">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-xs font-mono font-medium shadow-[0_0_20px_-3px_rgba(16,185,129,0.25)]">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>Available for Q2–Q3 Engagements</span>
+              <span>AI Solutions Architect · Q2–Q3 Engagements</span>
             </div>
 
             <span className="text-white/20 hidden sm:inline">•</span>
@@ -210,20 +236,33 @@ export default function Hero() {
               Atharv Shelke
             </span>{' '}
             <br />
-            Software Developer.
+            AI Solutions Architect.
           </h1>
 
-          {/* Executive Subtitle: Concrete, Meaningful, Grounded */}
-          <p className="text-sm sm:text-base md:text-lg text-text-muted font-light leading-relaxed max-w-xl mb-6 sm:mb-8 text-balance">
-            I help businesses, fast-scaling startups, and modern founders replace manual operational chaos with bulletproof web products, custom ERP engines, and automated AI pipelines.
+          {/* Executive Subtitle: Directly answers Who we help, Expensive Problem, and Solution */}
+          <p className="text-sm sm:text-base md:text-lg text-text-muted font-light leading-relaxed max-w-xl mb-4 sm:mb-5 text-balance">
+            I help <strong className="text-text font-semibold">B2B SaaS founders &amp; commercial retail operators</strong> eliminate costly pipeline loss and operational chaos — replacing delayed lead response and hallucinating AI wrappers with <strong className="text-text font-semibold">sub-120ms autonomous intake agents, deterministic Gemini pipelines, and scalable enterprise platforms.</strong>
           </p>
+
+          {/* Evidence Strip: Answers "What evidence supports your claims?" */}
+          <div className="flex flex-wrap items-center gap-2 mb-6 text-[11px] font-mono">
+            <span className="px-2.5 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-medium">
+              ✓ 10k+ Leads Scored (&lt;120ms)
+            </span>
+            <span className="px-2.5 py-1 rounded-md bg-amber-400/10 border border-amber-400/20 text-amber-300 font-medium">
+              ✓ 0% AI Hallucination (Zod)
+            </span>
+            <span className="px-2.5 py-1 rounded-md bg-white/[0.04] border border-white/10 text-text-muted">
+              ✓ ₹10L+ Volume Automated
+            </span>
+          </div>
 
           {/* Conversion Fast-Track Selector (Intent Trigger) */}
           <div className="mb-8 p-4 rounded-2xl bg-surface/80 border border-white/10 backdrop-blur-md shadow-xl">
             <div className="flex items-center justify-between mb-2.5">
               <span className="text-[11px] font-mono uppercase tracking-wider text-accent font-semibold flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5" />
-                Select Your Project Goal:
+                Select Solution Architecture:
               </span>
               <span className="text-[11px] font-mono text-emerald-400 font-medium">
                 {activeSystem.timeline}
@@ -231,7 +270,7 @@ export default function Hero() {
             </div>
 
             {/* Quick Intent Pills */}
-            <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 sm:gap-2">
               {SHOWCASE_SYSTEMS.map((system) => {
                 const isSelected = system.id === activeSystemId;
                 return (
@@ -244,9 +283,9 @@ export default function Hero() {
                         : 'bg-white/[0.02] border-white/5 text-text-muted hover:text-white hover:bg-white/[0.05] hover:border-white/15'
                     }`}
                   >
-                    <span className="font-semibold truncate">{system.tabTitle}</span>
+                    <span className="font-semibold truncate text-[11px] sm:text-xs">{system.tabTitle}</span>
                     <span className="text-[10px] font-mono text-text-muted/80 truncate">
-                      {system.id === 'erp' ? 'Inventory & RBAC' : system.id === 'studio' ? 'Custom Ops Hub' : 'LLM & Zod AI'}
+                      {system.id === 'leadcopilot' ? 'Sub-120ms AI' : system.id === 'obsidian' ? 'Zod LLM Engine' : system.id === 'erp' ? 'Inventory ERP' : 'Custom Ops Hub'}
                     </span>
                   </button>
                 );
@@ -264,7 +303,7 @@ export default function Hero() {
                   scrollToSection(
                     'contact',
                     `Inquiry: ${activeSystem.title}`,
-                    `Hi Atharv, I want to discuss a project in ${activeSystem.tabTitle}. Target turnaround: ${activeSystem.timeline}. Let's schedule technical scoping.`
+                    `Hi Atharv, I want to discuss an AI solution in ${activeSystem.tabTitle}. Target turnaround: ${activeSystem.timeline}. Let's schedule technical scoping.`
                   )
                 }
                 className="text-accent hover:underline inline-flex items-center gap-1 shrink-0 ml-2 font-medium"
@@ -274,34 +313,45 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Primary High-Impact CTA Actions */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mb-6">
+          {/* Primary High-Impact CTA Actions: Answers "How does a prospect book a conversation?" */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mb-4">
             <button
               onClick={() =>
                 scrollToSection(
                   'contact',
-                  `Architecture Consultation: ${activeSystem.title}`,
-                  `Hi Atharv, I'm interested in building a high-velocity system. Let's schedule a call to explore architecture and delivery.`
+                  'Booking: 20-Minute Technical Architecture Scoping Session',
+                  'Hi Atharv, I want to book a 20-minute technical architecture call to evaluate an AI solution for our operations.'
                 )
               }
-              className="group relative px-7 py-4 bg-accent hover:bg-accent-hover text-bg font-semibold rounded-xl overflow-hidden transition-all duration-300 shadow-[0_12px_35px_-8px_rgba(242,125,38,0.45)] hover:shadow-[0_16px_45px_-6px_rgba(242,125,38,0.6)] flex items-center justify-center gap-2 text-sm"
+              className="group relative px-6 py-4 bg-accent hover:bg-accent-hover text-bg font-bold rounded-xl overflow-hidden transition-all duration-300 shadow-[0_12px_35px_-8px_rgba(242,125,38,0.5)] hover:shadow-[0_16px_45px_-6px_rgba(242,125,38,0.7)] flex items-center justify-center gap-2 text-sm cursor-pointer"
             >
-              <span>Start Project Inquiry</span>
+              <Calendar className="w-4 h-4 fill-bg" />
+              <span>Book 20-Min Architecture Session</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
 
+            {onOpenBrochure && (
+              <button
+                onClick={onOpenBrochure}
+                className="px-5 py-4 glass-card hover:border-accent/40 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm font-medium text-text hover:text-white cursor-pointer"
+              >
+                <Sparkles className="w-4 h-4 text-accent" />
+                <span>Executive Brochure</span>
+              </button>
+            )}
+
             <button
               onClick={() => scrollToSection('estimator')}
-              className="px-6 py-4 glass-card hover:border-accent/40 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm font-medium text-text hover:text-white"
+              className="px-4 py-4 glass-card hover:border-accent/40 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm font-medium text-text-muted hover:text-white hidden xl:flex cursor-pointer"
             >
               <Calculator className="w-4 h-4 text-accent" />
-              <span>Instant Scope Estimator</span>
+              <span>Scope Estimator</span>
             </button>
           </div>
 
-          {/* Direct Email Quick-Copy & Direct Channels */}
-          <div className="flex flex-wrap items-center gap-3 text-xs text-text-muted font-mono">
-            <span>Direct Inquiries:</span>
+          {/* Direct Email Quick-Copy & SLA Guarantee */}
+          <div className="flex flex-wrap items-center gap-3 text-xs text-text-muted font-mono mb-2">
+            <span>Direct Access:</span>
             <button
               onClick={handleCopyEmail}
               className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/[0.03] border border-white/10 hover:border-accent/40 hover:text-white transition-colors cursor-pointer group"
@@ -316,6 +366,9 @@ export default function Hero() {
                 <Copy className="w-3.5 h-3.5 text-text-muted group-hover:text-accent transition-colors" />
               )}
             </button>
+            <span className="text-[11px] text-emerald-400 font-mono">
+              (Guaranteed &lt; 4hr response)
+            </span>
             {copiedEmail && (
               <span className="text-emerald-400 font-semibold animate-fade-in text-[11px]">
                 Copied to clipboard!

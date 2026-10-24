@@ -10,6 +10,31 @@ interface CommandPreset {
 
 const COMMAND_PRESETS: CommandPreset[] = [
   {
+    id: 'ai-lead',
+    label: 'ai-lead-intake',
+    command: 'curl -X POST /api/v1/leadcopilot/ingest -d @payload.json',
+    output: [
+      '⚡ Ingesting inbound enterprise deal via Redis task stream...',
+      '✦ Google Gemini 2.0 semantic classifier: Intent = HighValueAccount',
+      '✦ Telemetry enrichment: 42 data signals resolved in 28ms',
+      '✓ Zod runtime schema validated: Zero hallucination',
+      '✓ Dispatched deal alert to #deals-slack and CRM in 84ms (P95: 112ms)',
+      '└ Pipeline status: 100% deterministic SLA achieved'
+    ]
+  },
+  {
+    id: 'ai-zod',
+    label: 'gemini-zod-test',
+    command: 'node ./scripts/validate-gemini-zod-prompts.js',
+    output: [
+      'Connecting to Google Gemini Generative AI SDK...',
+      'Injecting biometric TDEE/BMR prompt constraints...',
+      'Executing Zod JSON response validation schema...',
+      '✓ Schema validation passed: 100% structured adherence',
+      '✓ Non-deterministic text fallback retries: 0 required'
+    ]
+  },
+  {
     id: 'build',
     label: 'pnpm build',
     command: 'pnpm run build --filter=production',
@@ -17,7 +42,6 @@ const COMMAND_PRESETS: CommandPreset[] = [
       '▲ Next.js 16.0.4 (App Router) -- Compiling production build...',
       '✓ Compiled / (Hero, Projects, Experience, Skills, Contact) in 480ms',
       '✓ Dynamic API Routes (sub-100ms target): Verified',
-      '✓ Image Optimization: WebP (<200KB per asset enforced)',
       '✓ WCAG 2.1 AA Accessibility Audit: 0 violations',
       '└ Status: Ready for Vercel Edge Deployment (Core Web Vitals 100/100)'
     ]
@@ -27,37 +51,10 @@ const COMMAND_PRESETS: CommandPreset[] = [
     label: 'prisma migrate',
     command: 'npx prisma migrate dev --name init_fullstack_schema',
     output: [
-      'Environment variables loaded from .env',
-      'Prisma schema loaded from prisma/schema.prisma',
       'Datasource "db": PostgreSQL (Relational Attributes & Foreign Keys)',
       'Applying migration `20260722_init_fullstack_schema`...',
       '✓ Migration applied successfully',
       '✓ Generated Prisma Client (v6.2.0) in 210ms'
-    ]
-  },
-  {
-    id: 'health',
-    label: 'curl api/health',
-    command: 'curl -I -X GET https://atharvshelke.dev/api/v1/health',
-    output: [
-      'HTTP/2 200 OK',
-      'content-type: application/json; charset=utf-8',
-      'x-response-time: 14ms',
-      'x-database-latency: 4ms (PostgreSQL Pool)',
-      'cache-control: s-maxage=3600, stale-while-revalidate',
-      '{"status":"healthy","uptime":"99.99%","region":"bom1"}'
-    ]
-  },
-  {
-    id: 'ai',
-    label: 'ai validate',
-    command: 'node ./scripts/validate-gemini-zod-prompts.js',
-    output: [
-      'Connecting to Google Gemini Generative AI SDK...',
-      'Injecting biometric TDEE/BMR prompt constraints...',
-      'Executing Zod JSON response validation schema...',
-      '✓ Schema validation passed: 100% structured adherence',
-      '✓ Non-deterministic text fallback retries: 0 required'
     ]
   }
 ];

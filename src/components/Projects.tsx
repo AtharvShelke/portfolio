@@ -19,7 +19,7 @@ import {
 import { PROJECTS, Project } from '../constants.js';
 import type Lenis from 'lenis';
 
-const CATEGORIES = ['All Systems', 'ERP & Operations', 'AI & Automation', 'Multi-Tenant Platforms'] as const;
+const CATEGORIES = ['All Systems', 'AI & Autonomous Systems', 'ERP & Operations', 'Multi-Tenant Platforms'] as const;
 
 // Browser Chrome Header
 const WindowChrome = ({ title, url }: { title: string; url?: string }) => (
@@ -327,17 +327,17 @@ export default function Projects() {
             <div className="flex items-center gap-2 mb-3">
               <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
               <p className="text-xs font-mono uppercase tracking-[0.25em] text-accent">
-                Production Artifacts & Case Studies
+                Production Case Studies &amp; AI Systems
               </p>
             </div>
             <h2 className="text-4xl sm:text-5xl md:text-7xl font-display font-bold uppercase tracking-tight text-text">
-              Selected{' '}
+              Featured{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-amber-300 to-accent">
-                Work
+                AI Solutions
               </span>
             </h2>
             <p className="text-text-muted text-sm sm:text-base mt-4 max-w-xl font-light">
-              End-to-end architectures, high-concurrency ERP suites, and autonomous AI pipelines engineered for verified commercial scale.
+              From autonomous inbound lead attribution engines and deterministic Gemini LLM pipelines to high-concurrency enterprise ERPs operating live in production.
             </p>
           </div>
 
