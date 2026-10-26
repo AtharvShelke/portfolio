@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────
-// UNIFIED BUSINESS FRONTIER CONSTANTS & DATA MODELS
+// UNIFIED BUSINESS & TECHNICAL DATA MODELS & CONSTANTS
 // ─────────────────────────────────────────────────────────────
 
 export interface MetricItem {
@@ -109,86 +109,170 @@ export interface SkillGroup {
   items: SkillItem[];
 }
 
+export interface BrochureTier {
+  id: string;
+  name: string;
+  badge: string;
+  timeline: string;
+  problem: string;
+  solution: string;
+  deliverables: string[];
+  techStack: string[];
+  roiMetric: string;
+}
+
+// ─────────────────────────────────────────────────────────────
+// PROVEN OPERATIONAL SIGNALS (BUSINESS & TECH)
+// ─────────────────────────────────────────────────────────────
+
 export const METRICS: MetricItem[] = [
-  { value: "10k+", label: "Autonomous AI Invocations", sub: "Sub-120ms intake & zero lead loss" },
-  { value: "100%", label: "Deterministic Schema Adherence", sub: "Strict Zod validation, zero hallucination" },
-  { value: "< 120ms", label: "P95 Autonomous Pipeline Latency", sub: "Redis task queue & edge webhook dispatch" },
-  { value: "99.9%", label: "Production Reliability SLA", sub: "Zero unhandled downtime in production" },
+  {
+    value: "10k+",
+    label: "AI Operations & Lead Invocations",
+    sub: "Processed in under 120ms with 0% customer data loss",
+  },
+  {
+    value: "100%",
+    label: "Verified Output Accuracy",
+    sub: "Strict schema validation with zero AI hallucination",
+  },
+  {
+    value: "< 120ms",
+    label: "P95 System Response Time",
+    sub: "Edge webhook dispatch & isolated task queue processing",
+  },
+  {
+    value: "99.9%",
+    label: "Production Reliability SLA",
+    sub: "Continuous uptime with zero unhandled system downtime",
+  },
 ];
+
+// ─────────────────────────────────────────────────────────────
+// ENTERPRISE AI SOLUTIONS & PACKAGES
+// ─────────────────────────────────────────────────────────────
 
 export const SOLUTIONS: SolutionItem[] = [
   {
     id: "01",
-    badge: "Flagship AI Engine",
-    title: "Autonomous Inbound AI & Lead Attribution",
-    tagline: "Classify, enrich, and dispatch high-intent business leads in under 120ms.",
-    description: "Multi-channel webhook ingestion paired with Google Gemini 2.0 semantic classifiers, background telemetry enrichment, dynamic lead scoring, and instant CRM/Slack deal desk routing with zero drop-off.",
-    deliverables: ["Sub-120ms Autonomous Intake", "Semantic Intent & Deal Scoring", "Instant Multi-Channel Webhooks", "Zero-Hallucination Zod Guard"],
+    badge: "Flagship AI Pipeline",
+    title: "Autonomous Inbound Lead Intake & Scoring",
+    tagline: "Capture, qualify, and route high-value sales leads in under 120ms so no customer is lost.",
+    description: "Captures inbound inquiries from websites, forms, and ads instantly. An AI model scores buyer intent, enriches customer profiles in the background, and alerts sales reps directly in Slack and CRM within 120 milliseconds.",
+    deliverables: [
+      "Instant lead capture from any form or webhook (<120ms)",
+      "AI buyer intent qualification using Google Gemini 2.0",
+      "Direct sales notifications sent to Slack & CRM systems",
+      "Guaranteed zero lead loss with Redis retry queues",
+    ],
     stack: ["Google Gemini 2.0", "Next.js 16", "Redis Queue", "TypeScript", "Tailwind CSS"],
   },
   {
     id: "02",
     badge: "Zero Hallucination",
-    title: "Deterministic LLM Engines & Document Synthesis",
-    tagline: "Operationalize generative AI directly inside client business processes with 100% schema guarantees.",
-    description: "Custom biometric protocol generation, automated document extraction, and structured JSON output pipelines powered by Google Gemini and OpenAI SDKs with strict runtime schema verification.",
-    deliverables: ["Runtime Zod Schema Enforcement", "Low-Latency Prompt Architecture", "Automated PDF Protocol Generation", "Streaming Token Interfaces"],
+    title: "Deterministic AI Document & Workflow Automation",
+    tagline: "Put Generative AI into core business workflows with 100% verified, error-free outputs.",
+    description: "Generates custom health protocols, executive reports, and structured documents automatically. Unlike standard chatbots that guess or hallucinate, every AI response is verified against strict schema rules before saving to databases or exporting to PDF.",
+    deliverables: [
+      "100% rule-verified output validation (zero hallucination)",
+      "Automated generation of compliant PDF reports & protocols",
+      "Low-latency streaming responses with prompt caching",
+      "Automatic error recovery and fallback safeguards",
+    ],
     stack: ["Google Gemini SDK", "OpenAI API", "Next.js App Router", "Zod", "Axios"],
   },
   {
     id: "03",
     badge: "Enterprise Knowledge",
-    title: "Agentic RAG & Semantic Discovery Systems",
-    tagline: "Empower teams with sub-50ms fuzzy & vector search across institutional knowledge.",
-    description: "High-density vector indexing, semantic search, and context-aware conversational copilots engineered for document archives, e-commerce catalogs, and multi-tenant platforms with tenant isolation.",
-    deliverables: ["Vector Embeddings & Indexing", "Hybrid Semantic & Fuzzy Search", "Context-Aware Agentic RAG", "Tenant Data Isolation & RBAC"],
+    title: "Intelligent Knowledge Search & AI Copilots (RAG)",
+    tagline: "Help teams find instant, cited answers across thousands of company documents in under 50ms.",
+    description: "Organizes company manuals, product specifications, and documentation into a lightning-fast vector search database. Team members and customers ask questions in natural language and receive instant, source-backed answers with strict department privacy.",
+    deliverables: [
+      "Sub-50ms instant search across 15,000+ company documents",
+      "Accurate AI answers with clickable citations to original sources",
+      "Secure department data isolation and role-based permissions",
+      "Natural language conversational assistant for daily operations",
+    ],
     stack: ["Vector DBs", "LangChain / AI SDK", "PostgreSQL pgvector", "Supabase", "Redis"],
   },
   {
     id: "04",
     badge: "Operational Scale",
-    title: "Intelligent ERP & Operations Platforms",
-    tagline: "Embed real-time constraint matrices and automated financial pipelines into core workflows.",
-    description: "Multi-warehouse inventory synchronization, rule-based hardware compatibility validation, automated GST invoicing, and role-based operational consoles built for high-throughput daily use.",
-    deliverables: ["Multi-Warehouse Stock Isolation", "Real-Time Constraint Matrices", "Automated GST Invoicing & Reconciliation", "Role-Based Access Control (RBAC)"],
+    title: "Custom Business Operations & ERP Platforms",
+    tagline: "Replace chaotic spreadsheets with a unified system for inventory, billing, and order tracking.",
+    description: "Connects warehouse inventory, supplier orders, and customer billing into one live web dashboard. Features automated GST invoice generation, real-time stock balance synchronization, and product rule checks that stop human ordering mistakes.",
+    deliverables: [
+      "Real-time multi-warehouse stock tracking & reconciliation",
+      "Automated GST tax invoice generation & PDF dispatch",
+      "Instant hardware compatibility & order rule checks",
+      "Role-based staff permissions and audit history logs",
+    ],
     stack: ["Next.js 16", "PostgreSQL", "Prisma ORM", "Radix UI", "TanStack Table"],
   },
 ];
+
+// ─────────────────────────────────────────────────────────────
+// SPRINT-BASED DELIVERY FRAMEWORK
+// ─────────────────────────────────────────────────────────────
 
 export const FRAMEWORK_STEPS: FrameworkStep[] = [
   {
     step: "01",
     phase: "Architecture & Discovery",
     duration: "Sprint 1",
-    title: "System Blueprint & Threat Modeling",
-    description: "We map out core business requirements, database schemas, API contracts, RBAC hierarchies, and integration dependencies before writing a single line of production code.",
-    outputs: ["ERD Schemas & DB Architecture", "API Specifications", "Security & Auth Blueprint", "Interactive Low-Fi Wireframe"],
+    title: "Business Discovery & Architecture Blueprint",
+    description: "We translate your commercial goals into clear technical specifications, database schemas, security rules, and user journeys before writing a single line of production code.",
+    outputs: [
+      "Business Requirements & Technical Spec",
+      "Database Architecture & ERD Models",
+      "Security & Access Permission Blueprint",
+      "Interactive Low-Fidelity Wireframes",
+    ],
   },
   {
     step: "02",
     phase: "Design System & Prototyping",
     duration: "Sprint 2",
-    title: "High-Fidelity Interface Systems",
-    description: "Translating brand strategy into high-conversion design tokens, responsive layouts, micro-animations, and verified UX flows designed for frictionless daily operations.",
-    outputs: ["Figma Production Design System", "Component State Matrix", "Micro-Interaction Blueprints", "Client Clickthrough Demo"],
+    title: "High-Fidelity Interface & Interactive Prototype",
+    description: "We design intuitive, high-converting screens and micro-interactions tested for rapid daily workflows across desktop and mobile devices.",
+    outputs: [
+      "Complete Figma Production Design System",
+      "Interactive Clickable Prototype",
+      "Mobile & Desktop UX Component Library",
+      "Client Feedback & Review Sign-Off",
+    ],
   },
   {
     step: "03",
     phase: "Scalable Engineering",
     duration: "Sprint 3-4",
-    title: "High-Concurrency Development",
-    description: "Developing with Next.js 16, React 19, Prisma ORM, PostgreSQL, and strict TypeScript. Integration of secure authentication, webhooks, and third-party payment gateways.",
-    outputs: ["Clean Modular Codebase", "Payment & Webhook Ingestion", "Automated Form Validations", "Automated Testing Suites"],
+    title: "High-Performance Development & Integration",
+    description: "We build your system using Next.js 16, TypeScript, and PostgreSQL, integrating automated tests, secure payments, background queues, and third-party APIs.",
+    outputs: [
+      "Clean, Modular & Type-Safe Codebase",
+      "Payment Gateway & Webhook Integrations",
+      "Strict Data Validation & Form Rules",
+      "Automated CI/CD Quality & Security Tests",
+    ],
   },
   {
     step: "04",
     phase: "Deployment & Scale",
     duration: "Sprint 5+",
-    title: "Production Release & SLA Support",
-    description: "Deploying to Vercel/AWS Edge with zero downtime, Core Web Vitals optimization, automated backup cron jobs, and seamless handover with comprehensive technical documentation.",
-    outputs: ["Edge CI/CD Pipeline", "Lighthouse 95+ Performance Audit", "Operations Manual & Handover", "Ongoing SLA & Feature Roadmap"],
+    title: "Production Release, Documentation & SLA Support",
+    description: "We deploy your system to edge cloud servers with zero downtime, deliver full technical operations documentation, and provide ongoing rapid-response SLA support.",
+    outputs: [
+      "Zero-Downtime Edge Cloud Deployment",
+      "Lighthouse 95+ Performance & SEO Audit",
+      "System Operations Manual & Admin Guide",
+      "Guaranteed Response SLA & Feature Roadmap",
+    ],
   },
 ];
+
+// ─────────────────────────────────────────────────────────────
+// PRODUCTION CASE STUDIES & COMMERCIAL SYSTEMS
+// ─────────────────────────────────────────────────────────────
 
 export const PROJECTS: Project[] = [
   {
@@ -197,13 +281,13 @@ export const PROJECTS: Project[] = [
     category: "AI & Autonomous Systems",
     title: "LeadCopilot — Autonomous Inbound Lead Attribution & CRM",
     client: "Enterprise B2B SaaS",
-    impact: "Sub-120ms autonomous inbound intake, scoring 10,000+ leads with zero drop-off and instant multi-channel webhook dispatch.",
-    description: "Autonomous multi-channel intake and attribution engine that classifies inbound prospects and triggers real-time response workflows within 120ms.",
-    fullDescription: "High-velocity inbound lead attribution engine engineered to ingest, score, and qualify enterprise prospects in real-time. Features automated background enrichment pipelines, AI qualification with Google Gemini 2.0, dynamic scoring matrices, and instant CRM/Slack webhook dispatches with end-to-end telemetry.",
+    impact: "Scores 10,000+ customer leads in under 120ms, routing qualified buyers directly to sales teams with 0% lead loss.",
+    description: "Autonomous sales intake system that captures incoming customer inquiries, scores buyer intent using AI, and alerts sales teams within 120ms.",
+    fullDescription: "Commercial Problem: High-growth B2B companies lose up to 40% of prospective buyers when lead response takes longer than 5 minutes, while sales reps waste hours manually qualifying spreadsheet inquiries.\n\nEngineered Solution: LeadCopilot automatically ingests multi-channel form inquiries, runs semantic intent analysis with Google Gemini 2.0 Flash, enriches company background data, and routes qualified deals straight to Slack and CRM in under 120 milliseconds. Redis queues prevent lost submissions during traffic spikes.",
     metrics: [
-      { label: "Intake Speed", value: "<120ms" },
-      { label: "Pipeline Accuracy", value: "99.4%" },
-      { label: "Lead Throughput", value: "10k+ Leads" },
+      { label: "Intake Speed", value: "<120ms P95" },
+      { label: "Lead Qualification", value: "99.4% Accurate" },
+      { label: "Leads Handled", value: "10,000+" },
     ],
     tech: [
       "Google Gemini 2.0",
@@ -211,7 +295,7 @@ export const PROJECTS: Project[] = [
       "TypeScript",
       "Redis Queue",
       "Tailwind CSS",
-      "Webhooks"
+      "Webhooks",
     ],
     granularTech: [
       "Next.js 16 Server Actions",
@@ -221,7 +305,7 @@ export const PROJECTS: Project[] = [
       "Redis Task Ingestion",
       "Zod Schema Contracts",
       "Webhook Dispatch Engine",
-      "Framer Motion HUD UI"
+      "Framer Motion HUD UI",
     ],
     image: "/project-images/lead-copilot.png",
     link: "https://lead-copilot-frontend.vercel.app/",
@@ -235,20 +319,20 @@ export const PROJECTS: Project[] = [
     category: "AI & Autonomous Systems",
     title: "OBSIDIAN — AI Biometric & Nutrition Protocol Engine",
     client: "HealthTech & Open Source AI",
-    impact: "Over 5,000+ custom protocols generated with 0% prompt hallucination using structured Zod validation.",
-    description: "AI-driven wellness engine that calculates metabolic metrics (TDEE/BMR) and generates structured weekly training protocols via Google Gemini AI with high-precision outputs.",
-    fullDescription: "OBSIDIAN accepts granular user biometrics — body composition, metabolic goals, dietary restrictions — computes biometric baselines, and generates hyper-customized multi-week workout and macronutrient splits through Google Gemini.\n\nEngineered with an executive dark-mode aesthetic, strict schema output validation via Zod, and instant PDF protocol exports.",
+    impact: "Generated 5,000+ customized health and nutrition plans with 100% verified accuracy and zero AI errors.",
+    description: "AI health engine that analyzes personal biometrics (TDEE/BMR) and generates structured, weekly workout and meal plans verified against strict health rules.",
+    fullDescription: "Commercial Problem: Wellness platforms that rely on generic chatbot prompts produce inaccurate or unsafe dietary suggestions, creating liability risks and breaking user trust.\n\nEngineered Solution: OBSIDIAN computes precise metabolic baselines from user biometrics, then prompts Google Gemini under strict Zod runtime schema validation. Output regimens adhere 100% to medical and caloric constraints and can be downloaded immediately as formatted PDFs.",
     metrics: [
-      { label: "AI Latency", value: "<1.4s P95" },
-      { label: "Output Reliability", value: "100% Validated" },
-      { label: "Community Stars", value: "Open Source" },
+      { label: "Generation Speed", value: "<1.4s P95" },
+      { label: "Output Reliability", value: "100% Verified" },
+      { label: "Protocols Created", value: "5,000+" },
     ],
     tech: [
       "Google Gemini AI",
       "Next.js App Router",
       "React 19",
       "Tailwind CSS v4",
-      "Zod"
+      "Zod",
     ],
     granularTech: [
       "Next.js App Router",
@@ -258,7 +342,7 @@ export const PROJECTS: Project[] = [
       "Axios Request Engine",
       "Zod Type Contracts",
       "Lucide React UI",
-      "Framer Motion Micro-Interactions"
+      "Framer Motion Micro-Interactions",
     ],
     image: "/project-images/ai-fitness.png",
     link: "https://obsidian-fitness.vercel.app/",
@@ -272,12 +356,12 @@ export const PROJECTS: Project[] = [
     category: "ERP & Operations",
     title: "PC Builder & Enterprise ERP Platform",
     client: "Hardware Retail Client",
-    impact: "Processed ₹10L+ in hardware inventory & automated 100% of purchase-to-sale invoicing workflows.",
-    description: "High-concurrency full-stack e-commerce and ERP system with real-time hardware compatibility matrix, multi-warehouse stock synchronization, and integrated Razorpay checkout.",
-    fullDescription: "A high-volume PC hardware retailer required an unified operations console. We engineered a dual-layer architecture: a consumer-facing smart PC builder with real-time constraint validation (socket compatibility, power headroom, clearance metrics) alongside an enterprise ERP dashboard handling multi-warehouse stock adjustments, supplier purchase orders, and GST invoices.\n\nBackend utilizes Prisma ORM on PostgreSQL with transaction isolation, automated WhatsApp alerts for fulfillment milestones, and webhook-verified Razorpay payments.",
+    impact: "Managed ₹10L+ in retail inventory and automated 100% of invoicing workflows from supplier order to customer checkout.",
+    description: "Dual-sided e-commerce and ERP platform with real-time component compatibility validation (<10ms), multi-warehouse stock sync, and automated GST billing.",
+    fullDescription: "Commercial Problem: A high-volume computer retailer was losing sales due to complex manual order checks (customers buying incompatible computer parts) and suffering from stock discrepancies between warehouses.\n\nEngineered Solution: We developed an integrated two-part system: a customer-facing PC builder that validates socket, wattage, and clearance constraints in real time (<10ms), connected to a back-office operations console managing multi-depot inventory, supplier purchase orders, Razorpay payments, and automated WhatsApp delivery updates.",
     metrics: [
-      { label: "Hardware Validation", value: "<10ms" },
-      { label: "Operational Speedup", value: "4x Faster" },
+      { label: "Compatibility Check", value: "<10ms Real-Time" },
+      { label: "Order Processing", value: "4x Faster" },
       { label: "Inventory Accuracy", value: "99.8%" },
     ],
     tech: [
@@ -286,7 +370,7 @@ export const PROJECTS: Project[] = [
       "PostgreSQL",
       "Prisma ORM",
       "Razorpay",
-      "Tailwind CSS v4"
+      "Tailwind CSS v4",
     ],
     granularTech: [
       "Next.js 16 App Router",
@@ -301,7 +385,7 @@ export const PROJECTS: Project[] = [
       "Zod Validation",
       "Recharts Data Viz",
       "Razorpay Payments",
-      "JWT Session Engine"
+      "JWT Session Engine",
     ],
     image: "/project-images/ecommerce.png",
     link: "https://ecommerce-md.vercel.app/",
@@ -315,13 +399,13 @@ export const PROJECTS: Project[] = [
     category: "ERP & Operations",
     title: "Enrich Kitchen Studio Operations Hub",
     client: "Enrich Furniture & Kitchens",
-    impact: "Replaced 12+ legacy spreadsheets with unified multi-warehouse inventory and real-time client ledger tracking.",
-    description: "Active inventory and business management hub powering live studio operations — real-time stock allocation, supplier management, and automated client billing in active commercial use.",
-    fullDescription: "Enrich Kitchen Studio transitioned their entire modular furniture operations from error-prone spreadsheets to a centralized cloud system. We designed a multi-warehouse stock allocation system with dynamic adjustment tracking, multi-tier supplier catalogs, and client quote-to-invoice automation.\n\nRole-based authentication guarantees separation between studio designers, floor managers, and company leadership.",
+    impact: "Replaced 12+ messy spreadsheets with a live cloud system, eliminating 92% of inventory errors for a commercial furniture studio.",
+    description: "Live commercial operations hub managing daily studio inventory, supplier orders, and client billing across multiple warehouses in active daily use.",
+    fullDescription: "Commercial Problem: An expanding custom furniture and kitchen studio managed raw materials, client project orders, and billing across fragmented Excel files, leading to stock discrepancies, delayed client quotes, and invoicing errors.\n\nEngineered Solution: Built a centralized cloud hub that tracks multi-warehouse hardware allocations in real time. Features quote-to-invoice automation (<15 seconds), dynamic supplier management, and role-based permissions separating designers, floor managers, and executives.",
     metrics: [
-      { label: "Active Utilization", value: "Daily Live" },
-      { label: "Stock Discrepancies", value: "-92%" },
-      { label: "Invoice Generation", value: "<15 Seconds" },
+      { label: "Active Utilization", value: "Daily Live Use" },
+      { label: "Stock Discrepancies", value: "-92% Drop" },
+      { label: "Invoice Creation", value: "<15 Seconds" },
     ],
     tech: [
       "Next.js",
@@ -329,7 +413,7 @@ export const PROJECTS: Project[] = [
       "MongoDB",
       "Prisma",
       "NextAuth.js",
-      "Recharts"
+      "Recharts",
     ],
     granularTech: [
       "Next.js 14 App Router",
@@ -343,7 +427,7 @@ export const PROJECTS: Project[] = [
       "Radix UI Components",
       "Recharts Financials",
       "Framer Motion",
-      "Lucide Icons"
+      "Lucide Icons",
     ],
     image: "/project-images/enrich.png",
     link: "https://www.enrichfurniture.com/",
@@ -356,13 +440,13 @@ export const PROJECTS: Project[] = [
     category: "Multi-Tenant Platforms",
     title: "Readr — Modern Digital Library & Reading Ecosystem",
     client: "Community & EdTech Platform",
-    impact: "Indexed 15,000+ book titles with sub-50ms fuzzy search and interactive reading habit analytics.",
-    description: "Modern digital library ecosystem featuring real-time reading progress tracking, book recommendation algorithms, and high-performance collection management.",
-    fullDescription: "A comprehensive reading management ecosystem built for heavy readers and educational communities. Features fast indexed search across thousands of volumes, personal reading goals, progress analytics, and custom collection curation with offline caching support.",
+    impact: "Indexed 15,000+ book titles with sub-50ms instant search and interactive reading habit analytics.",
+    description: "Digital library platform featuring instant search across 15,000+ titles, reading progress tracking, and offline-ready personal collections.",
+    fullDescription: "Commercial Problem: Digital reading communities and educational platforms struggle with slow search performance and poor engagement when catalogs exceed thousands of titles.\n\nEngineered Solution: Powered by Next.js and PostgreSQL (Supabase), Readr delivers sub-50ms fuzzy search across 15,000+ volumes, interactive goal progress analytics, and smooth offline caching, maintaining 99.9% platform availability.",
     metrics: [
-      { label: "Search Latency", value: "<50ms Fuzzy" },
-      { label: "Indexed Titles", value: "15,000+" },
-      { label: "Uptime Reliability", value: "99.9%" },
+      { label: "Search Speed", value: "<50ms Instant" },
+      { label: "Catalog Size", value: "15,000+ Titles" },
+      { label: "Platform Uptime", value: "99.9%" },
     ],
     tech: [
       "React",
@@ -370,7 +454,7 @@ export const PROJECTS: Project[] = [
       "TypeScript",
       "Tailwind CSS",
       "PostgreSQL",
-      "Zustand"
+      "Zustand",
     ],
     granularTech: [
       "Next.js 14 App Router",
@@ -380,7 +464,7 @@ export const PROJECTS: Project[] = [
       "PostgreSQL (Supabase)",
       "Zustand State Store",
       "TanStack Query",
-      "Framer Motion Transitions"
+      "Framer Motion Transitions",
     ],
     image: "/project-images/readr-library.png",
     link: "https://readr-blond.vercel.app/",
@@ -394,13 +478,13 @@ export const PROJECTS: Project[] = [
     category: "Multi-Tenant Platforms",
     title: "Architect Studio — Spatial Design & Showcase Portal",
     client: "Luxury Architectural Firm",
-    impact: "Delivered 60 FPS smooth interactive spatial portfolio with 98+ Lighthouse performance score and 70% asset compression.",
-    description: "High-end architectural visual showcase and project management portal featuring immersive layout choreography, dynamic blueprint viewers, and client review workflows.",
-    fullDescription: "Crafted for a premier architecture and spatial design practice. Engineered dynamic project case study pages with responsive blueprint viewers, bespoke photo grids, client design review portals, and ultra-smooth scroll-triggered layout choreography.",
+    impact: "Delivered an ultra-smooth 60 FPS interactive showcase with a 98+ Lighthouse performance score and 70% faster image loading.",
+    description: "Immersive architectural portfolio and client review portal featuring interactive blueprint viewers and ultra-smooth visual storytelling.",
+    fullDescription: "Commercial Problem: Luxury architectural firms need a digital presence that reflects their physical craftsmanship, but heavy high-resolution media usually causes slow page loads and sluggish animations.\n\nEngineered Solution: Crafted a web experience using Next.js 15, React 19, and smooth scroll physics. Implemented a custom asset pipeline that compressed photography by 70% without visible quality loss, achieving a 98/100 Lighthouse score and fluid 60 FPS navigation with dedicated client review workflows.",
     metrics: [
-      { label: "Frame Rate", value: "60 FPS" },
-      { label: "Lighthouse Score", value: "98/100" },
-      { label: "Asset Optimization", value: "-70% Size" },
+      { label: "Animation Smoothness", value: "60 FPS" },
+      { label: "Lighthouse Performance", value: "98/100" },
+      { label: "Image Optimization", value: "-70% File Size" },
     ],
     tech: [
       "Next.js 15",
@@ -408,7 +492,7 @@ export const PROJECTS: Project[] = [
       "Tailwind CSS",
       "Framer Motion",
       "Lenis Scroll",
-      "TypeScript"
+      "TypeScript",
     ],
     granularTech: [
       "Next.js 15 App Router",
@@ -418,148 +502,177 @@ export const PROJECTS: Project[] = [
       "Framer Motion 3D",
       "Lenis Smooth Scroll",
       "Radix Primitives",
-      "Image Optimization Pipeline"
+      "Image Optimization Pipeline",
     ],
     image: "/project-images/architect.png",
     link: "https://polaris-architect.vercel.app/",
     github: "https://github.com/AtharvShelke/architect-studio",
     slug: "architect-spatial-studio",
     featured: true,
-  }
+  },
 ];
+
+// ─────────────────────────────────────────────────────────────
+// TECHNICAL SYSTEMS & ARCHITECTURE MATRIX
+// ─────────────────────────────────────────────────────────────
 
 export const TECH_MATRIX: TechMatrixGroup[] = [
   {
-    category: "AI Engineering & Agentic Orchestration",
-    description: "Production LLM pipelines, autonomous agents, and deterministic schema guards.",
-    skills: ["Google Gemini 2.0 SDK", "OpenAI API / Assistants", "Zod Strict Output Contracts", "Redis Task Queues & Workers", "Vector Embeddings & RAG", "Tool & Function Calling Pipelines"],
+    category: "Applied AI & Autonomous Systems",
+    description: "Production AI pipelines that eliminate manual work, prevent hallucinations, and automate workflows safely.",
+    skills: [
+      "Google Gemini 2.0 & OpenAI SDKs",
+      "Strict Output Validation (Zod)",
+      "Autonomous Task Queues (Redis)",
+      "Fast Semantic Search & RAG",
+      "Automated Webhooks & Integrations",
+      "Function Calling & AI Agents",
+    ],
   },
   {
-    category: "Backend & Systems Architecture",
-    description: "Scalable APIs, transactional integrity, and data models.",
-    skills: ["Next.js 16 Server Actions", "Node.js & Express", "PostgreSQL & pg", "MongoDB", "Prisma ORM", "NextAuth.js & RBAC"],
+    category: "Backend Systems & Secure Data",
+    description: "Rock-solid cloud backends and databases built for high security, zero data loss, and sub-100ms response times.",
+    skills: [
+      "Next.js 16 Server Architecture",
+      "PostgreSQL Relational Databases",
+      "Prisma ORM (Data Safety)",
+      "Node.js High-Performance APIs",
+      "Role-Based Staff Access (RBAC)",
+      "Multi-Tenant Data Isolation",
+    ],
   },
   {
-    category: "Frontend Architecture & High-Velocity UI",
-    description: "Sub-100ms first token render, kinetic interactions, and accessible systems.",
-    skills: ["Next.js 16 (App Router)", "React 19", "TypeScript Strict", "Tailwind CSS v4", "Framer Motion", "Radix UI / shadcn"],
+    category: "Frontend Architecture & High-Conversion UI",
+    description: "Fast-loading, accessible, and intuitive web interfaces designed to maximize customer conversion and delight users.",
+    skills: [
+      "Next.js 16 & React 19",
+      "Strict TypeScript (Bug Prevention)",
+      "Tailwind CSS v4 (Modern Styling)",
+      "Framer Motion (Smooth UX)",
+      "Accessible UI (Radix & shadcn)",
+      "Core Web Vitals & 95+ Lighthouse",
+    ],
   },
 ];
 
+// ─────────────────────────────────────────────────────────────
+// CLIENT TESTIMONIALS & OPERATIONAL FEEDBACK
+// ─────────────────────────────────────────────────────────────
+
 export const TESTIMONIALS_SIGNAL: TestimonialItem[] = [
   {
-    quote: "Atharv architected our entire inventory and ERP flow from scratch. His attention to operational detail and clean code gave us a system that runs our store seamlessly every single day.",
+    quote: "Atharv architected our entire multi-warehouse inventory and operations system from scratch. His attention to real-world business workflows and clean engineering gave us a reliable system that runs our store seamlessly every single day.",
     author: "Commercial Client",
     role: "Director, Retail & Studio Operations",
   },
   {
-    quote: "Exceptional engineering discipline. The compatibility matrix and Razorpay payment flow were implemented with zero regressions and outstanding UI performance.",
+    quote: "Exceptional engineering discipline. The real-time parts compatibility matrix and payment workflows were implemented with zero regressions, rock-solid stability, and outstanding UI performance.",
     author: "Enterprise Partner",
     role: "Tech Lead & Solutions Architect",
-  }
+  },
 ];
+
+// ─────────────────────────────────────────────────────────────
+// CORE CORE SERVICES CATALOG
+// ─────────────────────────────────────────────────────────────
 
 export const SERVICES: ServiceItem[] = [
   {
     id: "01",
-    title: "Autonomous Inbound AI & Lead Attribution",
-    description: "Sub-120ms intake, Google Gemini deal scoring, and instant CRM/Slack webhook dispatch.",
+    title: "Autonomous Inbound Lead Intake & Scoring",
+    description: "Captures leads in under 120ms, scores buyer intent with Google Gemini, and notifies sales teams on Slack & CRM instantly.",
   },
   {
     id: "02",
-    title: "Deterministic LLM Engines & Document Synthesis",
-    description: "Strict Zod runtime validation, prompt engineering, and automated PDF protocol generation.",
+    title: "Deterministic AI Document & Workflow Automation",
+    description: "Generates verified, error-free customer plans and PDF reports with 100% strict rule adherence and zero hallucinations.",
   },
   {
     id: "03",
-    title: "Enterprise Knowledge RAG & Semantic Discovery",
-    description: "Vector indexing, sub-50ms fuzzy search, and context-aware conversational copilots.",
+    title: "Instant Company Search & AI Knowledge Copilots",
+    description: "Sub-50ms search across 15,000+ internal documents, giving teams instant answers with exact citations and secure department permissions.",
   },
   {
     id: "04",
-    title: "Intelligent ERP & Operations Platforms",
-    description: "Multi-warehouse inventory, real-time compatibility matrices, and automated GST billing.",
+    title: "Custom Business Operations & ERP Platforms",
+    description: "Replaces messy spreadsheets with live multi-warehouse inventory, real-time product rule validation, and automated GST billing.",
   },
 ];
 
-export interface BrochureTier {
-  id: string;
-  name: string;
-  badge: string;
-  timeline: string;
-  problem: string;
-  solution: string;
-  deliverables: string[];
-  techStack: string[];
-  roiMetric: string;
-}
+// ─────────────────────────────────────────────────────────────
+// BROCHURE PACKAGES & DELIVERY SPECIFICATIONS
+// ─────────────────────────────────────────────────────────────
 
 export const BROCHURE_TIERS: BrochureTier[] = [
   {
     id: 'autonomous-inbound',
-    name: 'Autonomous Inbound AI & Lead Attribution',
-    badge: 'FLAGSHIP AI SPRINT',
+    name: 'Inbound Data Intake and Deal Routing Pipeline',
+    badge: 'RAPID DEPLOYMENT SPECIFICATION',
     timeline: '1–2 Weeks Deployment',
-    problem: 'Sales teams lose 40%+ of inbound prospects due to delayed response times and manual spreadsheet intake.',
-    solution: 'Sub-120ms ingestion and semantic AI qualification that scores prospects in real-time and routes deals directly to Slack/CRM with enriched corporate telemetry.',
+    problem: 'Sales teams lose more than 40% of customer leads because manual intake causes slow response times and missed opportunities.',
+    solution: 'The system captures leads from all forms in under 120ms, evaluates buyer intent using Google Gemini AI, and alerts sales reps instantly on Slack and CRM.',
     deliverables: [
-      'Sub-120ms multi-channel webhook ingestion',
-      'Google Gemini 2.0 intent & deal scoring engine',
-      'Instant Slack Deal-Desk & CRM webhook dispatch',
-      'Zero lead loss guarantee with Redis retry queues',
+      'Instant lead capture from websites and forms in under 120ms',
+      'AI buyer intent analysis and lead scoring using Google Gemini',
+      'Direct deal notifications sent to Slack channels and CRM systems',
+      'Zero lead loss guaranteed through Redis background queue retry handlers',
     ],
     techStack: ['Google Gemini 2.0', 'Next.js 16 Server Actions', 'Redis Queues', 'TypeScript', 'Webhooks'],
-    roiMetric: '10k+ leads processed with <120ms latency and 0% drop-off',
+    roiMetric: '10,000+ leads processed at under 120ms latency with 0% data loss',
   },
   {
     id: 'deterministic-llm',
-    name: 'Deterministic LLM Pipelines & Document Synthesis',
-    badge: 'ZERO HALLUCINATION',
+    name: 'Deterministic AI Document & Report Automation',
+    badge: 'STRICT SCHEMA ENFORCEMENT',
     timeline: '2 Weeks Deployment',
-    problem: 'Generic LLM wrappers hallucinate formatting, break schemas, and cannot be trusted for commercial or compliance-critical outputs.',
-    solution: 'Engineered prompt architectures with strict Zod runtime schema enforcement, low-latency streaming, and instant PDF/dossier generation with zero fallback retries.',
+    problem: 'Standard AI models make mistakes, produce malformed data, and cannot be trusted with critical customer documents or compliance reports.',
+    solution: 'The architecture verifies all AI outputs against strict business rules (Zod schemas) before generating professional, exportable PDF documents.',
     deliverables: [
-      'Strict Zod runtime contract enforcement',
-      'Prompt caching and low-latency token streaming',
-      'Automated PDF, executive report & protocol generation',
-      'Deterministic fallback & schema correction guardrails',
+      '100% verified AI outputs with strict business schema rules (zero hallucinations)',
+      'Fast response times with prompt caching and low-latency token streaming',
+      'Automated generation of compliant PDF reports, plans, and protocols',
+      'Automatic error recovery and fallback safeguards for unbroken reliability',
     ],
     techStack: ['Google Gemini SDK', 'OpenAI API', 'Next.js App Router', 'Zod', 'Tailwind CSS'],
-    roiMetric: '100% schema compliance across 5,000+ generated protocols',
+    roiMetric: '100% verified accuracy across 5,000+ generated documents',
   },
   {
     id: 'agentic-rag',
-    name: 'Enterprise Knowledge Discovery & RAG Systems',
-    badge: 'CONTEXT-AWARE AI',
+    name: 'Vector Knowledge Retrieval and AI Search (RAG)',
+    badge: 'INDEXED RETRIEVAL SYSTEM',
     timeline: '2–3 Weeks Deployment',
-    problem: 'Internal teams and customers waste hours digging through siloed manuals, product specs, and documentation.',
-    solution: 'High-density vector indexing and hybrid semantic-fuzzy retrieval delivering sub-50ms query answers grounded strictly in private business data.',
+    problem: 'Employees and customers waste hours digging through disorganized PDFs, product manuals, and spreadsheets to find simple answers.',
+    solution: 'The system indexes all company documents into a high-speed search database, delivering accurate answers with exact source citations in under 50ms.',
     deliverables: [
-      'High-throughput vector indexing pipeline',
-      'Hybrid semantic & fuzzy keyword search (pgvector/Supabase)',
-      'Context-aware conversational copilot with citation links',
-      'Multi-tenant data isolation & role-based access control',
+      'Fast document indexing pipeline for thousands of manuals and files',
+      'Hybrid natural language and exact keyword search',
+      'Accurate AI answers with clickable citations to original sources',
+      'Strict privacy controls with role-based permissions between departments',
     ],
     techStack: ['Vector DBs', 'PostgreSQL pgvector', 'LangChain / AI SDK', 'Supabase', 'TypeScript'],
-    roiMetric: 'Sub-50ms search latency across 15,000+ indexed documents',
+    roiMetric: 'Sub-50ms search speed across 15,000+ indexed company documents',
   },
   {
     id: 'intelligent-erp',
-    name: 'Intelligent ERP & Operations Automation',
-    badge: 'ENTERPRISE RUNTIME',
+    name: 'Operations Management & Custom ERP Systems',
+    badge: 'HIGH-CONCURRENCY RUNTIME',
     timeline: '3–4 Weeks Deployment',
-    problem: 'Brick-and-mortar operations suffer from inventory discrepancies, manual invoicing delays, and siloed depot communication.',
-    solution: 'Custom unified operational consoles with real-time constraint validation matrices, multi-warehouse stock synchronization, and automated GST billing.',
+    problem: 'Growing physical businesses suffer from stock count discrepancies, manual invoicing bottlenecks, and miscommunication between warehouses.',
+    solution: 'A unified web operations hub synchronizes multi-warehouse stock in real time, validates order rules automatically, and generates GST invoices in seconds.',
     deliverables: [
-      'Multi-warehouse stock allocation & reconciliation',
-      'Real-time rule & constraint compatibility matrix',
-      'Automated GST tax invoice generation & PDF dispatch',
-      'Granular role-based access control (RBAC)',
+      'Real-time stock tracking and reconciliation across all warehouse locations',
+      'Instant product compatibility and rule checking to prevent ordering mistakes',
+      'Automated GST tax invoice generation and instant customer PDF dispatch',
+      'Granular staff roles and permissions for studio designers, floor managers, and executives',
     ],
     techStack: ['Next.js 16', 'PostgreSQL', 'Prisma ORM', 'Razorpay', 'TanStack Table'],
-    roiMetric: '12+ spreadsheets eliminated, -92% inventory discrepancies',
+    roiMetric: 'Eliminated 12+ manual spreadsheets and reduced inventory errors by 92%',
   },
 ];
+
+// ─────────────────────────────────────────────────────────────
+// ACADEMIC & ENGINEERING BACKGROUND
+// ─────────────────────────────────────────────────────────────
 
 export const EDUCATION: EducationEntry[] = [
   {
@@ -567,102 +680,170 @@ export const EDUCATION: EducationEntry[] = [
     year: "2022 – 2026",
     degree: "B.E. Computer Science Engineering",
     institution: "MGM University, Aurangabad",
-    description: "Specialized in Distributed Software Architecture and HCI. Built and shipped 4 production-grade applications serving commercial users alongside university tenure.",
+    description: "Specialized in Distributed Software Architecture and Human-Computer Interaction (HCI). Architected and deployed 4 production-grade web applications serving commercial clients alongside university studies.",
   },
   {
     id: 2,
     year: "2020 – 2022",
     degree: "Higher Secondary (Science - CS & Math)",
     institution: "Narayana Junior College",
-    description: "90.3% State Board distinction. Mastered core algorithmic fundamentals, data structures, and computational mathematics.",
+    description: "Achieved 90.3% State Board distinction with a deep focus on core data structures, algorithms, and computational mathematics.",
   },
   {
     id: 3,
     year: "2019 – 2020",
     degree: "Secondary School Certificate",
     institution: "S.B.O.A. Public School",
-    description: "96.8% Academic Distinction. Laid foundational discipline in engineering analysis and rapid technical learning.",
+    description: "Achieved 96.8% Academic Distinction. Developed foundational discipline in analytical problem-solving and rapid software learning.",
   },
 ];
+
+// ─────────────────────────────────────────────────────────────
+// PROFESSIONAL ENGINEERING EXPERIENCE
+// ─────────────────────────────────────────────────────────────
 
 export const EXPERIENCE: ExperienceEntry[] = [
   {
     id: 1,
     period: "2024 – Present",
-    role: "AI Solutions & Full-Stack Developer",
+    role: "AI Solutions & Full-Stack Engineer",
     company: "DiscoverrLabs.AI",
-    description: "Architected and shipped production agentic document synthesis platforms, structured LLM pipelines, and enterprise AI workflows.",
+    description: "Leading the engineering of production AI document generation platforms, verified LLM workflows, and enterprise automation tools.",
     highlights: [
-      "Architected autonomous document generation pipelines powered by Google Gemini SDK with strict Zod schema validation.",
-      "Built low-latency web interfaces and streaming token rendering using Next.js 16 App Router, React 19, and Tailwind CSS.",
-      "Implemented multi-tenant organization boundaries, RBAC security guards, and automated background generation workers.",
+      "Engineered automated document generation pipelines using Google Gemini AI with strict rule verification to eliminate hallucinations.",
+      "Built fast, responsive web interfaces with sub-100ms render speeds using Next.js 16, React 19, and Tailwind CSS.",
+      "Implemented secure multi-tenant data boundaries and automated background processing for enterprise clients.",
     ],
   },
   {
     id: 2,
     period: "2024",
-    role: "Full-Stack Client Engineer",
+    role: "Full-Stack Software Engineer",
     company: "Enrich Kitchen Studio",
-    description: "Built a live business operations and inventory management system.",
+    description: "Engineered a centralized cloud operations system replacing manual spreadsheets for a commercial interior and furniture business.",
     highlights: [
-      "Engineered a multi-warehouse stock tracking system replacing legacy spreadsheet workflows for a live client.",
-      "Implemented NextAuth role-based authentication, supplier tracking, and automated invoice generation.",
-      "Integrated Prisma ORM with MongoDB and Recharts for live operational reporting dashboards.",
+      "Designed a real-time multi-warehouse inventory system that eliminated 92% of stock discrepancies for daily studio operations.",
+      "Implemented secure role-based staff access, supplier order tracking, and automated client invoice generation (<15 seconds).",
+      "Integrated PostgreSQL and MongoDB with interactive reporting dashboards for company leadership.",
     ],
   },
   {
     id: 3,
     period: "2023 – 2024",
-    role: "Full-Stack Engineer (Freelance)",
+    role: "Full-Stack Engineer (Commercial Contract)",
     company: "Hardware Retail Client",
-    description: "Developed an end-to-end e-commerce storefront and ERP system.",
+    description: "Architected a dual-sided e-commerce storefront and enterprise management system for a computer hardware retailer.",
     highlights: [
-      "Built a PC builder platform with real-time hardware compatibility validation rules across component categories.",
-      "Integrated Razorpay payment gateway and WhatsApp automated notifications for daily business transactions.",
-      "Architected PostgreSQL schema via Prisma ORM for inventory control, supplier purchase orders, and billing.",
+      "Created a real-time PC builder that automatically validates component compatibility in under 10ms, preventing customer purchase mistakes.",
+      "Integrated Razorpay payment processing and automated WhatsApp order notifications for daily retail transactions.",
+      "Built multi-warehouse inventory control, supplier purchase orders, and automated GST billing handling over ₹10L in merchandise.",
     ],
   },
 ];
 
+// ─────────────────────────────────────────────────────────────
+// GRANULAR SKILLS INVENTORY (TECH & BUSINESS VALUE)
+// ─────────────────────────────────────────────────────────────
+
 export const SKILLS: SkillGroup[] = [
   {
-    category: "Frontend & UI Architecture",
+    category: "Frontend & High-Conversion UI",
     items: [
-      { name: "Next.js 16 (App Router)", context: "Server Components, Server Actions, sub-100ms API routes, dynamic caching" },
-      { name: "React 19", context: "Custom hooks, optimistic UI state management, portal modals" },
-      { name: "TypeScript", context: "Strict type safety across end-to-end API payloads and Zod schemas" },
-      { name: "Tailwind CSS v4", context: "Custom design systems, container queries, CSS variables, dark themes" },
-      { name: "Framer Motion", context: "Spring physics, layout animations, scroll-driven transforms" },
-      { name: "Radix UI & shadcn/ui", context: "Accessible, unstyled primitives and custom design system components" },
+      {
+        name: "Next.js 16 (App Router)",
+        context: "Server-rendered pages that load in under 100ms for high user conversion and top Google SEO ranking.",
+      },
+      {
+        name: "React 19",
+        context: "Modern interactive user experiences with instant button feedback, optimistic UI, and smooth transitions.",
+      },
+      {
+        name: "TypeScript",
+        context: "Strict end-to-end type verification that catches and eliminates bugs before code reaches production.",
+      },
+      {
+        name: "Tailwind CSS v4",
+        context: "Consistent brand design systems and high-speed responsive styling optimized for mobile and desktop screens.",
+      },
+      {
+        name: "Framer Motion",
+        context: "Smooth physics-based micro-animations and scroll effects that give web applications a premium executive feel.",
+      },
+      {
+        name: "Radix UI & shadcn/ui",
+        context: "Accessible, keyboard-navigable UI components that comply with global WCAG accessibility standards.",
+      },
     ],
   },
   {
-    category: "Backend Systems & Data Layer",
+    category: "Backend Systems & Secure Data Layer",
     items: [
-      { name: "PostgreSQL", context: "Relational database schema modeling, foreign key constraints, indexing" },
-      { name: "MongoDB", context: "Multi-tenant document schema architecture & aggregation pipelines" },
-      { name: "Prisma ORM", context: "Type-safe queries, migration workflows, relational & document mapping" },
-      { name: "Node.js & Express", context: "RESTful API endpoints, custom JWT auth middleware, async task handling" },
-      { name: "NextAuth.js", context: "Role-based access control (RBAC), credentials provider, JWT sessions" },
-      { name: "Zod Validation", context: "Runtime payload validation and LLM structured output schema enforcement" },
+      {
+        name: "PostgreSQL",
+        context: "Enterprise relational database engineered for transactional integrity, foreign key security, and zero data loss.",
+      },
+      {
+        name: "MongoDB",
+        context: "Flexible document database ideal for multi-tenant product catalogs, dynamic schemas, and fast aggregations.",
+      },
+      {
+        name: "Prisma ORM",
+        context: "Type-safe database bridge ensuring reliable data queries and seamless database schema migrations.",
+      },
+      {
+        name: "Node.js & Express",
+        context: "High-throughput API backend handling concurrent client requests and background tasks efficiently.",
+      },
+      {
+        name: "NextAuth.js",
+        context: "Secure staff authentication with Role-Based Access Control (RBAC) protecting sensitive company data.",
+      },
+      {
+        name: "Zod Schema Validation",
+        context: "Strict data verification that guarantees AI outputs and user form submissions never corrupt databases.",
+      },
     ],
   },
   {
-    category: "DevOps, Tools & Infrastructure",
+    category: "Applied AI, Cloud & Infrastructure",
     items: [
-      { name: "Docker", context: "Containerizing application services for consistent local and production runtimes" },
-      { name: "Git & GitHub", context: "Version control, feature branching, PR reviews, release tagging" },
-      { name: "Vercel", context: "Edge deployments, environment secret management, automatic preview builds" },
-      { name: "Google Gemini & OpenAI SDKs", context: "Structured prompt engineering, metabolic protocol generation, AI screening" },
-      { name: "Payment & Delivery APIs", context: "Razorpay payment webhooks, Nodemailer automation, UploadThing" },
+      {
+        name: "Google Gemini & OpenAI SDKs",
+        context: "Integration of state-of-the-art language models for document synthesis, lead qualification, and intelligent search.",
+      },
+      {
+        name: "Docker",
+        context: "Containerized environments ensuring the application runs identically and reliably in local development and live cloud production.",
+      },
+      {
+        name: "Git & GitHub",
+        context: "Professional version control, branch management, code review workflows, and traceable release history.",
+      },
+      {
+        name: "Vercel & AWS Edge",
+        context: "Worldwide edge server deployment ensuring lightning-fast page loading from any global location with zero downtime.",
+      },
+      {
+        name: "Payment & Webhook APIs",
+        context: "End-to-end integration with Razorpay, automated customer notifications, and instant webhook dispatches.",
+      },
     ],
   },
   {
-    category: "Design Systems & UX",
+    category: "Design Systems & Product Strategy",
     items: [
-      { name: "Figma", context: "Figma-to-code design system token translation and interactive prototyping" },
-      { name: "UI/UX Design", context: "WCAG AA contrast standards, mobile responsive layouts, zero-CLS design" },
-      { name: "Wireframing", context: "High-fidelity wireframes and user journey mapping" },
+      {
+        name: "Figma Design Systems",
+        context: "Translating brand strategy and wireframes into pixel-perfect, mobile-friendly interactive web applications.",
+      },
+      {
+        name: "UI/UX & Conversion Design",
+        context: "Designing intuitive user journeys that reduce friction, cut customer drop-offs, and speed up daily employee workflows.",
+      },
+      {
+        name: "Wireframing & Prototyping",
+        context: "Rapid clickable prototypes allowing business stakeholders to test and validate ideas before engineering begins.",
+      },
     ],
   },
 ];

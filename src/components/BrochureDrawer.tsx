@@ -4,23 +4,16 @@ import { motion, AnimatePresence } from 'motion/react';
 import {
   X,
   Printer,
-  Download,
   Sparkles,
-  Zap,
   ShieldCheck,
   CheckCircle2,
   Cpu,
   Clock,
   ArrowRight,
-  Layers,
-  Database,
   Building2,
-  FileText,
-  TrendingUp,
-  Server,
-  Code2
+  FileText
 } from 'lucide-react';
-import { BROCHURE_TIERS, BrochureTier, METRICS } from '../constants.js';
+import { BROCHURE_TIERS, BrochureTier } from '../constants.js';
 import type Lenis from 'lenis';
 
 interface BrochureDrawerProps {
@@ -29,14 +22,24 @@ interface BrochureDrawerProps {
   onSelectTier?: (tierId: string) => void;
 }
 
+const STE_METRICS = [
+  { value: '10,000+', label: 'Verified Invocations', sub: 'Zero inbound records lost' },
+  { value: '100%', label: 'Schema Compliance', sub: 'Strict runtime validation' },
+  { value: '< 120ms', label: 'P95 Ingestion Latency', sub: 'Redis task isolation' },
+  { value: '99.9%', label: 'System Availability SLA', sub: 'Continuous operational uptime' },
+];
+
 export default function BrochureDrawer({ isOpen, onClose, onSelectTier }: BrochureDrawerProps) {
   const drawerRef = useRef<HTMLDivElement>(null);
   const lastActiveElementRef = useRef<HTMLElement | null>(null);
   const [activeTab, setActiveTab] = useState<'all' | string>('all');
 
-  // Body Scroll Lock & Scrollbar Width Compensation
+  // Pause Lenis smooth-scroller and lock document body scroll while drawer is open
   useEffect(() => {
+    const lenis = (window as unknown as { __lenis?: Lenis }).__lenis;
+
     if (isOpen) {
+      lenis?.stop();
       lastActiveElementRef.current = document.activeElement as HTMLElement;
       const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
       document.body.style.overflow = 'hidden';
@@ -44,17 +47,19 @@ export default function BrochureDrawer({ isOpen, onClose, onSelectTier }: Brochu
         document.body.style.paddingRight = `${scrollbarWidth}px`;
       }
     } else {
+      lenis?.start();
       document.body.style.overflow = '';
       document.body.style.paddingRight = '';
     }
 
     return () => {
+      lenis?.start();
       document.body.style.overflow = '';
       document.body.style.paddingRight = '';
     };
   }, [isOpen]);
 
-  // Focus Trap & Escape Dismissal
+  // Focus Trap and Escape Key Dismissal
   useEffect(() => {
     if (isOpen) {
       setTimeout(() => {
@@ -114,14 +119,19 @@ export default function BrochureDrawer({ isOpen, onClose, onSelectTier }: Brochu
     const messageBox = document.getElementById('message') as HTMLTextAreaElement | null;
     const subjectBox = document.getElementById('subject') as HTMLInputElement | null;
     if (messageBox) {
-      messageBox.value = `Hi Atharv, I reviewed your AI Solutions Brochure and want to scope:
-- Package: ${tier.name} (${tier.badge})
-- Target Timeline: ${tier.timeline}
-- Key Need: ${tier.problem}
-Let's schedule a technical architecture session.`;
+      messageBox.value = `Hello Atharv,
+
+I reviewed the Technical Capabilities Specification.
+I request an architecture review session for the following system:
+- System: ${tier.name}
+- Specification: ${tier.badge}
+- Deployment Duration: ${tier.timeline}
+- Problem Statement: ${tier.problem}
+
+Please provide available times for an architecture review session.`;
     }
     if (subjectBox) {
-      subjectBox.value = `AI Solution Scoping: ${tier.name}`;
+      subjectBox.value = `Technical Architecture Review: ${tier.name}`;
     }
 
     const contactSection = document.getElementById('contact');
@@ -152,14 +162,17 @@ Let's schedule a technical architecture session.`;
             onClick={onClose}
           />
 
-          {/* Slide-in Brochure Modal Panel */}
+          {/* Slide-in Specification Modal Panel */}
           <motion.div
             key="brochure-panel"
             initial={{ opacity: 0, x: '100%' }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: 'spring', damping: 28, stiffness: 220 }}
-            className="fixed top-0 right-0 bottom-0 z-[130] w-full max-w-4xl bg-[#090B10] border-l border-white/10 shadow-2xl flex flex-col pointer-events-auto"
+            data-lenis-prevent="true"
+            onWheel={(e) => e.stopPropagation()}
+            onTouchMove={(e) => e.stopPropagation()}
+            className="fixed top-0 right-0 bottom-0 z-[130] w-full max-w-4xl bg-[#090B10] border-l border-white/10 shadow-2xl flex flex-col pointer-events-auto h-screen max-h-screen overflow-hidden overscroll-contain"
           >
             {/* Top Bar Header */}
             <div className="p-4 sm:p-6 border-b border-white/10 flex items-center justify-between gap-4 bg-[#0A0D14]/95 backdrop-blur-md shrink-0">
@@ -170,28 +183,30 @@ Let's schedule a technical architecture session.`;
                 <div>
                   <div className="flex items-center gap-2">
                     <span className="text-[10px] font-mono tracking-widest uppercase px-2 py-0.5 rounded-full bg-accent/10 border border-accent/25 text-accent font-semibold">
-                      Official Capabilities Brochure · 2026
+                      Technical Specification · Issue 2026 · ASD-STE100
                     </span>
                   </div>
                   <h3 id="brochure-drawer-title" className="text-lg sm:text-xl font-display font-bold text-text">
-                    AI Solutions Architecture &amp; Capabilities Dossier
+                    System Architecture and Technical Capabilities Specification
                   </h3>
                 </div>
               </div>
 
               <div className="flex items-center gap-2.5">
                 <button
+                  type="button"
                   onClick={handlePrint}
-                  aria-label="Print or save PDF brochure"
+                  aria-label="Export technical specification to PDF"
                   className="px-3.5 py-1.5 text-xs font-mono font-medium rounded-full bg-white/[0.05] border border-white/10 text-text hover:bg-white/10 hover:border-accent/40 transition-colors hidden sm:flex items-center gap-2"
                 >
                   <Printer className="w-3.5 h-3.5 text-accent" />
-                  <span>Print / PDF</span>
+                  <span>Export Document (PDF)</span>
                 </button>
 
                 <button
+                  type="button"
                   onClick={onClose}
-                  aria-label="Close brochure modal"
+                  aria-label="Close specification modal"
                   className="p-2 rounded-full border border-white/10 text-text-muted hover:text-text hover:border-accent transition-colors"
                 >
                   <X className="w-5 h-5" />
@@ -199,41 +214,48 @@ Let's schedule a technical architecture session.`;
               </div>
             </div>
 
-            {/* Scrollable Brochure Body */}
+            {/* Scrollable Document Body */}
             <div
               ref={drawerRef}
+              data-lenis-prevent="true"
+              onWheel={(e) => e.stopPropagation()}
+              onTouchMove={(e) => e.stopPropagation()}
               role="dialog"
               aria-modal="true"
               aria-labelledby="brochure-drawer-title"
-              className="flex-1 overflow-y-auto p-4 sm:p-8 space-y-10 focus:outline-none hide-scrollbar text-text"
+              className="flex-1 min-h-0 overflow-y-auto overscroll-contain p-4 sm:p-8 space-y-8 focus:outline-none custom-scrollbar text-text"
+              style={{ WebkitOverflowScrolling: 'touch' }}
             >
-              {/* Executive Thesis Card */}
+              {/* Architecture Thesis Specification */}
               <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-white/10 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-80 h-80 bg-accent/8 rounded-full blur-3xl pointer-events-none" />
-                
+
                 <div className="relative z-10 space-y-4">
                   <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-accent font-semibold">
                     <ShieldCheck className="w-4 h-4" />
-                    <span>The Production AI Thesis</span>
+                    <span>System Architecture Standard</span>
                   </div>
 
                   <h4 className="text-2xl sm:text-3xl font-display font-bold text-text leading-tight">
-                    Moving Beyond Brittle Chatbots to <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-amber-300 to-accent">Deterministic Systems.</span>
+                    Deterministic System Architecture for <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-amber-300 to-accent">Production Artificial Intelligence.</span>
                   </h4>
 
                   <p className="text-sm sm:text-base text-text-muted font-light leading-relaxed max-w-2xl">
-                    Most AI wrappers fail in production because they lack deterministic type-safety, suffer from non-repeatable prompt outputs, and introduce massive latency. We engineer production-grade Generative AI pipelines with strict runtime Zod schemas, sub-120ms webhook dispatch, Redis task isolation, and zero-hallucination boundaries.
+                    Standard language models fail in production because output schemas vary and response latency is high. This architecture enforces strict runtime validation schemas. The system routes inbound data in less than 120 milliseconds. Redis queues isolate tasks. The model outputs validated data without schema errors.
                   </p>
 
                   {/* High-Level Key Performance Signals */}
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-white/5">
-                    {METRICS.map((m) => (
+                    {STE_METRICS.map((m) => (
                       <div key={m.label} className="p-3 rounded-xl bg-black/40 border border-white/5">
-                        <span className="text-xl sm:text-2xl font-display font-bold text-text block text-accent">
+                        <span className="text-xl sm:text-2xl font-display font-bold text-accent block">
                           {m.value}
                         </span>
-                        <span className="text-[11px] font-mono text-text-muted leading-tight block mt-0.5">
+                        <span className="text-[11px] font-mono text-text block mt-0.5 font-medium">
                           {m.label}
+                        </span>
+                        <span className="text-[10px] font-mono text-text-muted block mt-0.5">
+                          {m.sub}
                         </span>
                       </div>
                     ))}
@@ -241,64 +263,65 @@ Let's schedule a technical architecture session.`;
                 </div>
               </div>
 
-              {/* 5-Question Executive Clarity Fast Brief */}
+              {/* Technical Summary: Core Operational Requirements */}
               <div className="p-5 sm:p-6 rounded-2xl bg-black/60 border border-white/10 space-y-3">
                 <div className="flex items-center justify-between pb-3 border-b border-white/5">
                   <span className="text-[11px] font-mono uppercase tracking-widest text-accent font-semibold flex items-center gap-1.5">
                     <Sparkles className="w-3.5 h-3.5" />
-                    Executive Briefing: 5 Fast Answers
+                    Technical Summary: Core System Requirements
                   </span>
-                  <span className="text-[10px] font-mono text-emerald-400">Verified SLAs &amp; Production Metrics</span>
+                  <span className="text-[10px] font-mono text-emerald-400">Verified Test Data and Operational SLAs</span>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-3 text-xs">
                   <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
-                    <span className="text-[10px] font-mono text-accent font-bold block">1. WHO WE HELP</span>
+                    <span className="text-[10px] font-mono text-accent font-bold block">1. TARGET USERS</span>
                     <p className="text-text-muted text-[11px] font-light leading-snug">
-                      B2B SaaS founders, retail operators, &amp; engineering teams needing production-grade AI &amp; systems.
+                      Software engineering teams, enterprise operators, and commercial businesses that require deterministic software systems.
                     </p>
                   </div>
                   <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
-                    <span className="text-[10px] font-mono text-rose-400 font-bold block">2. EXPENSIVE PROBLEM</span>
+                    <span className="text-[10px] font-mono text-rose-400 font-bold block">2. OPERATIONAL PROBLEM</span>
                     <p className="text-text-muted text-[11px] font-light leading-snug">
-                      Slow lead triage (&gt;40% drop-off), hallucinating AI wrappers that break schemas, and spreadsheet chaos.
+                      Manual lead processing causes high record loss. Non-validated model outputs corrupt downstream database schemas.
                     </p>
                   </div>
                   <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
-                    <span className="text-[10px] font-mono text-amber-300 font-bold block">3. THE SOLUTION</span>
+                    <span className="text-[10px] font-mono text-amber-300 font-bold block">3. TECHNICAL RESOLUTION</span>
                     <p className="text-text-muted text-[11px] font-light leading-snug">
-                      Sub-120ms autonomous inbound intake, 100% Zod-validated Gemini LLMs, and high-concurrency ERPs.
+                      Inbound webhook pipelines process payloads under 120ms. Runtime schemas validate all model outputs before database execution.
                     </p>
                   </div>
                   <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
-                    <span className="text-[10px] font-mono text-emerald-400 font-bold block">4. VERIFIED EVIDENCE</span>
+                    <span className="text-[10px] font-mono text-emerald-400 font-bold block">4. VERIFICATION DATA</span>
                     <p className="text-text-muted text-[11px] font-light leading-snug">
-                      10k+ leads scored (&lt;120ms P95), 5k+ protocols with 0% hallucination, ₹10L+ volume automated.
+                      10,000+ records processed at P95 latency under 120ms. 5,000+ documents generated with 100% schema adherence.
                     </p>
                   </div>
                   <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
-                    <span className="text-[10px] font-mono text-sky-400 font-bold block">5. BOOK A CALL</span>
+                    <span className="text-[10px] font-mono text-sky-400 font-bold block">5. TECHNICAL REVIEW PROCEDURE</span>
                     <p className="text-text-muted text-[11px] font-light leading-snug">
-                      1-Click Technical Consultation with guaranteed &lt;4hr response or 20-min architecture scoping call.
+                      Submit an architecture consultation request. Engineering response time is guaranteed under 4 hours.
                     </p>
                   </div>
                 </div>
               </div>
 
-              {/* Filter Tabs for Packages */}
+              {/* Technical Architecture Catalog Tabs */}
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <h4 className="text-base font-display font-bold uppercase tracking-wider text-text flex items-center gap-2">
                     <Cpu className="w-4 h-4 text-accent" />
-                    <span>Executive AI Capabilities Catalog</span>
+                    <span>Technical Architecture Catalog</span>
                   </h4>
                   <span className="text-xs font-mono text-text-muted">
-                    {BROCHURE_TIERS.length} Modular Tiers
+                    {BROCHURE_TIERS.length} Modular Configurations
                   </span>
                 </div>
 
                 <div className="flex flex-wrap gap-2 mb-6">
                   <button
+                    type="button"
                     onClick={() => setActiveTab('all')}
                     className={`px-3 py-1.5 rounded-xl text-xs font-mono transition-all border ${
                       activeTab === 'all'
@@ -306,10 +329,11 @@ Let's schedule a technical architecture session.`;
                         : 'bg-white/[0.02] border-white/5 text-text-muted hover:text-text hover:bg-white/5'
                     }`}
                   >
-                    All Capabilities
+                    All Configurations
                   </button>
-                  {BROCHURE_TIERS.map((tier) => (
+                  {BROCHURE_TIERS.map((tier, idx) => (
                     <button
+                      type="button"
                       key={tier.id}
                       onClick={() => setActiveTab(tier.id)}
                       className={`px-3 py-1.5 rounded-xl text-xs font-mono transition-all border ${
@@ -318,12 +342,12 @@ Let's schedule a technical architecture session.`;
                           : 'bg-white/[0.02] border-white/5 text-text-muted hover:text-text hover:bg-white/5'
                       }`}
                     >
-                      {tier.name.split('&')[0]}
+                      System 0{idx + 1}
                     </button>
                   ))}
                 </div>
 
-                {/* Solution Tiers Cards */}
+                {/* System Configuration Cards */}
                 <div className="space-y-6">
                   {displayedTiers.map((tier, idx) => (
                     <div
@@ -334,7 +358,7 @@ Let's schedule a technical architecture session.`;
                       <div className="flex flex-wrap items-center justify-between gap-3">
                         <div className="flex items-center gap-2.5">
                           <span className="text-xs font-mono font-bold text-accent px-2.5 py-1 rounded-md bg-accent/10 border border-accent/20">
-                            0{idx + 1}
+                            SPECIFICATION 0{idx + 1}
                           </span>
                           <span className="text-xs font-mono uppercase tracking-wider text-amber-300 font-semibold">
                             {tier.badge}
@@ -351,12 +375,12 @@ Let's schedule a technical architecture session.`;
                         <h5 className="text-xl sm:text-2xl font-display font-bold text-text mb-2">
                           {tier.name}
                         </h5>
-                        
+
                         {/* Problem / Solution Grid */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                           <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/5 space-y-1">
                             <span className="text-[11px] font-mono uppercase tracking-wider text-rose-400 font-semibold block">
-                              Operational Friction:
+                              Operational Problem:
                             </span>
                             <p className="text-xs text-text-muted font-light leading-relaxed">
                               {tier.problem}
@@ -365,7 +389,7 @@ Let's schedule a technical architecture session.`;
 
                           <div className="p-3.5 rounded-xl bg-accent/5 border border-accent/15 space-y-1">
                             <span className="text-[11px] font-mono uppercase tracking-wider text-accent font-semibold block">
-                              Architected Solution:
+                              Technical Solution:
                             </span>
                             <p className="text-xs text-text-muted font-light leading-relaxed">
                               {tier.solution}
@@ -374,10 +398,10 @@ Let's schedule a technical architecture session.`;
                         </div>
                       </div>
 
-                      {/* Deliverables */}
+                      {/* System Deliverables */}
                       <div className="pt-3 border-t border-white/5 space-y-2">
                         <span className="text-[11px] font-mono uppercase tracking-wider text-text-muted font-medium block">
-                          Included Deliverables:
+                          System Deliverables:
                         </span>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                           {tier.deliverables.map((item) => (
@@ -389,24 +413,30 @@ Let's schedule a technical architecture session.`;
                         </div>
                       </div>
 
-                      {/* Tech Stack & ROI Trigger */}
+                      {/* Measurement and Selection Action */}
                       <div className="pt-4 border-t border-white/5 flex flex-wrap items-center justify-between gap-4">
-                        <div className="flex flex-wrap gap-1.5">
-                          {tier.techStack.map((tech) => (
-                            <span
-                              key={tech}
-                              className="px-2 py-0.5 text-[10px] font-mono text-text-muted bg-white/[0.03] border border-white/5 rounded"
-                            >
-                              {tech}
-                            </span>
-                          ))}
+                        <div className="space-y-1.5 max-w-md">
+                          <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-semibold block">
+                            Measured Verification: {tier.roiMetric}
+                          </span>
+                          <div className="flex flex-wrap gap-1.5">
+                            {tier.techStack.map((tech) => (
+                              <span
+                                key={tech}
+                                className="px-2 py-0.5 text-[10px] font-mono text-text-muted bg-white/[0.03] border border-white/5 rounded"
+                              >
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
                         </div>
 
                         <button
+                          type="button"
                           onClick={() => handleScopeTier(tier)}
                           className="px-4 py-2 rounded-xl text-xs font-mono font-semibold bg-accent text-bg hover:bg-accent-hover transition-colors flex items-center gap-1.5 shadow-md shadow-accent/20"
                         >
-                          <span>Scope This Solution</span>
+                          <span>Select This Architecture</span>
                           <ArrowRight className="w-3.5 h-3.5" />
                         </button>
                       </div>
@@ -415,56 +445,56 @@ Let's schedule a technical architecture session.`;
                 </div>
               </div>
 
-              {/* Engagement Models & SLAs */}
+              {/* Service Level Agreements & Delivery Options */}
               <div className="p-6 sm:p-8 rounded-2xl bg-[#0C0F17] border border-white/10 space-y-6">
                 <div>
                   <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-accent font-semibold mb-2">
                     <Building2 className="w-4 h-4" />
-                    <span>Commercial Engagement Frameworks</span>
+                    <span>Service Level Agreements and Delivery Options</span>
                   </div>
                   <h4 className="text-xl sm:text-2xl font-display font-bold text-text">
-                    Transparent, Sprint-Based Delivery
+                    Fixed-Scope Sprint Delivery Framework
                   </h4>
                   <p className="text-xs sm:text-sm text-text-muted font-light leading-relaxed mt-1">
-                    Every project runs on fixed-scope, milestone-gated sprints with direct architect collaboration. No junior delegates, no scope creep.
+                    All projects use fixed-scope sprints with defined milestone acceptance tests. An engineering architect leads the technical implementation directly.
                   </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 space-y-2">
-                    <span className="text-xs font-mono text-accent font-bold">Model 01</span>
-                    <h5 className="text-sm font-bold text-text">Rapid AI Sprint</h5>
+                    <span className="text-xs font-mono text-accent font-bold">Option 01</span>
+                    <h5 className="text-sm font-bold text-text">Two-Week Pipeline Deployment</h5>
                     <p className="text-xs text-text-muted font-light">
-                      1–2 Weeks. Fast deployment of a single high-impact AI pipeline: Lead Qualification Agent, Biometric Generator, or Vector RAG engine.
+                      Duration: 1 to 2 weeks. Deploy a single production pipeline such as an inbound qualification agent, vector retrieval system, or document generator.
                     </p>
                   </div>
 
                   <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 space-y-2">
-                    <span className="text-xs font-mono text-accent font-bold">Model 02</span>
-                    <h5 className="text-sm font-bold text-text">Full Platform Architecture</h5>
+                    <span className="text-xs font-mono text-accent font-bold">Option 02</span>
+                    <h5 className="text-sm font-bold text-text">Four-Week Enterprise Platform</h5>
                     <p className="text-xs text-text-muted font-light">
-                      3–4 Weeks. End-to-end commercial product engineering: Custom ERP, Multi-Tenant SaaS, or full autonomous operations console.
+                      Duration: 3 to 4 weeks. Build a complete operational application such as a multi-warehouse inventory console or multi-tenant web application.
                     </p>
                   </div>
 
                   <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 space-y-2">
-                    <span className="text-xs font-mono text-accent font-bold">Model 03</span>
-                    <h5 className="text-sm font-bold text-text">Fractional AI Solutions Lead</h5>
+                    <span className="text-xs font-mono text-accent font-bold">Option 03</span>
+                    <h5 className="text-sm font-bold text-text">Monthly Engineering Retainer</h5>
                     <p className="text-xs text-text-muted font-light">
-                      Monthly Retainer. Ongoing architecture governance, prompt optimization, model fine-tuning, and priority 24/7 SLA escalation.
+                      Duration: Monthly schedule. Provide continuous architecture review, model optimization, latency reduction, and priority technical support.
                     </p>
                   </div>
                 </div>
               </div>
 
-              {/* Direct Booking Call to Action */}
+              {/* Direct Technical Review Call to Action */}
               <div className="p-6 rounded-2xl bg-gradient-to-r from-accent/20 via-accent/10 to-transparent border border-accent/30 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div>
                   <h5 className="text-base font-display font-bold text-text">
-                    Ready to operationalize AI in your business?
+                    Schedule a Technical Architecture Review
                   </h5>
                   <p className="text-xs text-text-muted font-light">
-                    Book an initial 20-minute technical architecture consultation directly with Atharv.
+                    Request a 20-minute technical review session directly with the system architect.
                   </p>
                 </div>
 
@@ -473,7 +503,7 @@ Let's schedule a technical architecture session.`;
                   onClick={() => onClose()}
                   className="px-5 py-2.5 rounded-full text-xs font-mono font-bold bg-accent text-bg hover:bg-accent-hover transition-colors shrink-0 shadow-lg shadow-accent/25 flex items-center gap-2"
                 >
-                  <span>Initiate Consultation</span>
+                  <span>Schedule Technical Review</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </a>
               </div>
