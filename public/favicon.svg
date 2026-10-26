@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <!-- Background Gradient -->
+    <radialGradient id="bgGlow" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#121826" />
+      <stop offset="60%" stop-color="#080C14" />
+      <stop offset="100%" stop-color="#04060A" />
+    </radialGradient>
+
+    <!-- Border Gradient -->
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8DEBFF" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#3B82F6" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#F27D26" stop-opacity="0.9" />
+    </linearGradient>
+
+    <!-- Amber Flame Gradient -->
+    <linearGradient id="amberFlame" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#FFB347" />
+      <stop offset="40%" stop-color="#F27D26" />
+      <stop offset="100%" stop-color="#C2410C" />
+    </linearGradient>
+
+    <!-- Cyan Electric Gradient -->
+    <linearGradient id="cyanElectric" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#CFF9FE" />
+      <stop offset="40%" stop-color="#8DEBFF" />
+      <stop offset="100%" stop-color="#38BDF8" />
+    </linearGradient>
+
+    <!-- Core Blue Gradient -->
+    <linearGradient id="northStar" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#BAE6FD" />
+      <stop offset="100%" stop-color="#6EA8FF" />
+    </linearGradient>
+
+    <!-- Glow Filter for Singularity -->
+    <filter id="coreGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="ambientGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <style>
+      @keyframes breatheSingularity {
+        0%, 100% {
+          transform: scale(0.92);
+          opacity: 0.85;
+        }
+        50% {
+          transform: scale(1.12);
+          opacity: 1;
+        }
+      }
+
+      @keyframes shimmerBorder {
+        0%, 100% { opacity: 0.6; }
+        50% { opacity: 1; }
+      }
+
+      .pulse-core {
+        transform-origin: 32px 34px;
+        animation: breatheSingularity 3s ease-in-out infinite;
+      }
+
+      .shimmer-edge {
+        animation: shimmerBorder 4s ease-in-out infinite;
+      }
+    </style>
+  </defs>
+
+  <!-- Background Squircle Container with Cybernetic Border -->
+  <rect x="2" y="2" width="60" height="60" rx="15" fill="url(#bgGlow)" stroke="url(#borderGrad)" stroke-width="1.5" class="shimmer-edge" />
+
+  <!-- Ambient Light Reflection inside Icon -->
+  <circle cx="32" cy="18" r="14" fill="#6EA8FF" opacity="0.12" filter="url(#ambientGlow)" />
+  <circle cx="32" cy="42" r="16" fill="#F27D26" opacity="0.12" filter="url(#ambientGlow)" />
+
+  <!-- Monogram Architecture: Letter 'A' Form -->
+  <!-- Left Arch Leg (Amber Warmth) -->
+  <path d="M32 9 L15 50 L22 53 L32 24 Z" fill="url(#amberFlame)" opacity="0.95" />
+  <path d="M15 50 L22 53 L26 44 L19 41 Z" fill="#FFAA40" opacity="0.8" />
+
+  <!-- Right Arch Leg (Electric Blue to Amber Synergy) -->
+  <path d="M32 9 L49 50 L42 53 L32 24 Z" fill="url(#amberFlame)" opacity="0.95" />
+  <path d="M49 50 L42 53 L38 44 L45 41 Z" fill="#FFAA40" opacity="0.8" />
+
+  <!-- Top Apex Crystal Cap (North Star Cyan) -->
+  <path d="M32 7 L39 18 L32 24 L25 18 Z" fill="url(#cyanElectric)" filter="url(#ambientGlow)" />
+  <path d="M32 7 L32 24" stroke="#FFFFFF" stroke-width="0.8" stroke-linecap="round" opacity="0.9" />
+
+  <!-- Central Suspended Neural Octahedron / Prism Core -->
+  <g class="pulse-core">
+    <!-- Facet: Top Diamond -->
+    <polygon points="32,23 39,33 32,37 25,33" fill="url(#cyanElectric)" opacity="0.75" />
+    <!-- Facet: Bottom Diamond -->
+    <polygon points="32,45 39,33 32,37 25,33" fill="url(#amberFlame)" opacity="0.85" />
+
+    <!-- Neural Constellation Lattice Lines -->
+    <line x1="32" y1="23" x2="32" y2="45" stroke="#FFFFFF" stroke-width="0.75" opacity="0.6" />
+    <line x1="25" y1="33" x2="39" y2="33" stroke="#FFFFFF" stroke-width="0.75" opacity="0.6" />
+
+    <line x1="32" y1="34" x2="21" y2="39" stroke="#8DEBFF" stroke-width="0.6" stroke-dasharray="1 1" opacity="0.7" />
+    <line x1="32" y1="34" x2="43" y2="39" stroke="#F27D26" stroke-width="0.6" stroke-dasharray="1 1" opacity="0.7" />
+
+    <!-- Neural Spark Satellite Nodes -->
+    <circle cx="28" cy="30" r="1.1" fill="#8DEBFF" />
+    <circle cx="36" cy="30" r="1.1" fill="#8DEBFF" />
+    <circle cx="29" cy="37" r="1.1" fill="#FFAA40" />
+    <circle cx="35" cy="37" r="1.1" fill="#FFAA40" />
+
+    <!-- Glowing Singularity Core / Quantum Center -->
+    <circle cx="32" cy="33.5" r="4.5" fill="#FFFFFF" opacity="0.3" filter="url(#coreGlow)" />
+    <circle cx="32" cy="33.5" r="2.8" fill="#8DEBFF" filter="url(#coreGlow)" />
+    <circle cx="32" cy="33.5" r="1.4" fill="#FFFFFF" />
+
+    <!-- 4-point Lens Sparkle -->
+    <path d="M32 29 L32.6 33 L36.5 33.5 L32.6 34 L32 38 L31.4 34 L27.5 33.5 L31.4 33 Z" fill="#FFFFFF" opacity="0.9" />
+  </g>
+
+  <!-- Futuristic Corner Accent Bevels -->
+  <path d="M12 6 L6 12" stroke="#8DEBFF" stroke-width="1.2" stroke-linecap="round" opacity="0.5" />
+  <path d="M52 58 L58 52" stroke="#F27D26" stroke-width="1.2" stroke-linecap="round" opacity="0.5" />
+</svg>
