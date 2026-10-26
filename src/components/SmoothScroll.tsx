@@ -12,6 +12,15 @@ export default function SmoothScroll() {
       smoothWheel: true,
       wheelMultiplier: 0.95,
       touchMultiplier: 1.5,
+      prevent: (node) => {
+        return (
+          node.hasAttribute('data-lenis-prevent') ||
+          Boolean(node.closest?.('[data-lenis-prevent]')) ||
+          Boolean(node.closest?.('#brochure-panel')) ||
+          Boolean(node.closest?.('#brochure-scroll-container')) ||
+          Boolean(node.closest?.('[role="dialog"]'))
+        );
+      },
     });
 
     (window as unknown as { __lenis?: Lenis }).__lenis = lenis;

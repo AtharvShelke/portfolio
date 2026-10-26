@@ -102,21 +102,23 @@
   }
 
   .custom-scrollbar::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
   }
   .custom-scrollbar::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.03);
-  }
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(242, 125, 38, 0.35);
+    background: rgba(255, 255, 255, 0.04);
     border-radius: 9999px;
   }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(242, 125, 38, 0.45);
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: rgba(242, 125, 38, 0.65);
+    background: rgba(242, 125, 38, 0.85);
   }
   .custom-scrollbar {
     scrollbar-width: thin;
-    scrollbar-color: rgba(242, 125, 38, 0.35) rgba(255, 255, 255, 0.03);
+    scrollbar-color: rgba(242, 125, 38, 0.5) rgba(255, 255, 255, 0.04);
   }
 }
 

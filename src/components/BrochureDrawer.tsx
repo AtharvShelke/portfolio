@@ -10,6 +10,7 @@ import {
   Cpu,
   Clock,
   ArrowRight,
+  ArrowUp,
   Building2,
   FileText
 } from 'lucide-react';
@@ -31,8 +32,11 @@ const STE_METRICS = [
 
 export default function BrochureDrawer({ isOpen, onClose, onSelectTier }: BrochureDrawerProps) {
   const drawerRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
   const lastActiveElementRef = useRef<HTMLElement | null>(null);
   const [activeTab, setActiveTab] = useState<'all' | string>('all');
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   // Pause Lenis smooth-scroller and lock document body scroll while drawer is open
   useEffect(() => {
@@ -46,27 +50,35 @@ export default function BrochureDrawer({ isOpen, onClose, onSelectTier }: Brochu
       if (scrollbarWidth > 0) {
         document.body.style.paddingRight = `${scrollbarWidth}px`;
       }
+      if (drawerRef.current) {
+        drawerRef.current.scrollTop = 0;
+      }
     } else {
       lenis?.start();
       document.body.style.overflow = '';
       document.body.style.paddingRight = '';
+      setShowScrollTop(false);
     }
 
     return () => {
       lenis?.start();
       document.body.style.overflow = '';
       document.body.style.paddingRight = '';
+      setShowScrollTop(false);
     };
   }, [isOpen]);
 
-  // Focus Trap and Escape Key Dismissal
+  // Focus Management and Keyboard Navigation
   useEffect(() => {
     if (isOpen) {
-      setTimeout(() => {
-        const firstFocusable = drawerRef.current?.querySelector<HTMLElement>(
-          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-        );
-        firstFocusable?.focus();
+      // Focus close button at top without jumping scroll position
+      const timer = setTimeout(() => {
+        if (closeButtonRef.current) {
+          closeButtonRef.current.focus({ preventScroll: true });
+        }
+        if (drawerRef.current) {
+          drawerRef.current.scrollTop = 0;
+        }
       }, 50);
 
       const handleKeyDown = (e: KeyboardEvent) => {
@@ -75,8 +87,9 @@ export default function BrochureDrawer({ isOpen, onClose, onSelectTier }: Brochu
           return;
         }
 
-        if (e.key === 'Tab' && drawerRef.current) {
-          const focusables = drawerRef.current.querySelectorAll<HTMLElement>(
+        // Focus trap within the entire panel (header + document body)
+        if (e.key === 'Tab' && panelRef.current) {
+          const focusables = panelRef.current.querySelectorAll<HTMLElement>(
             'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
           );
           if (focusables.length === 0) return;
@@ -100,11 +113,54 @@ export default function BrochureDrawer({ isOpen, onClose, onSelectTier }: Brochu
 
       window.addEventListener('keydown', handleKeyDown);
       return () => {
+        clearTimeout(timer);
         window.removeEventListener('keydown', handleKeyDown);
         lastActiveElementRef.current?.focus();
       };
     }
   }, [isOpen, onClose]);
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    setShowScrollTop(e.currentTarget.scrollTop > 350);
+  };
+
+  const scrollToTop = () => {
+    drawerRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Forward wheel events hitting the backdrop or header to scroll the document body
+  const handleModalWheel = (e: React.WheelEvent) => {
+    if (drawerRef.current && !drawerRef.current.contains(e.target as Node)) {
+      drawerRef.current.scrollTop += e.deltaY;
+    }
+  };
+
+  // Allow scrolling the drawer via keyboard when scrollable container is focused
+  const handleContainerKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (!drawerRef.current) return;
+    const scrollStep = 90;
+    const pageStep = drawerRef.current.clientHeight * 0.85;
+
+    if (e.key === 'ArrowDown') {
+      drawerRef.current.scrollBy({ top: scrollStep, behavior: 'smooth' });
+      e.preventDefault();
+    } else if (e.key === 'ArrowUp') {
+      drawerRef.current.scrollBy({ top: -scrollStep, behavior: 'smooth' });
+      e.preventDefault();
+    } else if (e.key === 'PageDown' || (e.key === ' ' && !e.shiftKey)) {
+      drawerRef.current.scrollBy({ top: pageStep, behavior: 'smooth' });
+      e.preventDefault();
+    } else if (e.key === 'PageUp' || (e.key === ' ' && e.shiftKey)) {
+      drawerRef.current.scrollBy({ top: -pageStep, behavior: 'smooth' });
+      e.preventDefault();
+    } else if (e.key === 'Home') {
+      drawerRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+      e.preventDefault();
+    } else if (e.key === 'End') {
+      drawerRef.current.scrollTo({ top: drawerRef.current.scrollHeight, behavior: 'smooth' });
+      e.preventDefault();
+    }
+  };
 
   const handlePrint = () => {
     window.print();
@@ -158,21 +214,28 @@ Please provide available times for an architecture review session.`;
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[120] bg-black/85 backdrop-blur-md"
+            data-lenis-prevent="true"
+            data-lenis-prevent-wheel="true"
+            data-lenis-prevent-touch="true"
+            onWheel={handleModalWheel}
+            className="fixed inset-0 z-[120] bg-black/85 backdrop-blur-md cursor-pointer"
             onClick={onClose}
           />
 
           {/* Slide-in Specification Modal Panel */}
           <motion.div
+            ref={panelRef}
+            id="brochure-panel"
             key="brochure-panel"
             initial={{ opacity: 0, x: '100%' }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: 'spring', damping: 28, stiffness: 220 }}
             data-lenis-prevent="true"
-            onWheel={(e) => e.stopPropagation()}
-            onTouchMove={(e) => e.stopPropagation()}
-            className="fixed top-0 right-0 bottom-0 z-[130] w-full max-w-4xl bg-[#090B10] border-l border-white/10 shadow-2xl flex flex-col pointer-events-auto h-screen max-h-screen overflow-hidden overscroll-contain"
+            data-lenis-prevent-wheel="true"
+            data-lenis-prevent-touch="true"
+            onWheel={handleModalWheel}
+            className="fixed top-0 right-0 bottom-0 z-[130] w-full max-w-4xl bg-[#090B10] border-l border-white/10 shadow-2xl flex flex-col pointer-events-auto h-screen max-h-screen sm:h-[100dvh] sm:max-h-[100dvh] overflow-hidden overscroll-contain"
           >
             {/* Top Bar Header */}
             <div className="p-4 sm:p-6 border-b border-white/10 flex items-center justify-between gap-4 bg-[#0A0D14]/95 backdrop-blur-md shrink-0">
@@ -197,17 +260,18 @@ Please provide available times for an architecture review session.`;
                   type="button"
                   onClick={handlePrint}
                   aria-label="Export technical specification to PDF"
-                  className="px-3.5 py-1.5 text-xs font-mono font-medium rounded-full bg-white/[0.05] border border-white/10 text-text hover:bg-white/10 hover:border-accent/40 transition-colors hidden sm:flex items-center gap-2"
+                  className="px-3.5 py-1.5 text-xs font-mono font-medium rounded-full bg-white/[0.05] border border-white/10 text-text hover:bg-white/10 hover:border-accent/40 transition-colors hidden sm:flex items-center gap-2 cursor-pointer"
                 >
                   <Printer className="w-3.5 h-3.5 text-accent" />
                   <span>Export Document (PDF)</span>
                 </button>
 
                 <button
+                  ref={closeButtonRef}
                   type="button"
                   onClick={onClose}
                   aria-label="Close specification modal"
-                  className="p-2 rounded-full border border-white/10 text-text-muted hover:text-text hover:border-accent transition-colors"
+                  className="p-2 rounded-full border border-white/10 text-text-muted hover:text-text hover:border-accent transition-colors cursor-pointer"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -217,14 +281,21 @@ Please provide available times for an architecture review session.`;
             {/* Scrollable Document Body */}
             <div
               ref={drawerRef}
+              id="brochure-scroll-container"
+              tabIndex={0}
+              onScroll={handleScroll}
+              onKeyDown={handleContainerKeyDown}
               data-lenis-prevent="true"
-              onWheel={(e) => e.stopPropagation()}
-              onTouchMove={(e) => e.stopPropagation()}
+              data-lenis-prevent-wheel="true"
+              data-lenis-prevent-touch="true"
               role="dialog"
               aria-modal="true"
               aria-labelledby="brochure-drawer-title"
-              className="flex-1 min-h-0 overflow-y-auto overscroll-contain p-4 sm:p-8 space-y-8 focus:outline-none custom-scrollbar text-text"
-              style={{ WebkitOverflowScrolling: 'touch' }}
+              className="flex-1 min-h-0 overflow-y-auto overscroll-contain p-4 sm:p-8 space-y-8 focus:outline-none custom-scrollbar text-text select-text"
+              style={{
+                WebkitOverflowScrolling: 'touch',
+                touchAction: 'pan-y',
+              }}
             >
               {/* Architecture Thesis Specification */}
               <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-white/10 relative overflow-hidden">
@@ -508,6 +579,19 @@ Please provide available times for an architecture review session.`;
                 </a>
               </div>
             </div>
+
+            {/* Floating Back to Top Button */}
+            {showScrollTop && (
+              <button
+                type="button"
+                onClick={scrollToTop}
+                aria-label="Scroll back to top of brochure"
+                className="absolute bottom-6 right-8 z-30 px-3.5 py-2 rounded-full bg-accent text-bg shadow-2xl hover:bg-accent-hover transition-all duration-300 flex items-center gap-1.5 text-xs font-mono font-bold cursor-pointer border border-white/20 hover:scale-105"
+              >
+                <ArrowUp className="w-4 h-4" />
+                <span>Back to Top</span>
+              </button>
+            )}
           </motion.div>
         </>
       )}
