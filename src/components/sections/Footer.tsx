@@ -123,7 +123,7 @@ export const Footer: React.FC = () => {
                 </li>
                 <li>
                   <a
-                    href="https://linkedin.com/in/atharv-shelke"
+                    href="https://www.linkedin.com/in/atharvdevx/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 hover:text-[#F4F6F8] transition-colors"
@@ -134,12 +134,23 @@ export const Footer: React.FC = () => {
                 </li>
                 <li>
                   <a
-                    href="https://twitter.com/atharvshelke_"
+                    href="https://x.com/Atharvdevx"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 hover:text-[#F4F6F8] transition-colors"
                   >
                     <span>X / Twitter</span>
+                    <ArrowUpRight className="w-3 h-3" />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.instagram.com/atharv.devx/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 hover:text-[#F4F6F8] transition-colors"
+                  >
+                    <span>Instagram</span>
                     <ArrowUpRight className="w-3 h-3" />
                   </a>
                 </li>

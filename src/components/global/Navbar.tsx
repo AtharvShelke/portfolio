@@ -111,7 +111,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
               className="hidden sm:flex items-center gap-1.5 text-[11px] font-mono px-2 py-1 rounded-md border border-[#202B3D]/80 bg-[#0D1422]/50 text-[#667085] hover:text-[#6EA8FF] hover:border-[#6EA8FF]/40 transition-colors"
             >
               <Globe className="w-3 h-3 text-[#6EA8FF]" />
-              <span>Domain: {mode === 'atharv' ? 'atharv-shelke' : 'polaris-arc'}</span>
+              <span>Domain: {mode === 'atharv' ? 'atharv' : 'polaris-arc'}</span>
             </button>
           </div>
 

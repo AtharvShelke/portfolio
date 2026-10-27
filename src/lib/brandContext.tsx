@@ -37,7 +37,7 @@ export const BrandProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       const queryBrand = urlParams.get('brand')?.toLowerCase();
       const hostname = window.location.hostname.toLowerCase();
 
-      if (queryBrand === 'atharv' || hostname.includes('atharv-shelke') || hostname.includes('atharv')) {
+      if (queryBrand === 'atharv' || hostname.includes('atharv')) {
         setMode('atharv');
       } else {
         setMode('polaris');
@@ -48,7 +48,7 @@ export const BrandProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const config: BrandConfig = {
     mode,
     name: mode === 'atharv' ? 'ATHARV' : 'POLARIS',
-    fullName: mode === 'atharv' ? 'ATHARV SHELKE' : 'POLARIS TECHNOLOGIES',
+    fullName: mode === 'atharv' ? 'ATHARV' : 'POLARIS TECHNOLOGIES',
     tagline: 'Technology with direction.',
     purposeLine: 'A clearer path forward.',
     signOff: 'Same direction. A brighter tomorrow.',

@@ -113,14 +113,14 @@ export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
                   <h3 id="resume-drawer-title" className="text-lg sm:text-xl font-display font-bold text-text">
                     Curriculum Vitae Preview
                   </h3>
-                  <p className="text-xs text-text-muted font-mono">Atharv_Shelke_CV.pdf</p>
+                  <p className="text-xs text-text-muted font-mono">Atharv_CV.pdf</p>
                 </div>
               </div>
 
               <div className="flex items-center gap-3">
                 <a
-                  href="/Atharv_Shelke_CV.pdf"
-                  download="Atharv_Shelke_CV.pdf"
+                  href="/Atharv_CV.pdf"
+                  download="Atharv_CV.pdf"
                   className="px-4 py-2 text-xs font-medium rounded-full bg-accent text-bg hover:bg-accent-hover transition-colors flex items-center gap-2 shadow-md shadow-accent/20"
                 >
                   <Download className="w-3.5 h-3.5" />
@@ -147,8 +147,8 @@ export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
             >
               <div className="w-full h-full rounded-2xl border border-border/60 overflow-hidden bg-[#121215] relative flex flex-col">
                 <iframe
-                  src="/Atharv_Shelke_CV.pdf#toolbar=0"
-                  title="Atharv Shelke Curriculum Vitae"
+                  src="/Atharv_CV.pdf#toolbar=0"
+                  title="Atharv Curriculum Vitae"
                   className="w-full h-full border-0"
                 />
 
@@ -156,7 +156,7 @@ export default function ResumeDrawer({ isOpen, onClose }: ResumeDrawerProps) {
                 <div className="p-4 bg-surface/80 border-t border-border/40 text-center text-xs text-text-muted flex items-center justify-between gap-4">
                   <span>Having trouble viewing the PDF in browser?</span>
                   <a
-                    href="/Atharv_Shelke_CV.pdf"
+                    href="/Atharv_CV.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-accent hover:underline flex items-center gap-1 font-mono"

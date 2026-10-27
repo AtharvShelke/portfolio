@@ -233,7 +233,7 @@ export default function Hero({ onOpenBrochure }: HeroProps) {
           <h1 className="text-[clamp(32px,4.5vw,56px)] font-display font-bold tracking-tight leading-[1.05] text-text mb-4 sm:mb-5">
             Hi, I am <br className="hidden sm:inline" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-amber-300 to-accent">
-              Atharv Shelke
+              Atharv
             </span>{' '}
             <br />
             AI Solutions Architect.

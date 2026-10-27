@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { motion } from 'motion/react';
-import { ArrowUpRight, Github, Linkedin, Twitter, ShieldCheck } from 'lucide-react';
+import { ArrowUpRight, Github, Linkedin, Twitter, Instagram, ShieldCheck } from 'lucide-react';
 
 const MagneticLink = ({ children, href }: { children: React.ReactNode; href: string }) => {
   const ref = useRef<HTMLAnchorElement>(null);
@@ -45,7 +45,7 @@ export default function Footer() {
               <div className="flex items-center gap-2 mb-2">
                 <span className="w-2 h-2 rounded-full bg-accent" />
                 <span className="text-xs font-mono uppercase tracking-widest text-accent font-semibold">
-                  Atharv Shelke Studio & Systems
+                  Atharv Studio & Systems
                 </span>
               </div>
               <h2 className="text-3xl font-display font-bold tracking-tight mb-3">
@@ -57,11 +57,14 @@ export default function Footer() {
             </div>
 
             <div className="flex items-center gap-4">
-              <MagneticLink href="https://twitter.com/atharvshelke_">
+              <MagneticLink href="https://x.com/Atharvdevx">
                 <Twitter className="w-4 h-4" />
               </MagneticLink>
-              <MagneticLink href="https://www.linkedin.com/in/atharv-shelke">
+              <MagneticLink href="https://www.linkedin.com/in/atharvdevx/">
                 <Linkedin className="w-4 h-4" />
+              </MagneticLink>
+              <MagneticLink href="https://www.instagram.com/atharv.devx/">
+                <Instagram className="w-4 h-4" />
               </MagneticLink>
               <MagneticLink href="https://github.com/AtharvShelke">
                 <Github className="w-4 h-4" />
@@ -110,7 +113,7 @@ export default function Footer() {
             <ul className="space-y-2.5">
               <li>
                 <a
-                  href="/Atharv_Shelke_CV.pdf"
+                  href="/Atharv_CV.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm font-light hover:text-accent transition-colors flex items-center gap-2 group w-fit"
@@ -135,7 +138,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-text-muted text-xs font-mono">
-            &copy; {new Date().getFullYear()} Atharv Shelke Studio. All rights reserved.
+            &copy; {new Date().getFullYear()} Atharv Studio. All rights reserved.
           </p>
           <div className="text-text-muted text-xs font-mono flex items-center gap-2">
             <ShieldCheck className="w-4 h-4 text-emerald-400" />

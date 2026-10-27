@@ -85,7 +85,7 @@ export default function About({ onOpenResume }: AboutProps) {
               </div>
 
               <h3 className="text-2xl font-display font-bold text-text">
-                Atharv Shelke
+                Atharv
               </h3>
 
               <p className="text-text-muted text-sm sm:text-base font-light leading-relaxed">
@@ -118,7 +118,7 @@ export default function About({ onOpenResume }: AboutProps) {
                   </button>
                 ) : (
                   <a
-                    href="/Atharv_Shelke_CV.pdf"
+                    href="/Atharv_CV.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full py-3.5 rounded-full border border-white/15 hover:border-accent hover:text-accent font-mono text-xs flex items-center justify-center gap-2 transition-colors"
