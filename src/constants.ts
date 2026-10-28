@@ -308,7 +308,7 @@ export const PROJECTS: Project[] = [
       "Framer Motion HUD UI",
     ],
     image: "/project-images/lead-copilot.png",
-    link: "https://lead-copilot-frontend.vercel.app/",
+    link: "https://leadcopilot.vercel.app/",
     github: "https://github.com/AtharvShelke/lead-copilot",
     slug: "lead-copilot",
     featured: true,

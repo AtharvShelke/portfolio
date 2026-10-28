@@ -51,7 +51,7 @@ const SHOWCASE_SYSTEMS: ShowcaseProject[] = [
     description: 'High-velocity inbound intake engine that ingests, scores, and attributes enterprise prospects within 120ms using Google Gemini 2.0 with zero lead drop-off.',
     tech: ['Google Gemini 2.0', 'Next.js 16', 'Redis Queue', 'TypeScript Strict', 'Webhooks', 'Tailwind v4'],
     image: '/project-images/lead-copilot.png',
-    liveUrl: 'https://lead-copilot-frontend.vercel.app/',
+    liveUrl: 'https://leadcopilot.vercel.app/',
     timeline: '1–2 Weeks Deployment',
     deliverables: ['Sub-120ms Inbound Intake', 'Semantic Intent & Deal Scoring', 'Instant Slack Deal-Desk Alerts', 'Zero-Loss Redis Queue'],
     logLines: [
@@ -190,7 +190,7 @@ export default function Hero({ onOpenBrochure }: HeroProps) {
         {/* Subtle radial warmth centered near top */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-accent/8 rounded-full blur-[140px]" />
         <div className="absolute top-1/3 -right-40 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[150px]" />
-        
+
         {/* Precise hairline grid */}
         <div
           className="absolute inset-0 opacity-[0.18]"
@@ -206,7 +206,7 @@ export default function Hero({ onOpenBrochure }: HeroProps) {
 
       {/* Main Hero Split Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center flex-1 my-auto">
-        
+
         {/* ── LEFT COLUMN: Value Proposition & High-Conversion Funnel ── */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -277,11 +277,10 @@ export default function Hero({ onOpenBrochure }: HeroProps) {
                   <button
                     key={system.id}
                     onClick={() => setActiveSystemId(system.id)}
-                    className={`py-2 px-2.5 rounded-xl text-left text-xs font-medium transition-all flex flex-col justify-between gap-1 border ${
-                      isSelected
+                    className={`py-2 px-2.5 rounded-xl text-left text-xs font-medium transition-all flex flex-col justify-between gap-1 border ${isSelected
                         ? 'bg-accent/15 border-accent text-white shadow-[0_0_15px_-3px_rgba(242,125,38,0.3)]'
                         : 'bg-white/[0.02] border-white/5 text-text-muted hover:text-white hover:bg-white/[0.05] hover:border-white/15'
-                    }`}
+                      }`}
                   >
                     <span className="font-semibold truncate text-[11px] sm:text-xs">{system.tabTitle}</span>
                     <span className="text-[10px] font-mono text-text-muted/80 truncate">
@@ -386,7 +385,7 @@ export default function Hero({ onOpenBrochure }: HeroProps) {
           className="lg:col-span-6 w-full"
         >
           <div className="rounded-2xl md:rounded-3xl bg-[#090A0E] border border-white/10 shadow-[0_30px_90px_rgba(0,0,0,0.7)] overflow-hidden">
-            
+
             {/* Top Cockpit Title & Telemetry Bar */}
             <div className="px-4 py-3 bg-[#0E1017] border-b border-white/10 flex items-center justify-between gap-3 text-xs font-mono">
               <div className="flex items-center gap-2">
@@ -427,11 +426,10 @@ export default function Hero({ onOpenBrochure }: HeroProps) {
                   <button
                     key={system.id}
                     onClick={() => setActiveSystemId(system.id)}
-                    className={`px-3.5 py-2 rounded-t-xl text-xs font-medium transition-all shrink-0 flex items-center gap-1.5 border-t border-x ${
-                      isActive
+                    className={`px-3.5 py-2 rounded-t-xl text-xs font-medium transition-all shrink-0 flex items-center gap-1.5 border-t border-x ${isActive
                         ? 'bg-[#090A0E] border-white/15 text-white font-semibold'
                         : 'bg-transparent border-transparent text-text-muted hover:text-text hover:bg-white/[0.02]'
-                    }`}
+                      }`}
                   >
                     <span className={`w-1.5 h-1.5 rounded-full ${isActive ? 'bg-accent' : 'bg-white/20'}`} />
                     <span>{system.tabTitle}</span>
@@ -538,13 +536,12 @@ export default function Hero({ onOpenBrochure }: HeroProps) {
                   {activeSystem.logLines.map((log, idx) => (
                     <div
                       key={idx}
-                      className={`truncate flex items-center gap-2 ${
-                        log.type === 'success'
+                      className={`truncate flex items-center gap-2 ${log.type === 'success'
                           ? 'text-emerald-400'
                           : log.type === 'warn'
-                          ? 'text-amber-400'
-                          : 'text-zinc-400'
-                      }`}
+                            ? 'text-amber-400'
+                            : 'text-zinc-400'
+                        }`}
                     >
                       <span className="text-text-muted/50 select-none">➜</span>
                       <span>{log.text}</span>
